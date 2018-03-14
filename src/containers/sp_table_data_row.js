@@ -16,7 +16,8 @@ const mapStateToProps = (state, ownProps) => {
     ownedTotal: state.owned_points[ownProps.job.id].total,
     presetsByLevel: state.preset_points.by_level,
     presetsByTraining: state.preset_points.by_training,
-    presetsBySkillbooks: state.preset_points.by_skillbooks
+    presetsBySkillbooks: state.preset_points.by_skillbooks,
+    assignedTotal: state.assigned_points.summaries[ownProps.job.id]
   };
 }
 
