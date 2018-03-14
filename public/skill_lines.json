@@ -1,0 +1,1042 @@
+[
+  {
+    "id": "bravery",
+    "display": "ゆうかん",
+    "skills": [
+      {"display": "かばう(専)", "points": 8, "additional": false},
+      {"display": "全職業でみのまもり+5", "points": 16, "additional": false},
+      {"display": "全職業でちから+5", "points": 28, "additional": false},
+      {"display": "ロストアタック", "points": 40, "additional": false},
+      {"display": "全職業でみのまもり+5", "points": 48, "additional": false},
+      {"display": "全職業でちから+5", "points": 56, "additional": false},
+      {"display": "たいあたり(専)", "points": 70, "additional": false},
+      {"display": "全職業でさいだいHP+30", "points": 80, "additional": false},
+      {"display": "全職業でみのまもり+10", "points": 90, "additional": false},
+      {"display": "やいばくだき(専)", "points": 100, "additional": false},
+      {"display": "かばうの心得(専)", "points": 110, "additional": false},
+      {"display": "ちから+10(専)", "points": 120, "additional": false},
+      {"display": "チャージタックル(専)", "points": 130, "additional": false},
+      {"display": "たまに2回攻撃(専)", "points": 140, "additional": false},
+      {"display": "真・やいばくだき(専)", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+
+    ],
+    "passives_filling": 90
+  },
+  {
+    "id": "faith",
+    "display": "しんこう心",
+    "skills": [
+      {"display": "おはらい", "points": 8, "additional": false},
+      {"display": "全職業でかいふく魔力+10", "points": 16, "additional": false},
+      {"display": "マホトラのころも(専)", "points": 28, "additional": false},
+      {"display": "全職業でさいだいMP+10", "points": 40, "additional": false},
+      {"display": "聖女の守り(専)", "points": 48, "additional": false},
+      {"display": "全職業でかいふく魔力+10", "points": 56, "additional": false},
+      {"display": "天使の守り(専)", "points": 70, "additional": false},
+      {"display": "全職業でさいだいMP+10", "points": 80, "additional": false},
+      {"display": "全職業でかいふく魔力+10", "points": 90, "additional": false},
+      {"display": "聖なる祈り(専)", "points": 100, "additional": false},
+      {"display": "かいふく魔力+20(専)", "points": 110, "additional": false},
+      {"display": "さいだいMP+30(専)", "points": 120, "additional": false},
+      {"display": "ホーリーライト(専)", "points": 130, "additional": false},
+      {"display": "たまにHP1生き残り(専)", "points": 140, "additional": false},
+      {"display": "女神の祝福(専)", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+
+    ],
+    "passives_filling": 90
+  },
+  {
+    "id": "magic",
+    "display": "まほう",
+    "skills": [
+      {"display": "魔結界", "points": 8, "additional": false},
+      {"display": "全職業でこうげき魔力+10", "points": 18, "additional": false},
+      {"display": "全職業でさいだいMP+10", "points": 26, "additional": false},
+      {"display": "ぶきみなひかり", "points": 38, "additional": false},
+      {"display": "常時呪文暴走率+2%", "points": 46, "additional": false},
+      {"display": "全職業でこうげき魔力+10", "points": 54, "additional": false},
+      {"display": "魔力の息吹(専)", "points": 68, "additional": false},
+      {"display": "全職業でこうげき魔力+10", "points": 78, "additional": false},
+      {"display": "全職業でさいだいMP+10", "points": 88, "additional": false},
+      {"display": "魔力かくせい(専)", "points": 100, "additional": false},
+      {"display": "常時呪文暴走率+2%(専)", "points": 110, "additional": false},
+      {"display": "こうげき魔力+20(専)", "points": 120, "additional": false},
+      {"display": "マヒャデドス(専)", "points": 130, "additional": false},
+      {"display": "たまにMP消費しない(専)", "points": 140, "additional": false},
+      {"display": "メラガイアー(専)", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+
+    ],
+    "passives_filling": 88
+  },
+  {
+    "id": "roar",
+    "display": "きあい",
+    "skills": [
+      {"display": "ためる(専)", "points": 4, "additional": false},
+      {"display": "全職業できようさ+20", "points": 12, "additional": false},
+      {"display": "心頭滅却", "points": 22, "additional": false},
+      {"display": "全職業ですばやさ+30", "points": 34, "additional": false},
+      {"display": "不撓不屈(専)", "points": 48, "additional": false},
+      {"display": "全職業でちから+10", "points": 56, "additional": false},
+      {"display": "おたけび", "points": 70, "additional": false},
+      {"display": "全職業でさいだいHP+40", "points": 80, "additional": false},
+      {"display": "めいそう(専)", "points": 90, "additional": false},
+      {"display": "ためる弐(専)", "points": 100, "additional": false},
+      {"display": "すばやさ+30(専)", "points": 110, "additional": false},
+      {"display": "ちから+10(専)", "points": 120, "additional": false},
+      {"display": "無念無想(専)", "points": 130, "additional": false},
+      {"display": "カウンターブースト(専)", "points": 140, "additional": false},
+      {"display": "ためる参(専)", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+
+    ],
+    "passives_filling": 80
+  },
+  {
+    "id": "tresure",
+    "display": "おたから",
+    "skills": [
+      {"display": "ぬすむ(専)", "points": 8, "additional": false},
+      {"display": "みやぶる", "points": 18, "additional": false},
+      {"display": "おたからさがし(専)", "points": 26, "additional": false},
+      {"display": "全職業ですばやさ+30", "points": 38, "additional": false},
+      {"display": "全職業できようさ+20", "points": 46, "additional": false},
+      {"display": "バナナトラップ(専)", "points": 54, "additional": false},
+      {"display": "全職業ですばやさ+30", "points": 68, "additional": false},
+      {"display": "メガボンバー(専)", "points": 78, "additional": false},
+      {"display": "全職業ですばやさ+30", "points": 82, "additional": false},
+      {"display": "しんだふり", "points": 100, "additional": false},
+      {"display": "すばやさ+30(専)", "points": 110, "additional": false},
+      {"display": "きようさ+30(専)", "points": 120, "additional": false},
+      {"display": "ギガボンバー(専)", "points": 130, "additional": false},
+      {"display": "ぬすむ成功率アップ(専)", "points": 140, "additional": false},
+      {"display": "サプライズラッシュ(専)", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+
+    ],
+    "passives_filling": 82
+  },
+  {
+    "id": "acrobatics",
+    "display": "きょくげい",
+    "skills": [
+      {"display": "ボケ", "points": 4, "additional": false},
+      {"display": "全職業でみりょく+20", "points": 12, "additional": false},
+      {"display": "ツッコミ", "points": 22, "additional": false},
+      {"display": "全職業ですばやさ+30", "points": 34, "additional": false},
+      {"display": "タップダンス(専)", "points": 46, "additional": false},
+      {"display": "全職業でこうげき魔力+10", "points": 54, "additional": false},
+      {"display": "キラージャグリング(専)", "points": 68, "additional": false},
+      {"display": "全職業でかいふく魔力+10", "points": 78, "additional": false},
+      {"display": "全職業できようさ+20", "points": 82, "additional": false},
+      {"display": "ハッスルダンス(専)", "points": 100, "additional": false},
+      {"display": "きようさ+30(専)", "points": 110, "additional": false},
+      {"display": "エンドオブシーン(専)", "points": 120, "additional": false},
+      {"display": "ゴッドジャグリング(専)", "points": 130, "additional": false},
+      {"display": "たまにカウンター(専)", "points": 140, "additional": false},
+      {"display": "たたかいのビート(専)", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+
+    ],
+    "passives_filling": 82
+  },
+  {
+    "id": "spirit",
+    "display": "とうこん",
+    "skills": [
+      {"display": "とうこん討ち(専)", "points": 4, "additional": false},
+      {"display": "全職業できようさ+20", "points": 10, "additional": false},
+      {"display": "全職業でちから+5", "points": 16, "additional": false},
+      {"display": "すてみ(専)", "points": 22, "additional": false},
+      {"display": "全職業ですばやさ+30", "points": 32, "additional": false},
+      {"display": "もろば斬り(専)", "points": 42, "additional": false},
+      {"display": "全職業でちから+5", "points": 55, "additional": false},
+      {"display": "無心こうげき(専)", "points": 68, "additional": false},
+      {"display": "全職業でちから+5", "points": 82, "additional": false},
+      {"display": "天下無双(専)", "points": 100, "additional": false},
+      {"display": "ちから+10(専)", "points": 110, "additional": false},
+      {"display": "きようさ+30(専)", "points": 120, "additional": false},
+      {"display": "テンションバーン(専)", "points": 130, "additional": false},
+      {"display": "テンション維持(専)", "points": 140, "additional": false},
+      {"display": "ミラクルブースト(専)", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+
+    ],
+    "passives_filling": 82
+  },
+  {
+    "id": "humanity",
+    "display": "はくあい",
+    "skills": [
+      {"display": "やいばのぼうぎょ", "points": 2, "additional": false},
+      {"display": "全職業でみのまもり+10", "points": 12, "additional": false},
+      {"display": "HPパサー", "points": 22, "additional": false},
+      {"display": "全職業でかいふく魔力+10", "points": 34, "additional": false},
+      {"display": "におうだち(専)", "points": 46, "additional": false},
+      {"display": "全職業でみのまもり+10", "points": 54, "additional": false},
+      {"display": "ヘヴィチャージ(専)", "points": 68, "additional": false},
+      {"display": "全職業でみのまもり+20", "points": 78, "additional": false},
+      {"display": "全職業でさいだいHP+30", "points": 82, "additional": false},
+      {"display": "大ぼうぎょ(専)", "points": 100, "additional": false},
+      {"display": "におうだちの心得(専)", "points": 110, "additional": false},
+      {"display": "さいだいHP+60(専)", "points": 120, "additional": false},
+      {"display": "グランドネビュラ(専)", "points": 130, "additional": false},
+      {"display": "ガード時しびれさせる(専)", "points": 140, "additional": false},
+      {"display": "聖騎士の堅陣(専)", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+
+    ],
+    "passives_filling": 82
+  },
+  {
+    "id": "force",
+    "display": "フォース",
+    "skills": [
+      {"display": "ファイアフォース(専)", "points": 4, "additional": false},
+      {"display": "全職業でちから+10", "points": 10, "additional": false},
+      {"display": "アイスフォース(専)", "points": 16, "additional": false},
+      {"display": "全職業でさいだいMP+10", "points": 22, "additional": false},
+      {"display": "ストームフォース(専)", "points": 32, "additional": false},
+      {"display": "全職業でみのまもり+5", "points": 42, "additional": false},
+      {"display": "ダークフォース(専)", "points": 55, "additional": false},
+      {"display": "MPパサー(専)", "points": 68, "additional": false},
+      {"display": "全職業でさいだいHP+20", "points": 82, "additional": false},
+      {"display": "ライトフォース(専)", "points": 100, "additional": false},
+      {"display": "フォース範囲化(専)", "points": 110, "additional": false},
+      {"display": "さいだいMP+30(専)", "points": 120, "additional": false},
+      {"display": "フォースブレイク(専)", "points": 130, "additional": false},
+      {"display": "攻撃時たまにMP回復(専)", "points": 140, "additional": false},
+      {"display": "マダンテ(専)", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+
+    ],
+    "passives_filling": 82
+  },
+  {
+    "id": "survival",
+    "display": "サバイバル",
+    "skills": [
+      {"display": "みのがす", "points": 2, "additional": false},
+      {"display": "全職業できようさ+20", "points": 12, "additional": false},
+      {"display": "てなづける(専)", "points": 22, "additional": false},
+      {"display": "全職業でみりょく+20", "points": 34, "additional": false},
+      {"display": "メタルトラップ(専)", "points": 46, "additional": false},
+      {"display": "全職業できようさ+20", "points": 54, "additional": false},
+      {"display": "まもりのきり(専)", "points": 68, "additional": false},
+      {"display": "全職業でかいふく魔力+20", "points": 78, "additional": false},
+      {"display": "全職業できようさ+20", "points": 82, "additional": false},
+      {"display": "オオカミアタック(専)", "points": 100, "additional": false},
+      {"display": "先制攻撃率アップ(専)", "points": 110, "additional": false},
+      {"display": "きようさ+30(専)", "points": 120, "additional": false},
+      {"display": "あんこくのきり(専)", "points": 130, "additional": false},
+      {"display": "ジバルンバ(専)", "points": 140, "additional": false},
+      {"display": "フェンリルアタック(専)", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+
+    ],
+    "passives_filling": 82
+  },
+  {
+    "id": "enlightenment",
+    "display": "さとり",
+    "skills": [
+      {"display": "いやしの雨(専)", "points": 4, "additional": false},
+      {"display": "全職業でかいふく魔力+10", "points": 10, "additional": false},
+      {"display": "全職業でこうげき魔力+10", "points": 16, "additional": false},
+      {"display": "魔導の書(専)", "points": 22, "additional": false},
+      {"display": "全職業でさいだいMP+10", "points": 32, "additional": false},
+      {"display": "全職業でかいふく魔力+10", "points": 42, "additional": false},
+      {"display": "しんぴのさとり(専)", "points": 55, "additional": false},
+      {"display": "全職業でこうげき魔力+10", "points": 68, "additional": false},
+      {"display": "全職業でさいだいMP+20", "points": 82, "additional": false},
+      {"display": "零の洗礼(専)", "points": 100, "additional": false},
+      {"display": "かいふく魔力+30(専)", "points": 110, "additional": false},
+      {"display": "こうげき魔力+30(専)", "points": 120, "additional": false},
+      {"display": "イオグランデ(専)", "points": 130, "additional": false},
+      {"display": "むげんのさとり(専)", "points": 140, "additional": false},
+      {"display": "ドルマドン(専)", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+
+    ],
+    "passives_filling": 82
+  },
+  {
+    "id": "aura",
+    "display": "オーラ",
+    "skills": [
+      {"display": "サインぜめ(専)", "points": 4, "additional": false},
+      {"display": "全職業でみりょく+20", "points": 10, "additional": false},
+      {"display": "スキャンダル(専)", "points": 16, "additional": false},
+      {"display": "全職業ですばやさ+30", "points": 22, "additional": false},
+      {"display": "メイクアップ(専)", "points": 32, "additional": false},
+      {"display": "全職業でこうげき魔力+10", "points": 42, "additional": false},
+      {"display": "ボディーガード呼び(専)", "points": 55, "additional": false},
+      {"display": "全職業でみりょく+60", "points": 68, "additional": false},
+      {"display": "ベストスマイル(専)", "points": 82, "additional": false},
+      {"display": "ゴールドシャワー(専)", "points": 100, "additional": false},
+      {"display": "みりょく+30(専)", "points": 110, "additional": false},
+      {"display": "みとれる+2%(専)", "points": 120, "additional": false},
+      {"display": "バギムーチョ(専)", "points": 130, "additional": false},
+      {"display": "ボディーガード強化(専)", "points": 140, "additional": false},
+      {"display": "ミリオンスマイル(専)", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+
+    ],
+    "passives_filling": 68
+  },
+  {
+    "id": "monstermaster",
+    "display": "まものマスター",
+    "skills": [
+      {"display": "スカウト率アップ(専)", "points": 2, "additional": false},
+      {"display": "かわいがる(専)", "points": 12, "additional": false},
+      {"display": "全職業でみのまもり+5", "points": 26, "additional": false},
+      {"display": "ブレスクラッシュ(専)", "points": 40, "additional": false},
+      {"display": "全職業でちから+5", "points": 48, "additional": false},
+      {"display": "HPリンク(専)", "points": 56, "additional": false},
+      {"display": "全職業でさいだいHP+10", "points": 70, "additional": false},
+      {"display": "MPリンク(専)", "points": 80, "additional": false},
+      {"display": "全職業でさいだいMP+10", "points": 90, "additional": false},
+      {"display": "エモノ呼び(専)", "points": 100, "additional": false},
+      {"display": "なつきやすくなる(専)", "points": 110, "additional": false},
+      {"display": "転生出現率アップ(専)", "points": 120, "additional": false},
+      {"display": "スキルクラッシュ(専)", "points": 130, "additional": false},
+      {"display": "行動間隔短縮(専)", "points": 140, "additional": false},
+      {"display": "ウォークライ(専)", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+
+    ],
+    "passives_filling": 90
+  },
+  {
+    "id": "itemmaster",
+    "display": "アイテムマスター",
+    "skills": [
+      {"display": "スカウト率アップ(専)", "points": 8, "additional": false},
+      {"display": "チューンナップ(専)", "points": 16, "additional": false},
+      {"display": "全職業でさいだいMP+10", "points": 28, "additional": false},
+      {"display": "トラップジャマー(専)", "points": 40, "additional": false},
+      {"display": "全職業ですばやさ+10", "points": 48, "additional": false},
+      {"display": "どうぐ倍化術(専)", "points": 56, "additional": false},
+      {"display": "全職業できようさ+10", "points": 70, "additional": false},
+      {"display": "磁界シールド(専)", "points": 80, "additional": false},
+      {"display": "全職業でさいだいHP+10", "points": 90, "additional": false},
+      {"display": "どうぐ範囲化術(専)", "points": 100, "additional": false},
+      {"display": "なつきやすくなる(専)", "points": 110, "additional": false},
+      {"display": "メタル出現率アップ(専)", "points": 120, "additional": false},
+      {"display": "メディカルデバイス(専)", "points": 130, "additional": false},
+      {"display": "どうぐ発動速度短縮(専)", "points": 140, "additional": false},
+      {"display": "プラズマリムーバー(専)", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+
+    ],
+    "passives_filling": 90
+  },
+  {
+    "id": "song",
+    "display": "うた",
+    "skills": [
+      {"display": "全職業できようさ+10", "points": 8, "additional": false},
+      {"display": "もうどくブルース(専)", "points": 16, "additional": false},
+      {"display": "全職業でさいだいMP+10", "points": 28, "additional": false},
+      {"display": "会心まいしんラップ(専)", "points": 40, "additional": false},
+      {"display": "全職業でこうげき魔力+5", "points": 48, "additional": false},
+      {"display": "祈りのゴスペル(専)", "points": 56, "additional": false},
+      {"display": "全職業でちから+5", "points": 70, "additional": false},
+      {"display": "覚醒のアリア(専)", "points": 80, "additional": false},
+      {"display": "全職業でみりょく+10", "points": 90, "additional": false},
+      {"display": "よみがえり節(専)", "points": 100, "additional": false},
+      {"display": "会心率と暴走率アップ(専)", "points": 110, "additional": false},
+      {"display": "身かわし率+2%(専)", "points": 120, "additional": false},
+      {"display": "魔力のバラード(専)", "points": 130, "additional": false},
+      {"display": "1.0%ターン消費なし(専)", "points": 140, "additional": false},
+      {"display": "回復のララバイ(専)", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+
+    ],
+    "passives_filling": 90
+  },
+  {
+    "id": "dance",
+    "display": "おどり",
+    "skills": [
+      {"display": "全職業でみりょく+10", "points": 8, "additional": false},
+      {"display": "ふういんのダンス(専)", "points": 16, "additional": false},
+      {"display": "全職業でこうげき魔力+5", "points": 28, "additional": false},
+      {"display": "こんらんのダンス(専)", "points": 40, "additional": false},
+      {"display": "全職業でちから+5", "points": 48, "additional": false},
+      {"display": "ねむりのダンス(専)", "points": 56, "additional": false},
+      {"display": "全職業でさいだいMP+10", "points": 70, "additional": false},
+      {"display": "ドラゴンステップ(専)", "points": 80, "additional": false},
+      {"display": "ビーナスステップ(専)", "points": 90, "additional": false},
+      {"display": "ロイヤルステップ(専)", "points": 100, "additional": false},
+      {"display": "会心率と暴走率アップ(専)", "points": 110, "additional": false},
+      {"display": "身かわし率+2%(専)", "points": 120, "additional": false},
+      {"display": "つるぎの舞(専)", "points": 130, "additional": false},
+      {"display": "1.0%ターン消費なし(専)", "points": 140, "additional": false},
+      {"display": "戦鬼の乱れ舞(専)", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+
+    ],
+    "passives_filling": 70
+  },
+  {
+    "id": "foretelling",
+    "display": "うらない",
+    "skills": [
+      {"display": "アルカナ占い(専)", "points": 8, "additional": false},
+      {"display": "全職業で隠れた敵が見える", "points": 16, "additional": false},
+      {"display": "全職業でさいだいMP+10", "points": 28, "additional": false},
+      {"display": "ライトフリング(専)", "points": 40, "additional": false},
+      {"display": "タロットの威力アップ(専)", "points": 48, "additional": false},
+      {"display": "ひき直し時ターン不要(専)", "points": 56, "additional": false},
+      {"display": "レフトフリング(専)", "points": 70, "additional": false},
+      {"display": "タロットの威力アップ(専)", "points": 80, "additional": false},
+      {"display": "全職業でさいだいHP+10", "points": 90, "additional": false},
+      {"display": "タロットの威力アップ(専)", "points": 100, "additional": false},
+      {"display": "リセットベール(専)", "points": 110, "additional": false},
+      {"display": "さいだいMP+20(専)", "points": 120, "additional": false},
+      {"display": "エンゼルのみちびき(専)", "points": 130, "additional": false},
+      {"display": "テンション維持(専)", "points": 140, "additional": false},
+      {"display": "魅惑の水晶球(専)", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+
+    ],
+    "passives_filling": 90
+  },
+  {
+    "id": "summoning",
+    "display": "しょうかん",
+    "skills": [
+      {"display": "全職業でこうげき魔力+10", "points": 8, "additional": false},
+      {"display": "たまにMP消費しない(専)", "points": 16, "additional": false},
+      {"display": "全職業できようさ+10", "points": 28, "additional": false},
+      {"display": "ひばしら(専)", "points": 40, "additional": false},
+      {"display": "全職業でこうげき魔力+10", "points": 48, "additional": false},
+      {"display": "じわれ(専)", "points": 56, "additional": false},
+      {"display": "全職業でこうげき魔力+10", "points": 70, "additional": false},
+      {"display": "いなずま(専)", "points": 80, "additional": false},
+      {"display": "全職業でさいだいMP+20", "points": 90, "additional": false},
+      {"display": "めいどうふうま(専)", "points": 100, "additional": false},
+      {"display": "こうげき魔力+30(専)", "points": 110, "additional": false},
+      {"display": "マグマ(専)", "points": 120, "additional": false},
+      {"display": "さいだいHP+20(専)", "points": 130, "additional": false},
+      {"display": "げんま解放(専)", "points": 140, "additional": false},
+      {"display": "水神のたつまき(専)", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+
+    ],
+    "passives_filling": 90
+  },
+  {
+    "id": "sword",
+    "display": "片手剣",
+    "skills": [
+      {"display": "かえん斬り", "points": 3, "additional": false},
+      {"display": "装備時こうげき力+5", "points": 7, "additional": false},
+      {"display": "ドラゴン斬り", "points": 13, "additional": false},
+      {"display": "装備時かいしん率+2%", "points": 22, "additional": false},
+      {"display": "ミラクルソード", "points": 35, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 42, "additional": false},
+      {"display": "はやぶさ斬り", "points": 58, "additional": false},
+      {"display": "装備時武器ガード率+4%", "points": 76, "additional": false},
+      {"display": "装備時こうげき力+15", "points": 88, "additional": false},
+      {"display": "ギガスラッシュ", "points": 100, "additional": false},
+      {"display": "装備時かいしん率+2%", "points": 110, "additional": false},
+      {"display": "超はやぶさ斬り", "points": 120, "additional": false},
+      {"display": "装備時武器ガード率+2%", "points": 130, "additional": false},
+      {"display": "ギガブレイク", "points": 140, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+      {
+        "display": "不死鳥天舞",
+        "values": ["CT150秒(開幕75秒)", "CT110秒(開幕55秒)", "CT70秒(開幕35秒)"]
+      },
+      {
+        "display": "装備時こうげき力",
+        "values": ["+5", "+8", "+10"]
+      },
+      {
+        "display": "装備時かいしん率",
+        "values": ["+1%", "+1.5%", "+2%"]
+      },
+      {
+        "display": "装備時武器ガード率",
+        "values": ["+1%", "+1.5%", "+2%"]
+      },
+      {
+        "display": "かえん斬りの強化",
+        "values": ["+10%", "+15%", "+30%"]
+      },
+      {
+        "display": "ドラゴン斬りの強化",
+        "values": ["+10%", "+15%", "+30%"]
+      },
+      {
+        "display": "ミラクルソードの強化",
+        "values": ["+5%", "+8%", "+12%"]
+      },
+      {
+        "display": "はやぶさ斬りの強化",
+        "values": ["+2%", "+4%", "+8%"]
+      },
+      {
+        "display": "ギガスラッシュの強化",
+        "values": ["+2%", "+4%", "+8%"]
+      },
+      {
+        "display": "超はやぶさ斬りの強化",
+        "values": ["+6%", "+8%", "+10%"]
+      },
+      {
+        "display": "ギガブレイクの強化",
+        "values": ["+8%", "+10%", "+12%"]
+      }
+    ],
+    "passives_filling": 0
+  },
+  {
+    "id": "blade",
+    "display": "両手剣",
+    "skills": [
+      {"display": "ブレードガード", "points": 3, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 7, "additional": false},
+      {"display": "ドラゴンスラッシュ", "points": 13, "additional": false},
+      {"display": "装備時かいしん率+2%", "points": 22, "additional": false},
+      {"display": "ぶんまわし", "points": 35, "additional": false},
+      {"display": "装備時武器ガード率+4%", "points": 42, "additional": false},
+      {"display": "装備時こうげき力+15", "points": 58, "additional": false},
+      {"display": "フリーズブレード", "points": 76, "additional": false},
+      {"display": "装備時こうげき力+20", "points": 88, "additional": false},
+      {"display": "渾身斬り", "points": 100, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 110, "additional": false},
+      {"display": "ビッグバン", "points": 120, "additional": false},
+      {"display": "装備時武器ガード率+4%", "points": 130, "additional": false},
+      {"display": "全身全霊斬り", "points": 140, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+      {
+        "display": "",
+        "values": []
+      }
+    ],
+    "passives_filling": 0
+  },
+  {
+    "id": "ax",
+    "display": "オノ",
+    "skills": [
+      {"display": "装備時こうげき力+5", "points": 3, "additional": false},
+      {"display": "たいぼく斬", "points": 7, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 13, "additional": false},
+      {"display": "蒼天魔斬", "points": 22, "additional": false},
+      {"display": "装備時こうげき力+15", "points": 35, "additional": false},
+      {"display": "かぶと割り", "points": 42, "additional": false},
+      {"display": "装備時かいしん率+2%", "points": 58, "additional": false},
+      {"display": "まじん斬り", "points": 76, "additional": false},
+      {"display": "装備時こうげき力+20", "points": 88, "additional": false},
+      {"display": "オノむそう", "points": 100, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 110, "additional": false},
+      {"display": "鉄甲斬", "points": 120, "additional": false},
+      {"display": "装備時かいしん率+3%", "points": 130, "additional": false},
+      {"display": "真・オノむそう", "points": 140, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+      {
+        "display": "",
+        "values": []
+      }
+    ],
+    "passives_filling": 0
+  },
+  {
+    "id": "lance",
+    "display": "ヤリ",
+    "skills": [
+      {"display": "装備時こうげき力+10", "points": 3, "additional": false},
+      {"display": "けもの突き", "points": 7, "additional": false},
+      {"display": "装備時武器ガード率+4%", "points": 13, "additional": false},
+      {"display": "装備時かいしん率+2%", "points": 22, "additional": false},
+      {"display": "雷鳴突き", "points": 35, "additional": false},
+      {"display": "装備時武器ガード率+5%", "points": 42, "additional": false},
+      {"display": "装備時こうげき力+15", "points": 58, "additional": false},
+      {"display": "一閃突き", "points": 76, "additional": false},
+      {"display": "装備時こうげき力+20", "points": 88, "additional": false},
+      {"display": "狼牙突き", "points": 100, "additional": false},
+      {"display": "装備時かいしん率+3%", "points": 110, "additional": false},
+      {"display": "さみだれ突き", "points": 120, "additional": false},
+      {"display": "装備時武器ガード率+3%", "points": 130, "additional": false},
+      {"display": "ジゴスパーク", "points": 140, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+      {
+        "display": "",
+        "values": []
+      }
+    ],
+    "passives_filling": 0
+  },
+  {
+    "id": "stick",
+    "display": "スティック",
+    "skills": [
+      {"display": "装備時MP吸収率+2%", "points": 3, "additional": false},
+      {"display": "マジステッキ", "points": 7, "additional": false},
+      {"display": "戦闘勝利時MP小回復", "points": 13, "additional": false},
+      {"display": "装備時かいふく魔力+30", "points": 21, "additional": false},
+      {"display": "デビルンチャーム", "points": 31, "additional": false},
+      {"display": "装備時さいだいMP+30", "points": 44, "additional": false},
+      {"display": "装備時MP吸収率+2%", "points": 57, "additional": false},
+      {"display": "パニパニハニー", "points": 70, "additional": false},
+      {"display": "装備時かいふく魔力+30", "points": 84, "additional": false},
+      {"display": "キラキラポーン", "points": 100, "additional": false},
+      {"display": "装備時MP吸収率+4%", "points": 110, "additional": false},
+      {"display": "ラピッドステッキ", "points": 120, "additional": false},
+      {"display": "戦闘勝利時MP中回復", "points": 130, "additional": false},
+      {"display": "ティンクルバトン", "points": 140, "additional": false},
+      {"display": "装備時さいだいMP+30", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+      {
+        "display": "",
+        "values": []
+      }
+    ],
+    "passives_filling": 0
+  },
+  {
+    "id": "rod",
+    "display": "棍",
+    "skills": [
+      {"display": "装備時こうげき力+10", "points": 3, "additional": false},
+      {"display": "足ばらい", "points": 7, "additional": false},
+      {"display": "装備時武器ガード率+4%", "points": 13, "additional": false},
+      {"display": "黄泉送り", "points": 22, "additional": false},
+      {"display": "装備時こうげき力+15", "points": 35, "additional": false},
+      {"display": "なぎはらい", "points": 42, "additional": false},
+      {"display": "装備時身かわし率+4%", "points": 58, "additional": false},
+      {"display": "氷結らんげき", "points": 76, "additional": false},
+      {"display": "装備時こうげき力+20", "points": 88, "additional": false},
+      {"display": "天地のかまえ", "points": 100, "additional": false},
+      {"display": "装備時かいしん率+2%", "points": 110, "additional": false},
+      {"display": "水流のかまえ", "points": 120, "additional": false},
+      {"display": "装備時武器ガード率+4%", "points": 130, "additional": false},
+      {"display": "奥義・棍閃殺", "points": 140, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+      {
+        "display": "",
+        "values": []
+      }
+    ],
+    "passives_filling": 0
+  },
+  {
+    "id": "wand",
+    "display": "両手杖",
+    "skills": [
+      {"display": "装備時MP吸収率+2%", "points": 3, "additional": false},
+      {"display": "悪魔ばらい", "points": 7, "additional": false},
+      {"display": "戦闘勝利時MP小回復", "points": 13, "additional": false},
+      {"display": "早詠みの杖", "points": 21, "additional": false},
+      {"display": "装備時こうげき魔力+30", "points": 31, "additional": false},
+      {"display": "しゅくふくの杖", "points": 44, "additional": false},
+      {"display": "装備時こうげき魔力+30", "points": 57, "additional": false},
+      {"display": "暴走魔法陣", "points": 70, "additional": false},
+      {"display": "装備時さいだいMP+100", "points": 84, "additional": false},
+      {"display": "戦闘勝利時MP中回復", "points": 100, "additional": false},
+      {"display": "装備時MP吸収率+4%", "points": 110, "additional": false},
+      {"display": "超暴走魔法陣", "points": 120, "additional": false},
+      {"display": "装備時こうげき魔力+10", "points": 130, "additional": false},
+      {"display": "復活の杖", "points": 140, "additional": false},
+      {"display": "装備時さいだいMP+30", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+      {
+        "display": "",
+        "values": []
+      }
+    ],
+    "passives_filling": 0
+  },
+  {
+    "id": "knife",
+    "display": "短剣",
+    "skills": [
+      {"display": "キラーブーン", "points": 3, "additional": false},
+      {"display": "装備時こうげき力+5", "points": 7, "additional": false},
+      {"display": "スリープダガー", "points": 13, "additional": false},
+      {"display": "攻撃時たまにMP回復", "points": 22, "additional": false},
+      {"display": "ヒュプノスハント", "points": 35, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 42, "additional": false},
+      {"display": "ヴァイパーファング", "points": 58, "additional": false},
+      {"display": "装備時かいしん率+2%", "points": 76, "additional": false},
+      {"display": "装備時こうげき力+15", "points": 88, "additional": false},
+      {"display": "タナトスハント", "points": 100, "additional": false},
+      {"display": "装備時かいしん率+2%", "points": 110, "additional": false},
+      {"display": "カオスエッジ", "points": 120, "additional": false},
+      {"display": "装備時こうげき力+5", "points": 130, "additional": false},
+      {"display": "ナイトメアファング", "points": 140, "additional": false},
+      {"display": "状態異常成功率アップ", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+      {
+        "display": "",
+        "values": []
+      }
+    ],
+    "passives_filling": 0
+  },
+  {
+    "id": "whip",
+    "display": "ムチ",
+    "skills": [
+      {"display": "らせん打ち", "points": 3, "additional": false},
+      {"display": "装備時こうげき力+5", "points": 7, "additional": false},
+      {"display": "愛のムチ", "points": 13, "additional": false},
+      {"display": "装備時こうげき力+5", "points": 22, "additional": false},
+      {"display": "スパークショット", "points": 35, "additional": false},
+      {"display": "しばり打ち", "points": 42, "additional": false},
+      {"display": "装備時こうげき力+5", "points": 58, "additional": false},
+      {"display": "地ばしり打ち", "points": 76, "additional": false},
+      {"display": "装備時効果範囲+2m", "points": 88, "additional": false},
+      {"display": "双竜打ち", "points": 100, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 110, "additional": false},
+      {"display": "疾風迅雷", "points": 120, "additional": false},
+      {"display": "装備時かいしん率+4%", "points": 130, "additional": false},
+      {"display": "極竜打ち", "points": 140, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+      {
+        "display": "",
+        "values": []
+      }
+    ],
+    "passives_filling": 0
+  },
+  {
+    "id": "nail",
+    "display": "ツメ",
+    "skills": [
+      {"display": "ウィングブロウ", "points": 3, "additional": false},
+      {"display": "装備時こうげき力+5", "points": 7, "additional": false},
+      {"display": "裂鋼拳", "points": 13, "additional": false},
+      {"display": "装備時かいしん率+2%", "points": 22, "additional": false},
+      {"display": "必中拳", "points": 35, "additional": false},
+      {"display": "装備時こうげき力+5", "points": 42, "additional": false},
+      {"display": "タイガークロー", "points": 58, "additional": false},
+      {"display": "装備時かいしん率+2%", "points": 76, "additional": false},
+      {"display": "装備時こうげき力+5", "points": 88, "additional": false},
+      {"display": "ゴールドフィンガー", "points": 100, "additional": false},
+      {"display": "装備時身かわし率+2%", "points": 110, "additional": false},
+      {"display": "サイクロンアッパー", "points": 120, "additional": false},
+      {"display": "装備時かいしん率+2%", "points": 130, "additional": false},
+      {"display": "ライガークラッシュ", "points": 140, "additional": false},
+      {"display": "装備時こうげき力+5", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+      {
+        "display": "",
+        "values": []
+      }
+    ],
+    "passives_filling": 0
+  },
+  {
+    "id": "fan",
+    "display": "扇",
+    "skills": [
+      {"display": "装備時こうげき力+5", "points": 3, "additional": false},
+      {"display": "花ふぶき", "points": 7, "additional": false},
+      {"display": "装備時かいしん率+2%", "points": 13, "additional": false},
+      {"display": "明鏡止水", "points": 22, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 35, "additional": false},
+      {"display": "波紋演舞", "points": 42, "additional": false},
+      {"display": "装備時みとれる+5%", "points": 58, "additional": false},
+      {"display": "おうぎのまい", "points": 76, "additional": false},
+      {"display": "装備時こうげき力+15", "points": 88, "additional": false},
+      {"display": "アゲハ乱舞", "points": 100, "additional": false},
+      {"display": "装備時かいしん率+2%", "points": 110, "additional": false},
+      {"display": "ピンクタイフーン", "points": 120, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 130, "additional": false},
+      {"display": "百花繚乱", "points": 140, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+      {
+        "display": "",
+        "values": []
+      }
+    ],
+    "passives_filling": 0
+  },
+  {
+    "id": "hammer",
+    "display": "ハンマー",
+    "skills": [
+      {"display": "ウェイトブレイク", "points": 3, "additional": false},
+      {"display": "ドラムクラッシュ", "points": 7, "additional": false},
+      {"display": "装備時こうげき力+5", "points": 13, "additional": false},
+      {"display": "シールドブレイク", "points": 22, "additional": false},
+      {"display": "装備時かいしん率+2%", "points": 35, "additional": false},
+      {"display": "MPブレイク", "points": 42, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 58, "additional": false},
+      {"display": "キャンセルショット", "points": 76, "additional": false},
+      {"display": "装備時こうげき力+15", "points": 88, "additional": false},
+      {"display": "ランドインパクト", "points": 100, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 110, "additional": false},
+      {"display": "スタンショット", "points": 120, "additional": false},
+      {"display": "装備時かいしん率+2%", "points": 130, "additional": false},
+      {"display": "プレートインパクト", "points": 140, "additional": false},
+      {"display": "装備時さいだいHP+10", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+      {
+        "display": "",
+        "values": []
+      }
+    ],
+    "passives_filling": 0
+  },
+  {
+    "id": "bow",
+    "display": "弓",
+    "skills": [
+      {"display": "装備時こうげき力+5", "points": 3, "additional": false},
+      {"display": "マジックアロー", "points": 7, "additional": false},
+      {"display": "装備時射程距離+3m", "points": 13, "additional": false},
+      {"display": "バードシュート", "points": 22, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 35, "additional": false},
+      {"display": "サンダーボルト", "points": 42, "additional": false},
+      {"display": "装備時射程距離+4m", "points": 58, "additional": false},
+      {"display": "さみだれうち", "points": 76, "additional": false},
+      {"display": "装備時こうげき力+15", "points": 88, "additional": false},
+      {"display": "天使の矢", "points": 100, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 110, "additional": false},
+      {"display": "シャイニングボウ", "points": 120, "additional": false},
+      {"display": "装備時かいしん率+3%", "points": 130, "additional": false},
+      {"display": "弓聖の守り星", "points": 140, "additional": false},
+      {"display": "ダークネスショット", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+      {
+        "display": "",
+        "values": []
+      }
+    ],
+    "passives_filling": 0
+  },
+  {
+    "id": "boomerang",
+    "display": "ブーメラン",
+    "skills": [
+      {"display": "スライムブロウ", "points": 3, "additional": false},
+      {"display": "装備時こうげき力+5", "points": 7, "additional": false},
+      {"display": "メタルウィング", "points": 13, "additional": false},
+      {"display": "装備時こうげき力+5", "points": 22, "additional": false},
+      {"display": "パワフルスロー", "points": 35, "additional": false},
+      {"display": "装備時命中+20%", "points": 42, "additional": false},
+      {"display": "シャインスコール", "points": 58, "additional": false},
+      {"display": "装備時こうげき力+5", "points": 76, "additional": false},
+      {"display": "バーニングバード", "points": 88, "additional": false},
+      {"display": "デュアルカッター", "points": 100, "additional": false},
+      {"display": "装備時こうげき力+5", "points": 110, "additional": false},
+      {"display": "フローズンバード", "points": 120, "additional": false},
+      {"display": "装備時かいしん率+2%", "points": 130, "additional": false},
+      {"display": "デュアルブレイカー", "points": 140, "additional": false},
+      {"display": "装備時こうげき力+10", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+      {
+        "display": "",
+        "values": []
+      }
+    ],
+    "passives_filling": 0
+  },
+  {
+    "id": "shield",
+    "display": "盾",
+    "skills": [
+      {"display": "装備時盾ガード率+1%", "points": 6, "additional": false},
+      {"display": "ぼうぎょ", "points": 12, "additional": false},
+      {"display": "装備時盾ガード率+1%", "points": 18, "additional": false},
+      {"display": "ビッグシールド", "points": 25, "additional": false},
+      {"display": "装備時盾ガード率+1%", "points": 32, "additional": false},
+      {"display": "シールドアタック", "points": 40, "additional": false},
+      {"display": "装備時盾ガード率+1%", "points": 52, "additional": false},
+      {"display": "まもりのたて", "points": 66, "additional": false},
+      {"display": "装備時しゅび力+30", "points": 82, "additional": false},
+      {"display": "会心ガード", "points": 100, "additional": false},
+      {"display": "装備時しゅび力+10", "points": 110, "additional": false},
+      {"display": "ファランクス", "points": 120, "additional": false},
+      {"display": "装備時盾ガード率+1%", "points": 130, "additional": false},
+      {"display": "スペルガード", "points": 140, "additional": false},
+      {"display": "装備時しゅび力+10", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+      {
+        "display": "",
+        "values": []
+      }
+    ],
+    "passives_filling": 0
+  },
+  {
+    "id": "grappling",
+    "display": "格闘",
+    "skills": [
+      {"display": "素手時こうげき力+10", "points": 3, "additional": false},
+      {"display": "石つぶて", "points": 7, "additional": false},
+      {"display": "素手時かいしん率+2%", "points": 12, "additional": false},
+      {"display": "かまいたち", "points": 18, "additional": false},
+      {"display": "素手時こうげき力+20", "points": 25, "additional": false},
+      {"display": "せいけん突き", "points": 30, "additional": false},
+      {"display": "素手時身かわし率+2%", "points": 42, "additional": false},
+      {"display": "ムーンサルト", "points": 60, "additional": false},
+      {"display": "素手時こうげき力+40", "points": 77, "additional": false},
+      {"display": "ばくれつけん", "points": 100, "additional": false},
+      {"display": "素手時身かわし率+2%", "points": 110, "additional": false},
+      {"display": "達人の呼吸", "points": 120, "additional": false},
+      {"display": "岩石落とし", "points": 130, "additional": false},
+      {"display": "せいけん爆撃", "points": 140, "additional": false},
+      {"display": "素手時こうげき力+50", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+      {
+        "display": "",
+        "values": []
+      }
+    ],
+    "passives_filling": 0
+  }
+]

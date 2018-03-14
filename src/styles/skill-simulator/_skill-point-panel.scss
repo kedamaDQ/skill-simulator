@@ -1,0 +1,44 @@
+
+.skill-point-panel {
+  display: inline-block;
+  width: $ui-panel-size;
+  height: $ui-panel-size;
+  margin: 0 $ui-panel-margin-horizontal;
+  border-style: solid;
+  border-width: $ui-panel-border-width;
+  border-radius: $ui-panel-border-radius;
+  background-color: $ui-base-color-background;
+  font-size: $ui-panel-font-size;
+  text-align:center;
+  line-height: $ui-panel-size;
+  vertical-align: middle;
+
+  &.assigned {
+    border-color: $ui-base-color-primary;
+    cursor: pointer;
+
+    &:hover { 
+      background-color: $ui-base-color-primary-hover;
+    }
+  }
+
+  &.remained {
+    border-color: $ui-base-color-border;
+  }
+
+  &.summarized {
+    border-color: $ui-base-color-border;
+  }
+
+  &.out-of-range {
+    color: $ui-base-color-warning;
+    background-color: $ui-base-color-warning-background;
+    border-color: $ui-base-color-warning;
+  }
+
+  &.just-fit {
+    color: $ui-base-color-info;
+    background-color: $ui-base-color-info-background;
+    border-color: $ui-base-color-info;
+  }
+}

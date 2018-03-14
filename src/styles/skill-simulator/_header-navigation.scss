@@ -1,0 +1,32 @@
+$nav-button-width: 120px;
+$nav-button-height: $ui-panel-size;
+
+.header-navigation {
+  float: right;
+  text-align: right;
+
+  & button {
+    margin: 0 10px;
+    min-width: $nav-button-width;
+    height: $nav-button-height;
+    color: $ui-base-color-text;
+    background-color: $ui-base-color-background;
+    border: solid $ui-panel-border-width $ui-base-color-border;
+    border-radius: $ui-panel-border-radius;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $ui-base-color-primary-hover;
+      border-color: $ui-base-color-primary;
+    }
+
+    &.bulk-setup-button {
+      color: darken($ui-base-color-info, 20%);
+      border-color: $ui-base-color-info;
+
+      &:hover {
+        background-color: $ui-base-color-info-background;
+      }
+    }
+  }
+}

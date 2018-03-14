@@ -1,0 +1,18 @@
+body{
+  margin: 0;
+  padding: 10px 20px;
+  color: #444444;
+  background-color: #fafafa; 
+  font-family: sans-serif;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.credit {
+  font-size: 12px;
+}

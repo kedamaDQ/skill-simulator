@@ -1,0 +1,11 @@
+# Ignore private setting.
+.env.production
+
+# Ignore build directory
+build/
+
+# Ignore IDE files
+.vscode/
+
+# Ignore transpiled css
+src/styles/*.css

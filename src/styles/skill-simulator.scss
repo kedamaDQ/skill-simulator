@@ -1,0 +1,24 @@
+@import 'skill-simulator/variables';
+@import 'skill-simulator/header-navigation';
+@import 'skill-simulator/skill-point-table';
+@import 'skill-simulator/skill-point-panel';
+@import 'skill-simulator/input-modal';
+@import 'skill-simulator/react-select';
+
+body {
+  margin: 0;
+  padding: 10px 20px;
+  font-size: $ui-base-font-size;
+  font-family: sans-serif;
+  color: $ui-base-color-text;
+  background-color: $ui-base-color-background;
+}
+
+h1 {
+  float: left;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+

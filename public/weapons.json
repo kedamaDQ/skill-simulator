@@ -1,0 +1,82 @@
+[
+    {
+      "id": "sword",
+      "display": "片手剣",
+      "skill_lines": ["sword"]
+    },
+    {
+      "id": "blade",
+      "display": "両手剣",
+      "skill_lines": ["blade"]
+    },
+    {
+      "id": "ax",
+      "display": "オノ",
+      "skill_lines": ["ax"]
+    },
+    {
+      "id": "lance",
+      "display": "ヤリ",
+      "skill_lines": ["lance"]
+    },
+    {
+      "id": "stick",
+      "display": "スティック",
+      "skill_lines": ["stick"]
+    },
+    {
+      "id": "rod",
+      "display": "棍",
+      "skill_lines": ["rod"]
+    },
+    {
+      "id": "wand",
+      "display": "両手杖",
+      "skill_lines": ["wand"]
+    },
+    {
+      "id": "knife",
+      "display": "短剣",
+      "skill_lines": ["knife"]
+    },
+    {
+      "id": "whip",
+      "display": "ムチ",
+      "skill_lines": ["whip"]
+    },
+    {
+      "id": "nail",
+      "display": "ツメ",
+      "skill_lines": ["nail"]
+    },
+    {
+      "id": "fan",
+      "display": "扇",
+      "skill_lines": ["fan"]
+    },
+    {
+      "id": "hammer",
+      "display": "ハンマー",
+      "skill_lines": ["hammer"]
+    },
+    {
+      "id": "bow",
+      "display": "弓",
+      "skill_lines": ["bow"]
+    },
+    {
+      "id": "boomerang",
+      "display": "ブーメラン",
+      "skill_lines": ["boomerang"]
+    },
+    {
+      "id": "shield",
+      "display": "盾",
+      "skill_lines": ["shield"]
+    },
+    {
+      "id": "grappling",
+      "display": "格闘",
+      "skill_lines": ["grappling"]
+    }
+  ]

@@ -1,0 +1,79 @@
+// panel
+$sptable-font-size: $ui-panel-font-size;
+$sptable-col-header-height: 70px;
+$sptable-row-header-width: 30px;
+
+.skill-point-table-outer {
+  clear: both;
+  position: relative;
+}
+
+.skill-point-table {
+  margin: 0;
+  font-size: $sptable-font-size;
+  border-collapse: collapse;
+
+  &__row-header {
+    padding: 0;
+    width: $sptable-row-header-width;
+    overflow: hidden;
+    vertical-align: middle;
+  }
+
+  &__col-header {
+    padding: 0 0 2px 0;
+    vertical-align: bottom;
+  }
+
+  &__owned-data{
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="0" y="12" width="30" height="6" fill="#{replace-hash($ui-base-color-border)}"/></svg>');
+    background-size: auto 100%;
+  }
+
+  &__assigned-data {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="0" y="12" width="30" height="6" fill="#{replace-hash($ui-base-color-border)}"/><rect x="14" y="0" width="2" height="30" fill="#{replace-hash($ui-base-color-primary)}"/></svg>');
+    background-size: auto 100%;
+
+    &--job-skill {
+      min-width: calc((#{$ui-panel-size} + #{$ui-panel-border-width} * 2 + #{$ui-panel-margin-horizontal}) * 2 + 2px);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="0" y="12" width="30" height="6" fill="#{replace-hash($ui-base-color-border)}"/></svg>');
+      background-size: auto 100%;
+    }
+  }
+
+  &__job-total-data {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="0" y="12" width="15" height="6" fill="#{replace-hash($ui-base-color-border)}"/></svg>');
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+  }
+
+  &__skill-total-data {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="14" y="0" width="2" height="15" fill="#{replace-hash($ui-base-color-primary)}"/></svg>');
+    background-size: auto 100%;
+  }
+
+  &__header-panel {
+    font-size: $ui-panel-font-size;
+  
+    &.owned-header {
+      text-align: center;
+    }
+  
+    &.assigned-header {
+      margin: 0;
+      padding: 0;
+      height: $sptable-col-header-height;
+      -webkit-writing-mode: vertical-rl;
+      -ms-writing-mode: tb-rl;
+      writing-mode: vertical-rl;
+      line-height: calc(#{$ui-panel-size} + #{$ui-panel-border-width} * 2 + #{$ui-panel-margin-horizontal} * 2);
+  
+      text-align: right;
+      vertical-align: middle;
+    }
+  
+    &.job-header {
+      padding: 0 2px;
+    }
+  }
+}

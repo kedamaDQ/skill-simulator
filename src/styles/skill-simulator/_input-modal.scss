@@ -1,0 +1,334 @@
+$modal-assigned-panel-width: 300px;
+
+$bulk-panel-border-width: 2px;
+$bulk-panel-border-radius: 5px;
+$bulk-panel-border-color: $ui-base-color-border;
+$bulk-panel-width: 150px;
+$bulk-panel-margin: 5px;
+$bulk-panel-padding: 5px;
+
+.modal_content {
+  // top, left, width and height will be defined by components/modal.js automatically.
+  position: absolute;
+  padding: 10px 5px;
+  border: solid 3px $ui-base-color-border;
+  border-radius: 8px;
+  background-color: $ui-base-color-background;
+  box-shadow: 3px 3px 2px 2px rgba($ui-base-color-text, 0.6);
+}
+
+.modal_overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: none;
+  background-color: rgba($ui-base-color-background, 0.50);
+}
+
+.text-about-close {
+  font-size: $ui-panel-font-size;
+  text-align: right;
+  color: lighten($ui-base-color-text, 30%);
+}
+.input-modal-assigned {
+  margin: 0;
+  padding: 0;
+}
+
+.assigned-indicator-panel {
+  margin: 0 auto;
+  width: $modal-assigned-panel-width;
+  text-align: left;
+}
+
+.assigned-indicator {
+  display: inline-block;
+  margin: 2px 4px 2px 0;
+  color: $ui-base-color-text;
+  background-color: $ui-base-color-background;
+  border-style: solid;
+  border-width: $ui-panel-border-width;
+  border-radius: $ui-panel-border-radius;
+  vertical-align: bottom;
+
+  &.small {
+    width: 75px;
+    border-color: $ui-base-color-border;
+
+    & .numerator {
+      font-size: $ui-panel-font-size;
+    }
+
+    & .denominator {
+      font-size: $ui-panel-font-size;
+    }
+  }
+
+  &.large {
+    width: 120px;
+    border-color: $ui-base-color-primary;
+
+    & .numerator {
+      font-size: 40px;
+    }
+
+    & .denominator {
+      font-size: $ui-panel-font-size;
+    }
+  }
+
+  &.out-of-range {
+    background-color: $ui-base-color-warning-background;
+    border-color: $ui-base-color-warning;
+  }
+
+  & dt {
+    margin: 0;
+    padding: 4px  4px 0 4px;
+    text-align: left;
+    font-size: $ui-panel-font-size;
+  }
+
+  & dd {
+    margin: 0;
+    padding: 0 4px 4px 0;
+    text-align: right;
+
+    & .numerator {
+      display: inline-block;
+      margin-right: 5px;
+
+      &.out-of-range {
+        color: $ui-base-color-warning;
+      }
+    }
+
+    & .denominator {
+      display: inline-block;
+    }
+  }
+}
+
+
+.assign-control-panel {
+  margin: 2px auto;
+  padding: 0;
+  text-align: left;
+  clear: both;
+}
+
+.assign-button{
+  margin: 1px 2px;
+  width: 47px;
+  height: $ui-panel-size;
+  font-family: sans-serif;
+  font-size: $ui-panel-font-size;
+  color: $ui-base-color-text;
+  background-color: $ui-base-color-background;
+  border: solid 2px $ui-base-color-border;
+  border-radius: $ui-panel-border-radius;
+  cursor: pointer;
+
+  &:hover{
+    border-color: $ui-base-color-primary;
+    background-color: $ui-base-color-primary-hover;
+  }
+}
+
+ul.selector {
+  margin: 2px auto;
+  width: $modal-assigned-panel-width;
+  padding: 3px 0;
+  color: $ui-base-color-text;
+  background-color: $ui-base-color-background;
+  border: solid 2px $ui-base-color-border;
+  border-radius: 5px;
+  max-height: 430px;
+  overflow-y: auto;
+  font-size: $ui-panel-font-size;
+  clear: both;
+
+  & li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    padding: 0.2em;
+    clear: both;
+
+    &.disabled {
+      background-color: $ui-base-color-inactive;
+    }
+
+    &.assigned {
+      background-color: $ui-base-color-primary-active;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $ui-base-color-primary-hover;
+      }
+    }
+
+    &.unassigned {
+      background-color: $ui-base-color-background;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $ui-base-color-primary-hover;
+      }
+    }
+
+    & .selector__name {
+      margin-top: -3px;
+      display: block;
+      float: left;
+      text-align: left;
+    }
+
+    & .selector__points {
+      display: block;
+      clear: right;
+      text-align: right;
+    }
+  }
+}
+
+.input-modal-bulk {
+  h2 {
+    font-size: 120%;
+  }
+
+  &__dropdown-panel {
+    display: inline-block;
+    margin: $bulk-panel-margin;
+    padding: $bulk-panel-padding;
+    width: calc(33% - ((#{$bulk-panel-margin} * 2) + (#{$bulk-panel-border-width} * 2)) - 10px);
+    border: solid $bulk-panel-border-width $bulk-panel-border-color;
+    border-radius: $bulk-panel-border-radius;
+
+    &>dt {
+      margin: 0 0 10px 0;
+      line-height: 20px;
+    }
+
+    &>dd {
+      margin-left: 20px;
+      padding: 0 0 0 auto;
+      min-height: 20px;
+    }
+  }
+
+  &__preset-panel {
+    margin: $bulk-panel-margin;
+    padding: $bulk-panel-padding;
+    border: solid $bulk-panel-border-width $bulk-panel-border-color;
+    border-radius: $bulk-panel-border-radius;
+
+    &>dd {
+      display: inline-block;
+      margin: $bulk-panel-margin;
+      padding: $bulk-panel-padding;
+      width: calc(100% - (#{$bulk-panel-margin} * 2 + #{$bulk-panel-padding} * 2));
+      text-align: right;
+
+      &>button {
+        width: 100%;
+        height: $ui-panel-size;
+        font-size: $ui-panel-font-size;
+        color: $ui-base-color-text;
+        background-color: $ui-base-color-background;
+        border: solid $ui-panel-border-width $ui-base-color-primary;
+        border-radius: $ui-panel-border-radius;
+        cursor: pointer;
+    
+        &:hover {
+          background-color: $ui-base-color-primary-hover;
+        }
+      }
+    }
+  }
+
+  &__reset-panel {
+    margin: $bulk-panel-margin;
+    padding: $bulk-panel-padding;
+    border: solid $bulk-panel-border-width $bulk-panel-border-color;
+    border-radius: $bulk-panel-border-radius;
+
+    &>dd {
+      display: inline-block;
+      margin: $bulk-panel-margin;
+      padding: $bulk-panel-padding;
+      width: calc(50% - (#{$bulk-panel-margin} * 2 + #{$bulk-panel-padding} * 2));
+      text-align: right;
+
+      &>button {
+        display: block;
+        width: 100%;
+        height: $ui-panel-size;
+        font-size: $ui-panel-font-size;
+        color: $ui-base-color-text;
+        background-color: $ui-base-color-background;
+        border: solid $ui-panel-border-width $ui-base-color-primary;
+        border-radius: $ui-panel-border-radius;
+        cursor: pointer;
+    
+        &:hover {
+          background-color: $ui-base-color-primary-hover;
+        }
+      }
+    }
+  }
+}
+
+.text-modal {
+  padding: 5px;
+  & h1 {
+    display: block;
+    float: none;
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  & h2 {
+    display: block;
+    float: none;
+    margin: 0 0 5px 0;
+    font-size: 12px;
+    font-weight: bold;
+  }
+}
+
+.modal-usage,
+.modal-about {
+  margin: 10px auto;
+  width: 98%;
+  height: 460px;
+  overflow: auto;
+}
+
+.modal-usage {
+  & .green {
+    font-weight: bold;
+    color: $ui-base-color-primary;
+  }
+
+  & .purple {
+    font-weight: bold;
+    color: $ui-base-color-secondary;
+  }
+}
+
+.modal-about {
+  & address {
+    font-style: normal;
+  }
+
+  & dl {
+    & dd {
+      margin-left: 10px;
+      margin-bottom: 10px;
+    }
+  }
+}
