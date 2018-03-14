@@ -1,6 +1,9 @@
 # Ignore private setting.
 .env.production
 
+# Ignore node_modules.
+node_modules/
+
 # Ignore build directory
 build/
 
