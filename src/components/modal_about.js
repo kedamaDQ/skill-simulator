@@ -1,4 +1,5 @@
 import React from 'react';
+import { versionString } from '../version';
 
 const ModalAbout= (props) => {
   return (
@@ -27,7 +28,7 @@ const ModalAbout= (props) => {
         <h2>ソースコード</h2>
         <dl>
           <dt>github</dt>
-          <dd><a href='https://github.com/kedamaDQ/skill-simulator.git' rel='noreferrer noopener' target='_blank'>ソースコード (v0.9.0)</a></dd>
+          <dd><a href='https://github.com/kedamaDQ/skill-simulator' rel='noreferrer noopener' target='_blank'>ソースコード (v{ versionString() })</a></dd>
         </dl>
 
         <h2>更新履歴</h2>

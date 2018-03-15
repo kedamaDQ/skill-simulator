@@ -1,4 +1,5 @@
 import React from 'react';
+import { versionString } from '../version';
 
 export const OPEN_BULK = 'OPEN_BULK';
 export const OPEN_USAGE = 'OPEN_USAGE';
@@ -23,7 +24,7 @@ export default class HeaderNavigation extends React.PureComponent {
   render() {
     return(
       <div>
-        <h1>DQ10 スキルシミュレーター by foresdon.jp</h1>
+        <h1>DQ10 スキルシミュレーター by foresdon.jp (v{ versionString() })</h1>
         <div className='header-navigation'>
           <button
             className='bulk-setup-button'
