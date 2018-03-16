@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 import ModalAssignContainer from '../containers/modal_assign';
 import ModalBulkContainer from '../containers/modal_bulk';
@@ -11,6 +12,20 @@ const edgeMargin = 50;
 const textAboutClose = <div className='text-about-close'>Press [Esc] or click outside to close.</div>
 
 export default class Modal extends React.PureComponent {
+
+  static propTypes = {
+    is_modal_open: PropTypes.bool.isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+    position: PropTypes.shape({
+      x: PropTypes.number.isRequired,
+      y: PropTypes.number.isRequired
+    }),
+    content: PropTypes.string.isRequired,
+    content_params: PropTypes.object.isRequired,
+    closeModal: PropTypes.func.isRequired
+  };
+
   /*
   componentDidMount() {
     document.addEventListener('wheel', (e) => {

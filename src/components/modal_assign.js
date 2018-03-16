@@ -1,9 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AssignedIndicatorPanel from '../components/assigned_indicator_panel';
 import AssignControlPanelContainer from '../containers/assign_control_panel';
 import Selector from './selector';
 
 export default class ModalAssign extends React.PureComponent {
+
+  static propTypes = {
+    job: PropTypes.shape({
+      id: PropTypes.string.isRequired
+    }).isRequired,
+    skillLine: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      skills: PropTypes.arrayOf(PropTypes.shape({
+        display: PropTypes.string.isRequired,
+        points: PropTypes.number.isRequired
+      }).isRequired).isRequired
+    }).isRequired,
+    skillLineMax: PropTypes.number.isRequired,
+    selfAssigned: PropTypes.number.isRequired,
+    totalAssigned: PropTypes.number.isRequired,
+    assigned: PropTypes.number.isRequired,
+    owned: PropTypes.number.isRequired,
+    remaining: PropTypes.number.isRequired,
+  };
 
   constructor(props) {
     super(props);

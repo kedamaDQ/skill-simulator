@@ -1,8 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactSelect from 'react-select';
 import 'react-select/dist/react-select.css';
 
 export default class OwnedSelector extends React.PureComponent {
+
+  static propTypes = {
+    options: PropTypes.arrayOf(PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired
+    }).isRequired),
+    value: PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired
+    }),
+    onChange: PropTypes.func
+  };
+
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);

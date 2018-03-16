@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { versionString } from '../version';
 
 export const OPEN_BULK = 'OPEN_BULK';
@@ -6,6 +7,11 @@ export const OPEN_USAGE = 'OPEN_USAGE';
 export const OPEN_ABOUT = 'OPEN_ABOUT';
 
 export default class HeaderNavigation extends React.PureComponent {
+
+  static propTypes = {
+    onButtonClick: PropTypes.func.isRequired
+  };
+
   constructor(props) {
     super(props);
     this.handleButtonClick = this.handleButtonClick.bind(this);

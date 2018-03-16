@@ -1,6 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class AssignButton extends React.PureComponent {
+
+  static propTypes = {
+    change: PropTypes.number.isRequired,
+    display: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired
+  };
 
   constructor(props) {
     super(props);
