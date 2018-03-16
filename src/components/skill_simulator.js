@@ -1,7 +1,7 @@
 import React from 'react';
 import HeaderNavigationContainer from '../containers/header_navigation';
 import SpTableContainer from '../containers/sp_table';
-import InputModalContainer from '../containers/modal';
+import ModalContainer from '../containers/modal';
 import { versionString } from '../version';
 import '../styles/skill-simulator.css';
 
@@ -23,7 +23,7 @@ export default class SkillSimulator extends React.Component {
       <div className="skill-simulator">
         <HeaderNavigationContainer />
         <SpTableContainer />
-        <InputModalContainer />
+        <ModalContainer />
       </div>
     );
   }

@@ -39,7 +39,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         } else {
           if (remaining > 0) {
             if (remaining + totalAssigned >= skillLineMax) {
-              console.log(totalAssigned);
               assigned = skillLineMax - (totalAssigned - selfAssigned);
             } else {
               assigned = remaining + selfAssigned;
