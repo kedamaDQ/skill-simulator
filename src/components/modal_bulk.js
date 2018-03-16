@@ -24,7 +24,7 @@ export default class ModalBulk extends React.PureComponent {
   render() {
     return (
       <div className='input-modal-bulk'>
-        <h2>一括設定</h2>
+        <h2>まとめて設定</h2>
           <dl className='input-modal-bulk__dropdown-panel'>
             <dt>レベル</dt>
             <dd>
