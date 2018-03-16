@@ -1,9 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SpTableHeaderPanelContainer from '../containers/sp_table_header_panel';
 import SpTableDataRowContainer from '../containers/sp_table_data_row';
 import SummarizedSpPanelContainer from '../containers/sp_panel_summarized';
 
 export default class SpTable extends React.PureComponent {
+
+  static propTypes = {
+    isFetching: PropTypes.bool.isRequired,
+    jobs: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired
+    }).isRequired).isRequired,
+    weapons: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      display: PropTypes.string.isRequired
+    }).isRequired).isRequired,
+    assigned: PropTypes.object.isRequired
+  };
 
   renderHeaderRow() {
     const headerDatas = [

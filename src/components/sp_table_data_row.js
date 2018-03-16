@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import OwnedSelector from './owned_selector';
 import SpTableHeaderPanelContainer from '../containers/sp_table_header_panel';
 import AssignedSpPanelContainer from '../containers/sp_panel_assigned';
@@ -6,6 +7,61 @@ import RemainedSpPanelContainer from '../containers/sp_panel_remained';
 import SummarizedSpPanelContainer from '../containers/sp_panel_summarized';
 
 export default class SpTableDataRow extends React.PureComponent {
+
+  static propTypes = {
+    job: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      display: PropTypes.string.isRequired,
+      display_short: PropTypes.string.isRequired,
+      job_skill_lines: PropTypes.arrayOf(PropTypes.string).isRequired,
+      weapon_skill_lines: PropTypes.arrayOf(PropTypes.string).isRequired
+    }).isRequired,
+    weapons: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      display: PropTypes.string.isRequired,
+      skill_lines: PropTypes.arrayOf(PropTypes.string).isRequired
+    }).isRequired).isRequired,
+    skillLines: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      display: PropTypes.string.isRequired,
+      skills: PropTypes.arrayOf(PropTypes.shape({
+        display: PropTypes.string.isRequired,
+        points: PropTypes.number.isRequired,
+        additional: PropTypes.bool.isRequired
+      }).isRequired).isRequired,
+//      additional_skills: PropTypes.arrayOf(PropTypes.shape({
+//        display: PropTypes.string.isRequired,
+//        values: PropTypes.arrayOf(PropTypes.string)
+//      }).isRequired).isRequired,
+      passives_filling: PropTypes.number.isRequired
+    }).isRequired).isRequired,
+    ownedByLevel: PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired
+    }).isRequired,
+    ownedByTraining: PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired
+    }).isRequired,
+    ownedBySkillbooks: PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired
+    }).isRequired,
+    presetsByLevel: PropTypes.arrayOf(PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired
+    }).isRequired).isRequired,
+    presetsByTraining: PropTypes.arrayOf(PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired
+    }).isRequired).isRequired,
+    presetsBySkillbooks: PropTypes.arrayOf(PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired
+    }).isRequired).isRequired,
+    assigned: PropTypes.object.isRequired,
+    assignedTotal: PropTypes.number.isRequired
+  };
 
   renderJobSkillPanels() {
     const skillPanels = [];

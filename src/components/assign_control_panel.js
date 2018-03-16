@@ -1,7 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AssignButton from './assign_button';
 
 export default class AssignControlPanel extends React.PureComponent {
+
+  static propTypes = {
+    job: PropTypes.shape({
+      id: PropTypes.string.isRequired
+    }).isRequired,
+    skillLine: PropTypes.shape({
+      id: PropTypes.string.isRequired
+    }).isRequired,
+    selfAssigned: PropTypes.number.isRequired,
+    totalAssigned: PropTypes.number.isRequired,
+    skillLineMax: PropTypes.number.isRequired,
+    remaining: PropTypes.number.isRequired,
+    onButtonClick: PropTypes.func.isRequired
+  };
+
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);

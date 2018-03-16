@@ -1,7 +1,44 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import OwnedSelector from './owned_selector';
 
 export default class ModalBulk extends React.PureComponent {
+
+  static propTypes = {
+    presetsByLevel: PropTypes.arrayOf(PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired
+    }).isRequired).isRequired,
+    presetsByTraining: PropTypes.arrayOf(PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired
+    }).isRequired).isRequired,
+    presetsBySkillbooks: PropTypes.arrayOf(PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired
+    }).isRequired).isRequired,
+    bulkSetupLevel: PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired
+    }).isRequired,
+    bulkSetupTraining: PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired
+    }).isRequired,
+    bulkSetupSkillbooks: PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired
+    }).isRequired,
+    passiveFillings: PropTypes.object.isRequired,
+    jobSkillLineIds: PropTypes.arrayOf(PropTypes.string).isRequired,
+    weaponSkillLineIds: PropTypes.arrayOf(PropTypes.string).isRequired,
+    onLevelChange: PropTypes.func.isRequired,
+    onTrainingChange: PropTypes.func.isRequired,
+    onSkillbooksChange: PropTypes.func.isRequired,
+    onFullfillPassivesClick: PropTypes.func.isRequired,
+    onResetSkillsClick: PropTypes.func.isRequired
+  };
+
   constructor(props) {
     super(props);
     this.handleFullfillPassivesClick = this.handleFullfillPassivesClick.bind(this);

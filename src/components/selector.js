@@ -1,6 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class Selector extends React.PureComponent {
+
+  static propTypes = {
+    items: PropTypes.arrayOf(PropTypes.shape({
+      key: PropTypes.number.isRequired,
+      display: PropTypes.element.isRequired,
+      value: PropTypes.number.isRequired,
+      styleClasses: PropTypes.string.isRequired,
+      isClickable: PropTypes.bool.isRequired
+    }).isRequired).isRequired,
+    onClick: PropTypes.func.isRequired
+  };
 
   constructor(props) {
     super(props);

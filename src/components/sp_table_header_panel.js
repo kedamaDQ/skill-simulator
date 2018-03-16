@@ -1,6 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class SpTableHeaderPanel extends React.PureComponent {
+
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    styleClasses: PropTypes.string.isRequired,
+    onClick: PropTypes.func
+  };
 
   constructor(props) {
     super(props);
