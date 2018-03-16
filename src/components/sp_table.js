@@ -39,13 +39,9 @@ export default class SpTable extends React.PureComponent {
         id: 'remain-sp-header',
         display: '残り',
         styleClasses: 'owned-header'
-      },
-      {
-        id: 'jobskill-header',
-        display: '職スキル',
-        styleClasses: 'owned-header'
       }
     ];
+
     const headers = [];
     headers.push(
       <th
@@ -53,6 +49,7 @@ export default class SpTable extends React.PureComponent {
         className='skill-point-table__col-header'>
       </th>
     );
+
     headerDatas.forEach((headerData => {
       headers.push(
         <th
@@ -67,6 +64,19 @@ export default class SpTable extends React.PureComponent {
         </th>
       );
     }));
+
+    headers.push(
+      <th
+        key='jobskill-header'
+        className='skill-point-table__col-header'
+      >
+        <SpTableHeaderPanelContainer
+          id='jobskill-header'
+          display='職スキル'
+          styleClasses='assigned-header'
+        />
+      </th>
+    );
 
     this.props.weapons.forEach((weapon) => {
       headers.push(
