@@ -13,6 +13,5 @@ export const versionArray = () => {
 }
 
 export const versionString = () => {
-  console.log(versionArray().join('.'));
   return([versionArray().join('.'), version.flags].join(''));
 };
