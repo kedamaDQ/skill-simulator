@@ -55,6 +55,7 @@ $sptable-row-header-width: 30px;
   &__header-panel {
     font-size: $ui-panel-font-size;
   
+    &.remained-header,
     &.owned-header {
       text-align: center;
     }

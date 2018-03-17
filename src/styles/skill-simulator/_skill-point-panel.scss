@@ -9,9 +9,9 @@
   border-radius: $ui-panel-border-radius;
   background-color: $ui-base-color-background;
   font-size: $ui-panel-font-size;
-  text-align:center;
-  line-height: $ui-panel-size;
+  text-align: center;
   vertical-align: middle;
+  cursor: default;
 
   &.assigned {
     border-color: $ui-base-color-primary;
@@ -26,7 +26,7 @@
     border-color: $ui-base-color-border;
   }
 
-  &.summarized {
+  &.summary {
     border-color: $ui-base-color-border;
   }
 
@@ -34,11 +34,38 @@
     color: $ui-base-color-warning;
     background-color: $ui-base-color-warning-background;
     border-color: $ui-base-color-warning;
+
+    &.assigned:hover {
+      background-color: $ui-base-color-warning-hover;
+    }
   }
 
   &.just-fit {
     color: $ui-base-color-info;
     background-color: $ui-base-color-info-background;
     border-color: $ui-base-color-info;
+  }
+
+  &__normal-skill--single {
+    line-height: $ui-panel-size;
+  }
+
+  &__normal-skill--double {
+    margin: 0 0 -1px 0;
+    padding: 0;
+    width: $ui-panel-size;
+    height: calc(#{$ui-panel-size} * 0.60);
+    line-height: calc(#{$ui-panel-size} * 0.60);
+    vertical-align: bottom;
+  }
+
+  &__master-skill {
+    margin: -2px 0 0 0;
+    padding: 0 2px 0 0;
+    color: $ui-base-color-tertiary;
+    line-height: calc(#{$ui-panel-size} * 0.40);
+    vertical-align: top;
+    text-align: right;
+    font-size: 10px;
   }
 }

@@ -2,21 +2,22 @@ import { connect } from 'react-redux';
 import SpPanel from '../components/sp_panel';
 
 const mapStateToProps = (state, ownProps) => {
-  const owned = state.owned_points[ownProps.job.id].total;
-  const assigned = state.assigned_points.summaries[ownProps.job.id]
-  const remain = owned - assigned;
-
+//  const owned = state.owned_points[ownProps.job.id].nsp;
+//  const assigned = state.assigned_points.summaries[ownProps.job.id].nsp
+  const owned = ownProps.owned;
+  const assigned = ownProps.assigned;
   const styleClasses = ['remained'];
-  if (remain < 0) {
+
+  if (owned - assigned < 0) {
     styleClasses.push('out-of-range');
-  } else if (remain === 0) {
+  } else if (owned - assigned === 0) {
     if (assigned !== 0) {
       styleClasses.push('just-fit');
     }
   }
 
   return {
-    display: owned - assigned,
+    mainDisplay: owned - assigned,
     styleClasses: styleClasses.join(' ')
   };
 }
@@ -25,9 +26,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {};
 }
 
-const OwnedSpPanelContainer = connect(
+const RemainedSpPanelContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(SpPanel);
 
-export default OwnedSpPanelContainer;
+export default RemainedSpPanelContainer;

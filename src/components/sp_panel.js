@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 export default class SpPanel extends React.PureComponent {
 
   static propTypes = {
-    display: PropTypes.number.isRequired,
+    mainDisplay: PropTypes.number.isRequired,
+    subDisplay: PropTypes.number,
     styleClasses: PropTypes.string.isRequired,
     onClick: PropTypes.func
   };
@@ -21,14 +22,41 @@ export default class SpPanel extends React.PureComponent {
     });
   }
 
+  renderDisplays() {
+    if (this.props.subDisplay && this.props.subDisplay !== 0) {
+      return(
+        <div
+          className={ `skill-point-panel ${this.props.styleClasses}` }
+          onClick={ (e) => this.handleClick(e) }
+        >
+          <div
+            className='skill-point-panel__normal-skill--double'
+          >
+            { this.props.mainDisplay }
+          </div>
+          <div
+            className='skill-point-panel__master-skill'
+          >
+            +{ this.props.subDisplay }
+          </div>
+        </div>
+      );
+    } else {
+      return(
+        <div
+          className={ `skill-point-panel ${this.props.styleClasses}` }
+          onClick={ (e) => this.handleClick(e) }
+        >
+          <div
+            className='skill-point-panel__normal-skill--single'
+          >
+            { this.props.mainDisplay }
+          </div>
+        </div>
+      );
+    }
+  }
   render() {
-    return(
-      <div
-        className={`skill-point-panel ${this.props.styleClasses}`}
-        onClick={(e) => this.handleClick(e)}
-      >
-        {this.props.display}
-      </div>
-    );
+    return this.renderDisplays();
   }
 }

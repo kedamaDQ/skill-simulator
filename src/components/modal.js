@@ -14,7 +14,7 @@ const textAboutClose = <div className='text-about-close'>Press [Esc] or click ou
 export default class Modal extends React.PureComponent {
 
   static propTypes = {
-    is_modal_open: PropTypes.bool.isRequired,
+    isModalOpen: PropTypes.bool.isRequired,
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
     position: PropTypes.shape({
@@ -22,7 +22,7 @@ export default class Modal extends React.PureComponent {
       y: PropTypes.number.isRequired
     }),
     content: PropTypes.string.isRequired,
-    content_params: PropTypes.object.isRequired,
+    contentParams: PropTypes.object.isRequired,
     closeModal: PropTypes.func.isRequired
   };
 
@@ -41,12 +41,11 @@ export default class Modal extends React.PureComponent {
   renderModalContent() {
     switch (this.props.content) {
       case 'assign':
-        const { job, skillLine } = this.props.content_params;
         return(
           <div>
             <ModalAssignContainer
-              job={job}
-              skillLine={skillLine}
+              job={this.props.contentParams.job}
+              skillLine={this.props.contentParams.skillLine}
             />
             { textAboutClose }
           </div>
@@ -55,7 +54,9 @@ export default class Modal extends React.PureComponent {
       case 'bulk':
         return(
           <div>
-            <ModalBulkContainer />
+            <ModalBulkContainer
+              contentParams={this.props.contentParams}
+            />
             { textAboutClose }
           </div>
         );
@@ -63,7 +64,9 @@ export default class Modal extends React.PureComponent {
       case 'usage':
         return(
           <div>
-            <ModalUsage />
+            <ModalUsage
+              contentParams={this.props.contentParams}
+            />
             { textAboutClose }
           </div>
         );
@@ -71,7 +74,9 @@ export default class Modal extends React.PureComponent {
       case 'about':
         return(
           <div>
-            <ModalAbout />
+            <ModalAbout
+              contentParams={this.props.contentParams}
+            />
             { textAboutClose }
           </div>
         );
@@ -104,7 +109,7 @@ export default class Modal extends React.PureComponent {
 
     return(
       <ReactModal
-        isOpen={this.props.is_modal_open}
+        isOpen={this.props.isModalOpen}
         onRequestClose={this.props.closeModal}
         shouldCloseOnOverlayClick={true}
         shouldCloseOnEsc={true}

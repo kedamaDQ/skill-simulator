@@ -159,9 +159,15 @@ ul.selector {
 
     &.disabled {
       background-color: $ui-base-color-inactive;
+      cursor: default;
     }
 
-    &.assigned {
+    &.msp-assigned {
+      background-color: $ui-base-color-tertiary-active;
+      cursor: default;
+    }
+
+    &.nsp-assigned {
       background-color: $ui-base-color-primary-active;
       cursor: pointer;
 

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export default class AssignButton extends React.PureComponent {
 
   static propTypes = {
-    change: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
     display: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired
   };
@@ -15,7 +15,7 @@ export default class AssignButton extends React.PureComponent {
   }
 
   handleClick() {
-    this.props.onClick && this.props.onClick(this.props.change);
+    this.props.onClick && this.props.onClick(this.props.value);
   }
 
   render() {

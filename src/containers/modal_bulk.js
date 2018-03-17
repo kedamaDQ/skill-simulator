@@ -7,18 +7,21 @@ import {
 } from '../actions/owned_points';
 import {
   fullfillForPassives,
-  resetSkills
+  resetAssigned
 } from '../actions/assigned_points';
 
 const mapStateToProps = (state, ownProps) => {
   const skillLines = state.skill_lines;
+
   const passiveFillings = {};
   state.jobs.forEach((job) => {
     passiveFillings[job.id] = {};
     job.job_skill_lines.forEach((skillLineId) => {
-      passiveFillings[job.id][skillLineId] = skillLines.find((skillLine) => {
-        return skillLine.id === skillLineId;
-      }).passives_filling;
+      passiveFillings[job.id][skillLineId] = {
+        nsp: skillLines.find((skillLine) => {
+          return skillLine.id === skillLineId;
+        }).passives_filling
+      };
     });
   });
 
@@ -59,7 +62,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(fullfillForPassives(fillings));
     },
     onResetSkillsClick: (skillLineIds) => {
-      dispatch(resetSkills(skillLineIds));
+      dispatch(resetAssigned(skillLineIds));
     }
   };
 }

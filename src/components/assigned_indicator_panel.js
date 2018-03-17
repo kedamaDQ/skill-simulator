@@ -13,11 +13,16 @@ export default class AssignedIndicatorPanel extends React.PureComponent {
       id: PropTypes.string.isRequired,
       display: PropTypes.string.isRequired
     }),
-    skillLineMax: PropTypes.number.isRequired,
-    selfAssigned: PropTypes.number.isRequired,
-    totalAssigned: PropTypes.number.isRequired,
-    assigned: PropTypes.number.isRequired,
-    owned: PropTypes.number.isRequired
+    selfAssigned: PropTypes.shape({
+      nsp: PropTypes.number.isRequired,
+      msp: PropTypes.number.isRequired,
+      total: PropTypes.number.isRequired
+    }).isRequired,
+    skillTotalAssigned: PropTypes.shape({
+      nsp: PropTypes.number.isRequired,
+      msp: PropTypes.number.isRequired,
+      total: PropTypes.number.isRequired
+    }).isRequired
   };
 
   renderSkillAssignedIndicator() {
@@ -28,8 +33,8 @@ export default class AssignedIndicatorPanel extends React.PureComponent {
         <AssignedIndicatorContainer
           size='small'
           display={this.props.skillLine.display}
-          numerator={this.props.totalAssigned}
-          denominator={this.props.skillLineMax}
+          numerator={this.props.skillTotalAssigned.nsp}
+          denominator={this.props.skillLine.max_points}
         />
       );
     }
@@ -41,14 +46,14 @@ export default class AssignedIndicatorPanel extends React.PureComponent {
         <AssignedIndicatorContainer
           size='large'
           display={`${this.props.job.display_short} - ${this.props.skillLine.display}`}
-          numerator={this.props.selfAssigned}
-          denominator={this.props.skillLineMax}
+          numerator={this.props.skillTotalAssigned.nsp + this.props.selfAssigned.msp}
+          denominator={this.props.skillLine.max_points}
         />
         <AssignedIndicatorContainer
           size='small'
           display={this.props.job.display_short}
-          numerator={this.props.assigned}
-          denominator={this.props.owned}
+          numerator={this.props.jobAssigned.nsp}
+          denominator={this.props.jobOwned.nsp}
         />
         {
           this.renderSkillAssignedIndicator()

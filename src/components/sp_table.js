@@ -2,20 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SpTableHeaderPanelContainer from '../containers/sp_table_header_panel';
 import SpTableDataRowContainer from '../containers/sp_table_data_row';
-import SummarizedSpPanelContainer from '../containers/sp_panel_summarized';
+import SkillSummarySpPanelContainer from '../containers/sp_panel_skill_summary';
 
 export default class SpTable extends React.PureComponent {
 
   static propTypes = {
     isFetching: PropTypes.bool.isRequired,
     jobs: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired
+      id: PropTypes.string.isRequired,
+      display: PropTypes.string.isRequired,
+      display_short: PropTypes.string.isRequired
     }).isRequired).isRequired,
     weapons: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string.isRequired,
       display: PropTypes.string.isRequired
     }).isRequired).isRequired,
-    assigned: PropTypes.object.isRequired
   };
 
   renderHeaderRow() {
@@ -33,11 +34,6 @@ export default class SpTable extends React.PureComponent {
       {
         id: 'owned-by-skillbooks-header',
         display: 'マスター',
-        styleClasses: 'owned-header'
-      },
-      {
-        id: 'remain-sp-header',
-        display: '残り',
         styleClasses: 'owned-header'
       }
     ];
@@ -64,6 +60,32 @@ export default class SpTable extends React.PureComponent {
         </th>
       );
     }));
+
+    headers.push(
+      <th
+        key='remained-nsp-header'
+        className='skill-point-table__col-header'
+      >
+        <SpTableHeaderPanelContainer
+          id='remained-nsp-header'
+          display={ <span>残り<br />SP</span> }
+          styleClasses='remained-header'
+        />
+      </th>
+    );
+
+    headers.push(
+      <th
+        key='remained-msp-header'
+        className='skill-point-table__col-header'
+      >
+        <SpTableHeaderPanelContainer
+          id='remained-msp-header'
+          display={ <span>残り<br />MSP</span> }
+          styleClasses='remained-header'
+        />
+      </th>
+    );
 
     headers.push(
       <th
@@ -112,12 +134,10 @@ export default class SpTable extends React.PureComponent {
   renderDataRows() {
     const rows = [];
     this.props.jobs.forEach((job) => {
-      const assigned = this.props.assigned.details[job.id];
       rows.push(
         <SpTableDataRowContainer
           key={job.id}
           job={job}
-          assigned={assigned}
         />);
     });
     return rows;
@@ -125,18 +145,14 @@ export default class SpTable extends React.PureComponent {
 
   renderTotalRow() {
     const cells = [];
-    cells.push(<th key={`summary-header`} colSpan='6'></th>);
+    cells.push(<th key={`summary-header`} colSpan='7'></th>);
     this.props.weapons.forEach((weapon) => {
-      const assigned = this.props.assigned.summaries[weapon.id];
       cells.push(
         <td
           key={`summary-${weapon.id}`}
           className='skill-point-table__skill-total-data'
         >
-          <SummarizedSpPanelContainer
-            max={weapon.max_points}
-            assigned={assigned}
-          />
+          <SkillSummarySpPanelContainer weapon={weapon} />
         </td>);
     });
     return <tr>{cells}</tr>;
@@ -150,13 +166,13 @@ export default class SpTable extends React.PureComponent {
         <div className='skill-point-table-outer'>
           <table className='skill-point-table'>
             <thead>
-              {this.renderHeaderRow()}
+              { this.renderHeaderRow() }
             </thead>
             <tbody>
-              {this.renderDataRows()}
+              { this.renderDataRows() }
             </tbody>
             <tfoot>
-              {this.renderTotalRow()}
+              { this.renderTotalRow() }
             </tfoot>
           </table>
         </div>
