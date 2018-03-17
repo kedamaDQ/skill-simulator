@@ -28,12 +28,12 @@ export default class SpTable extends React.PureComponent {
       },
       {
         id: 'owned-by-training-header',
-        display: '特訓',
+        display: '特訓スタンプ',
         styleClasses: 'owned-header'
       },
       {
         id: 'owned-by-skillbooks-header',
-        display: 'マスター',
+        display: 'スキルブック',
         styleClasses: 'owned-header'
       }
     ];
