@@ -21,7 +21,7 @@ export default class AssignButton extends React.PureComponent {
   render() {
     return(
       <button
-        className='assign-button'
+        className={`assign-controller__assign-button ${this.props.styleClasses}`}
         onClick={this.handleClick}
       >
         {this.props.display}

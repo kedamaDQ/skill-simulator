@@ -13,7 +13,10 @@ const MIN_ASSIGN = 0;
 const MAX_ASSIGN = 299;
 
 const mapStateToProps = (state, ownProps) => {
-  return {};
+  return {
+    assigned: ownProps.selfAssigned.nsp,
+    remained: ownProps.jobOwned.nsp - ownProps.jobAssigned.nsp
+  };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -46,6 +49,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           }
         } else {
           assigned.nsp = selfAssigned.nsp + jobRemained.nsp;
+          if (assigned.nsp < 0) {
+            assigned.nsp = 0;
+          }
         }
       } else {
         assigned.nsp = selfAssigned.nsp + addend;

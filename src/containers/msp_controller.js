@@ -8,7 +8,10 @@ import
 import { updateAssigned } from '../actions/assigned_points';
 
 const mapStateToProps = (state, ownProps) => {
-  return {};
+  return {
+    assigned: ownProps.selfAssigned.msp,
+    remained: ownProps.jobOwned.msp - ownProps.jobAssigned.msp
+  };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

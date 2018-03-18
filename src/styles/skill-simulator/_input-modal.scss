@@ -1,4 +1,4 @@
-$modal-assigned-panel-width: 300px;
+$modal-assigned-panel-width: 200px;
 
 $bulk-panel-border-width: 2px;
 $bulk-panel-border-radius: 5px;
@@ -32,15 +32,22 @@ $bulk-panel-padding: 5px;
   text-align: right;
   color: lighten($ui-base-color-text, 30%);
 }
-.input-modal-assigned {
+.modal-assigned {
   margin: 0;
   padding: 0;
-}
+  display: flex;
+  justify-content: space-around;
 
-.assigned-indicator-panel {
-  margin: 0 auto;
-  width: $modal-assigned-panel-width;
-  text-align: left;
+  &__controller {
+    width: 300px;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__selector {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .assigned-indicator {
@@ -49,16 +56,21 @@ $bulk-panel-padding: 5px;
   color: $ui-base-color-text;
   background-color: $ui-base-color-background;
   border-style: solid;
+  border-color: $ui-base-color-border;
   border-width: $ui-panel-border-width;
   border-radius: $ui-panel-border-radius;
   vertical-align: bottom;
 
-  &.small {
-    width: 75px;
-    border-color: $ui-base-color-border;
+
+  &.large {
+    width: 145px;
+
+    & .header {
+      font-size: 14px;
+    }
 
     & .numerator {
-      font-size: $ui-panel-font-size;
+      font-size: 50px;
     }
 
     & .denominator {
@@ -66,12 +78,15 @@ $bulk-panel-padding: 5px;
     }
   }
 
-  &.large {
-    width: 120px;
-    border-color: $ui-base-color-primary;
+  &.small {
+    width: 100px;
+
+    & .header {
+      font-size: $ui-panel-font-size;
+    }
 
     & .numerator {
-      font-size: 40px;
+      font-size: 28px;
     }
 
     & .denominator {
@@ -88,7 +103,6 @@ $bulk-panel-padding: 5px;
     margin: 0;
     padding: 4px  4px 0 4px;
     text-align: left;
-    font-size: $ui-panel-font-size;
   }
 
   & dd {
@@ -112,41 +126,99 @@ $bulk-panel-padding: 5px;
 }
 
 
-.assign-control-panel {
-  margin: 2px auto;
+.assign-controller {
+  margin: 35px auto 0 auto;
   padding: 0;
   text-align: left;
   clear: both;
-}
 
-.assign-button{
-  margin: 1px 2px;
-  width: 47px;
-  height: $ui-panel-size;
-  font-family: sans-serif;
-  font-size: $ui-panel-font-size;
-  color: $ui-base-color-text;
-  background-color: $ui-base-color-background;
-  border: solid 2px $ui-base-color-border;
-  border-radius: $ui-panel-border-radius;
-  cursor: pointer;
+  $controller-indicator-width: 50px;
 
-  &:hover{
-    border-color: $ui-base-color-primary;
-    background-color: $ui-base-color-primary-hover;
+  &__indicator-outer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  &__title {
+    flex-basis: $controller-indicator-width;
+    flex-grow: 1;
+    margin: 0 0 5px 0;
+    padding: 0;
+    font-weight: bold;
+  }
+
+  &__indicator {
+    flex-basis: $controller-indicator-width;
+    display: block;
+    width: $controller-indicator-width;
+    margin: 5px 0 5px 20px;
+    padding: 0;
+
+    & dt {
+      margin: 0;
+      padding: 0;
+      text-align: left;
+    }
+
+    & dd {
+      margin: 0;
+      padding: 0;
+      font-size: 20px;
+      text-align: right;
+    }
+  }
+
+  &__buttons-outer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__assign-button {
+    display: block;
+    width: 47px;
+    height: $ui-panel-size;
+    font-family: sans-serif;
+    font-size: $ui-panel-font-size;
+    color: $ui-base-color-text;
+    background-color: $ui-base-color-background;
+    border: solid $ui-panel-border-width $ui-base-color-border;
+    border-radius: $ui-panel-border-radius;
+    cursor: pointer;
+  
+    &.nsp {
+      color: darken($ui-base-color-primary, 40%);
+      border-color: $ui-base-color-primary;
+
+      &:hover{
+        background-color: $ui-base-color-primary-hover;
+      }
+    }
+
+    &.msp {
+      color: darken($ui-base-color-tertiary, 30%);
+      border-color: $ui-base-color-tertiary;
+
+      &:hover{
+        background-color: $ui-base-color-tertiary-hover;
+      }
+    }
   }
 }
+
 
 ul.selector {
   margin: 2px auto;
   width: $modal-assigned-panel-width;
-  padding: 3px 0;
+  padding: 0;
   color: $ui-base-color-text;
   background-color: $ui-base-color-background;
   border: solid 2px $ui-base-color-border;
   border-radius: 5px;
   max-height: 430px;
-  overflow-y: auto;
+  overflow: auto;
   font-size: $ui-panel-font-size;
   clear: both;
 
@@ -158,7 +230,8 @@ ul.selector {
     clear: both;
 
     &.disabled {
-      background-color: $ui-base-color-inactive;
+      color: $ui-base-color-text-inactive;
+      background-color: $ui-base-color-background-inactive;
       cursor: default;
     }
 

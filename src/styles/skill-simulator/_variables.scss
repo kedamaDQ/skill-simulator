@@ -1,9 +1,10 @@
 // base
 $ui-base-font-size: 12px;
 $ui-base-color-text: #444444;
+$ui-base-color-text-inactive: #a0a0a0;
 $ui-base-color-border: lighten($ui-base-color-text, 50%);
 $ui-base-color-background: #fafafa;
-$ui-base-color-inactive: #bbbbbb;
+$ui-base-color-background-inactive: #e0e0e0;
 $ui-base-color-info: #57a2ce;
 $ui-base-color-info-background: lighten($ui-base-color-info, 35%);
 $ui-base-color-warning: #d03030;

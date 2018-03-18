@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AssignedIndicatorPanel from './assigned_indicator_panel';
+import AssignedIndicatorContainer from '../containers/assigned_indicator';
 import NspControllerContainer from '../containers/nsp_controller';
 import MspControllerContainer from '../containers/msp_controller';
 import Selector from './selector';
@@ -33,6 +33,10 @@ export default class ModalAssign extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handleClickSelector = this.handleClickSelector.bind(this);
+  }
+
+  handleClickSelector(points) {
+    this.props.onChange(this.props.job.id, this.props.skillLine.id, { nsp: points });
   }
 
   formatItems() {
@@ -77,9 +81,21 @@ export default class ModalAssign extends React.PureComponent {
     });
   }
 
-  handleClickSelector(points) {
-    this.props.onChange(this.props.job.id, this.props.skillLine.id, { nsp: points });
+  renderSkillAssignedIndicator() {
+    if (this.props.job.job_skill_lines.includes(this.props.skillLine.id)) {
+      return null;
+    } else {
+      return (
+        <AssignedIndicatorContainer
+          size='small'
+          display={this.props.skillLine.display}
+          numerator={this.props.skillTotalAssigned.nsp}
+          denominator={this.props.skillLine.max_points}
+        />
+      );
+    }
   }
+
 
   render() {
     const {
@@ -92,35 +108,44 @@ export default class ModalAssign extends React.PureComponent {
     } = this.props;
 
     return(
-      <div className='input-modal-assigned'>
-        <AssignedIndicatorPanel
-          job={job}
-          skillLine={skillLine}
-          selfAssigned={selfAssigned}
-          skillTotalAssigned={skillTotalAssigned}
-          jobOwned={jobOwned}
-          jobAssigned={jobAssigned}
-        />
-        <NspControllerContainer
-          job={job}
-          skillLine={skillLine}
-          selfAssigned={selfAssigned}
-          skillTotalAssigned={skillTotalAssigned}
-          jobOwned={jobOwned}
-          jobAssigned={jobAssigned}
-        />
-        <Selector
-          items={this.formatItems()}
-          onClick={this.handleClickSelector}
-        />
-        <MspControllerContainer
-          job={job}
-          skillLine={skillLine}
-          selfAssigned={selfAssigned}
-          skillTotalAssigned={skillTotalAssigned}
-          jobOwned={jobOwned}
-          jobAssigned={jobAssigned}
-        />
+      <div className='modal-assigned'>
+        <div className='modal-assigned__controller'>
+          <div>
+            <AssignedIndicatorContainer
+              size='large'
+              display={`${this.props.job.display_short} - ${this.props.skillLine.display}`}
+              numerator={this.props.skillTotalAssigned.nsp + this.props.selfAssigned.msp}
+              denominator={this.props.skillLine.max_points}
+            />
+            { this.renderSkillAssignedIndicator() }
+          </div>
+          <NspControllerContainer
+            job={job}
+            skillLine={skillLine}
+            selfAssigned={selfAssigned}
+            skillTotalAssigned={skillTotalAssigned}
+            jobOwned={jobOwned}
+            jobAssigned={jobAssigned}
+            buttonStyleClasses='nsp'
+            display='スキルポイント'
+          />
+          <MspControllerContainer
+            job={job}
+            skillLine={skillLine}
+            selfAssigned={selfAssigned}
+            skillTotalAssigned={skillTotalAssigned}
+            jobOwned={jobOwned}
+            jobAssigned={jobAssigned}
+            buttonStyleClasses='msp'
+            display='マスタースキルポイント'
+          />
+        </div>
+        <div className='modal-assigned__selector'>
+          <Selector
+            items={this.formatItems()}
+            onClick={this.handleClickSelector}
+          />
+        </div>
       </div>
     );
   }

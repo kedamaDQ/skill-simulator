@@ -33,8 +33,10 @@ const ModalAbout= (props) => {
 
         <h2>更新履歴</h2>
         <dl className='history'>
-          <dt>v0.9.0</dt>
+          <dt>2018-03-15 (v0.9.0)</dt>
           <dd>ベータ版公開</dd>
+          <dt>2018-03-18 (v0.10.0)</dt>
+          <dd>マスタースキルの考え方がバグっていたので大幅に修正。</dd>
         </dl>
       </section>
     </div>
