@@ -73,7 +73,7 @@ export default class ModalBulk extends React.PureComponent {
             </dd>
           </dl>
           <dl className='input-modal-bulk__dropdown-panel'>
-            <dt>特訓</dt>
+            <dt>特訓スタンプ</dt>
             <dd>
                 <OwnedSelector
                   options={this.props.presetsByTraining}
@@ -83,7 +83,7 @@ export default class ModalBulk extends React.PureComponent {
             </dd>
           </dl>
           <dl className='input-modal-bulk__dropdown-panel'>
-            <dt>マスタースキル</dt>
+            <dt>スキルブック</dt>
             <dd>
                 <OwnedSelector
                   options={this.props.presetsBySkillbooks}
