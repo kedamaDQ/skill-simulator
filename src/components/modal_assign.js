@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AssignedIndicatorPanel from '../components/assigned_indicator_panel';
-import AssignControlPanelContainer from '../containers/assign_control_panel';
+import AssignedIndicatorContainer from '../containers/assigned_indicator';
+import NspControllerContainer from '../containers/nsp_controller';
+import MspControllerContainer from '../containers/msp_controller';
 import Selector from './selector';
 
 export default class ModalAssign extends React.PureComponent {
@@ -12,17 +13,21 @@ export default class ModalAssign extends React.PureComponent {
     }).isRequired,
     skillLine: PropTypes.shape({
       id: PropTypes.string.isRequired,
+      max_points: PropTypes.number.isRequired,
       skills: PropTypes.arrayOf(PropTypes.shape({
         display: PropTypes.string.isRequired,
         points: PropTypes.number.isRequired
       }).isRequired).isRequired
     }).isRequired,
-    skillLineMax: PropTypes.number.isRequired,
-    selfAssigned: PropTypes.number.isRequired,
-    totalAssigned: PropTypes.number.isRequired,
-    assigned: PropTypes.number.isRequired,
-    owned: PropTypes.number.isRequired,
-    remaining: PropTypes.number.isRequired,
+    selfAssigned: PropTypes.shape({
+      nsp: PropTypes.number.isRequired,
+      msp: PropTypes.number.isRequired,
+      total: PropTypes.number.isRequired
+    }).isRequired,
+    skillTotalAssigned: PropTypes.shape({
+      nsp: PropTypes.number.isRequired,
+      msp: PropTypes.number.isRequired
+    }).isRequired
   };
 
   constructor(props) {
@@ -30,9 +35,13 @@ export default class ModalAssign extends React.PureComponent {
     this.handleClickSelector = this.handleClickSelector.bind(this);
   }
 
+  handleClickSelector(points) {
+    this.props.onChange(this.props.job.id, this.props.skillLine.id, { nsp: points });
+  }
+
   formatItems() {
-    const {selfAssigned, totalAssigned, skillLine: {skills}} = this.props;
-    const otherAssigned = totalAssigned - selfAssigned;
+    const {selfAssigned, skillTotalAssigned, skillLine: {skills}} = this.props;
+    const otherAssigned = skillTotalAssigned.nsp - selfAssigned.nsp;
 
     return skills.map((skill) => {
       const styleClasses = [];
@@ -43,14 +52,18 @@ export default class ModalAssign extends React.PureComponent {
         styleClasses.push('disabled');
         isClickable = false;
         value = 0;
-      } else if (skill.points <= totalAssigned) {
-        styleClasses.push('assigned');
+      } else if (skill.points <= otherAssigned + selfAssigned.msp) {
+        styleClasses.push('msp-assigned');
+        isClickable = false;
+        value = 0;
+      } else if (skill.points <= skillTotalAssigned.nsp + selfAssigned.msp) {
+        styleClasses.push('nsp-assigned');
         isClickable = true;
-        value = skill.points - otherAssigned;
+        value = skill.points - (otherAssigned + selfAssigned.msp);
       } else {
         styleClasses.push('unassigned');
         isClickable = true;
-        value = skill.points - otherAssigned;
+        value = skill.points - (otherAssigned + selfAssigned.msp);
       }
 
       return({
@@ -68,45 +81,71 @@ export default class ModalAssign extends React.PureComponent {
     });
   }
 
-  handleClickSelector(points) {
-    this.props.onChange(this.props.job.id, this.props.skillLine.id, points);
+  renderSkillAssignedIndicator() {
+    if (this.props.job.job_skill_lines.includes(this.props.skillLine.id)) {
+      return null;
+    } else {
+      return (
+        <AssignedIndicatorContainer
+          size='small'
+          display={this.props.skillLine.display}
+          numerator={this.props.skillTotalAssigned.nsp}
+          denominator={this.props.skillLine.max_points}
+        />
+      );
+    }
   }
+
 
   render() {
     const {
-      skillLine,
-      skillLineMax,
-      selfAssigned,
-      totalAssigned,
       job,
-      assigned,
-      owned,
-      remaining
+      skillLine,
+      selfAssigned,
+      skillTotalAssigned,
+      jobOwned,
+      jobAssigned
     } = this.props;
 
     return(
-      <div className='input-modal-assigned'>
-        <AssignedIndicatorPanel
-          skillLine={skillLine}
-          skillLineMax={skillLineMax}
-          selfAssigned={selfAssigned}
-          totalAssigned={totalAssigned}
-          job={job}
-          assigned={assigned}
-          owned={owned}
-        />
-        <AssignControlPanelContainer
-          job={job}
-          skillLine={skillLine}
-          selfAssigned={selfAssigned}
-          totalAssigned={totalAssigned}
-          skillLineMax={skillLineMax}
-          remaining={remaining}
-        />
-        <Selector
-          items={this.formatItems()}
-          onClick={this.handleClickSelector}
-        />
+      <div className='modal-assigned'>
+        <div className='modal-assigned__controller'>
+          <div>
+            <AssignedIndicatorContainer
+              size='large'
+              display={`${this.props.job.display_short} - ${this.props.skillLine.display}`}
+              numerator={this.props.skillTotalAssigned.nsp + this.props.selfAssigned.msp}
+              denominator={this.props.skillLine.max_points}
+            />
+            { this.renderSkillAssignedIndicator() }
+          </div>
+          <NspControllerContainer
+            job={job}
+            skillLine={skillLine}
+            selfAssigned={selfAssigned}
+            skillTotalAssigned={skillTotalAssigned}
+            jobOwned={jobOwned}
+            jobAssigned={jobAssigned}
+            buttonStyleClasses='nsp'
+            display='スキルポイント'
+          />
+          <MspControllerContainer
+            job={job}
+            skillLine={skillLine}
+            selfAssigned={selfAssigned}
+            skillTotalAssigned={skillTotalAssigned}
+            jobOwned={jobOwned}
+            jobAssigned={jobAssigned}
+            buttonStyleClasses='msp'
+            display='マスタースキルポイント'
+          />
+        </div>
+        <div className='modal-assigned__selector'>
+          <Selector
+            items={this.formatItems()}
+            onClick={this.handleClickSelector}
+          />
+        </div>
       </div>
     );
   }

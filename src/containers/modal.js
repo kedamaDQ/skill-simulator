@@ -13,12 +13,12 @@ const mapStateToProps = (state, ownProps) => {
   } = state.modal;
 
   return {
-    is_modal_open,
+    isModalOpen: is_modal_open,
     width,
     height,
     position,
     content,
-    content_params
+    contentParams: content_params
   };
 };
 

@@ -46,6 +46,8 @@ export default class OwnedSelector extends React.PureComponent {
 
   render() {
     if (!(this.props.options && this.props.onChange)) {
+      console.log(this.props.options);
+      console.log(this.props.onChange);
       return (
         <div className='react-select-dummy'>
           { this.renderValue(this.props.value) }

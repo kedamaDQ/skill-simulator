@@ -3,9 +3,18 @@ import SpPanel from '../components/sp_panel';
 import { openModalAssign } from '../actions/modal';
 
 const mapStateToProps = (state, ownProps) => {
+  const { job, skillLine } = ownProps;
+  const styleClasses = ['assigned'];
+  const assigned = state.assigned_points.details[job.id][skillLine.id];
+
+  if (assigned.msp + state.assigned_points.summaries[skillLine.id].nsp > skillLine.max_points) {
+    styleClasses.push('out-of-range');
+  }
+
   return {
-    styleClasses: 'assigned',
-    display: ownProps.assigned
+    mainDisplay: assigned.nsp,
+    subDisplay: assigned.msp,
+    styleClasses: styleClasses.join(' ')
   };
 }
 

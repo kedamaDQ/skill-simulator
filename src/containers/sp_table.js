@@ -5,8 +5,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     isFetching: state.skill_simulator.isFetching,
     jobs: state.jobs,
-    weapons: state.weapons,
-    assigned: state.assigned_points
+    weapons: state.weapons
   };
 };
 

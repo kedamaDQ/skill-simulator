@@ -1,21 +1,28 @@
-export const INITIALIZE_ASSIGNEDPOINTS = 'INITIALIZE_ASSIGNEDPOINTS';
-export const UPDATE_ASSIGNEDPOINTS = 'UPDATE_ASSIGNEDPOINTS';
+export const INITIALIZE_ASSIGNED = 'INITIALIZE_ASSIGNED';
+export const UPDATE_ASSIGNED = 'UPDATE_ASSIGNED';
+export const RESET_ASSIGNED = 'RESET_ASSIGNED';
 export const FULLFILL_FOR_PASSIVES = 'FULLFILL_FOR_PASSIVES';
-export const RESET_SKILLS = 'RESET_SKILLS';
 
 export const initializeAssignedPoints = (jobs) => {
   return {
-    type: INITIALIZE_ASSIGNEDPOINTS,
+    type: INITIALIZE_ASSIGNED,
     jobs
   };
 };
 
-export const updateAssignedPoints = (jobId, skillLineId, assigned) => {
+export const updateAssigned = (jobId, skillLineId, assigned) => {
   return {
-    type: UPDATE_ASSIGNEDPOINTS,
+    type: UPDATE_ASSIGNED,
     jobId,
     skillLineId,
     assigned
+  };
+}
+
+export const resetAssigned= (skillLineIds) => {
+  return {
+    type: RESET_ASSIGNED,
+    skillLineIds
   };
 };
 
@@ -23,12 +30,5 @@ export const fullfillForPassives = (fillings) => {
   return {
     type: FULLFILL_FOR_PASSIVES,
     fillings
-  };
-};
-
-export const resetSkills = (skillLineIds) => {
-  return {
-    type: RESET_SKILLS,
-    skillLineIds
   };
 };

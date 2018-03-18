@@ -1,43 +1,75 @@
 import {
-  INITIALIZE_ASSIGNEDPOINTS,
-  UPDATE_ASSIGNEDPOINTS,
-  FULLFILL_FOR_PASSIVES,
-  RESET_SKILLS
+  INITIALIZE_ASSIGNED,
+  UPDATE_ASSIGNED,
+  RESET_ASSIGNED,
+  FULLFILL_FOR_PASSIVES
 } from '../actions/assigned_points';
 
 const initialState = {
   details: {
     jobId: {
-      skillLineId: 0
+      skillLineId: {
+        nsp: 0, // normal skill points
+        msp: 0, // master's skill points
+        total: 0
+      }
     }
   },
   summaries: {
-    skillLineId: 0,
-    jobId: 0
+    skillLineId: {
+      nsp: 0,
+      msp: 0,
+      total: 0
+    },
+    jobId: {
+      nsp: 0,
+      msp: 0,
+      total: 0
+    },
   }
 };
 
+const defShape = { nsp: 0, msp: 0, total: 0 };
+
 const mergeDetails = ({details}, {jobId, skillLineId, assigned}) => {
+  const merged = Object.assign({}, details[jobId][skillLineId], assigned);
+  merged.total = merged.nsp + merged.msp;
   return {
     ...details,
-    [jobId]: Object.assign({}, details[jobId], {
-      [skillLineId]: assigned
-    })
+    [jobId]: {
+      ...details[jobId],
+      [skillLineId]: merged
+    }
   };
 };
 
+//ok
 const mergeSummaries = ({details, summaries}, {jobId, skillLineId, assigned}) => {
-  let skillTotal = 0;
+  const skillTotal = Object.assign({}, summaries[skillLineId]);
   for (const job in details) {
     if (details[job].hasOwnProperty(skillLineId)) {
-      skillTotal += (job === jobId) ? assigned : details[job][skillLineId];
+      if (job === jobId) {
+        skillTotal.nsp += (assigned.nsp) ? assigned.nsp : 0;
+        skillTotal.msp += (assigned.msp) ? assigned.msp : 0;
+      } else {
+        skillTotal.nsp += (assigned.nsp) ? details[job][skillLineId].nsp : 0;
+        skillTotal.msp += (assigned.msp) ? details[job][skillLineId].msp : 0;
+      }
     }
   }
+  skillTotal.total = skillTotal.nsp + skillTotal.msp;
 
-  let jobTotal = 0;
+  const jobTotal = Object.assign({}, summaries[jobId]);
   for (const skillLine in details[jobId]) {
-    jobTotal += (skillLine === skillLineId) ? assigned : details[jobId][skillLine];
+    if (skillLine === skillLineId) {
+      jobTotal.nsp += (assigned.nsp) ? assigned.nsp : 0;
+      jobTotal.msp += (assigned.msp) ? assigned.msp : 0;
+    } else {
+      jobTotal.nsp += (assigned.nsp) ? details[jobId][skillLine].nsp : 0;
+      jobTotal.msp += (assigned.msp) ? details[jobId][skillLine].msp : 0;
+    }
   }
+  jobTotal.total = jobTotal.nsp + jobTotal.msp;
 
   return {
     ...summaries,
@@ -46,17 +78,27 @@ const mergeSummaries = ({details, summaries}, {jobId, skillLineId, assigned}) =>
   }
 };
 
+//ok
 const buildSummaries = (details) => {
   const summaries = {};
   for (const jobId in details) {
-    summaries[jobId] = 0;
+    summaries[jobId] = {
+      nsp: 0,
+      msp: 0,
+      total: 0
+    };
     for (const skillLineId in details[jobId]) {
-      summaries[jobId] += details[jobId][skillLineId];
-      if (summaries[skillLineId]) {
-        summaries[skillLineId] += details[jobId][skillLineId];
-      } else {
-        summaries[skillLineId] = details[jobId][skillLineId];
+      const total = details[jobId][skillLineId].nsp + details[jobId][skillLineId].msp;
+      summaries[jobId].nsp += details[jobId][skillLineId].nsp;
+      summaries[jobId].msp += details[jobId][skillLineId].msp;
+      summaries[jobId].total += total;
+
+      if (!summaries[skillLineId]) {
+        summaries[skillLineId] = Object.assign({}, defShape);
       }
+      summaries[skillLineId].nsp += details[jobId][skillLineId].nsp;
+      summaries[skillLineId].msp += details[jobId][skillLineId].nsp;
+      summaries[skillLineId].total += details[jobId][skillLineId].nsp;
     }
   }
   return summaries;
@@ -65,7 +107,13 @@ const buildSummaries = (details) => {
 const fullfillForPassives = (state, fillings) => {
   const details = Object.assign({}, state.details);
   for (const jobId in details) {
-    details[jobId] = Object.assign({}, details[jobId], fillings[jobId]);
+    for (const skillLineId in details[jobId]) {
+      details[jobId][skillLineId] = Object.assign(
+        {},
+        details[jobId][skillLineId],
+        fillings[jobId][skillLineId]
+      );
+    }
   }
   return {
     details,
@@ -73,13 +121,14 @@ const fullfillForPassives = (state, fillings) => {
   };
 };
 
+//ok
 const resetSkillLines = (state, targetSkillLineIds) => {
   const details = Object.assign({}, state.details);
 
   for (const jobId in details) {
     for (const skillLineId in details[jobId]) {
       if (targetSkillLineIds.includes(skillLineId)) {
-        details[jobId][skillLineId] = 0;
+        details[jobId][skillLineId] = Object.assign({}, defShape);
       }
     }
   }
@@ -91,30 +140,36 @@ const resetSkillLines = (state, targetSkillLineIds) => {
 
 const assigned_points = (state = initialState, action) => {
   switch (action.type) {
-    case INITIALIZE_ASSIGNEDPOINTS:
-      const assigned = Object.assign({}, state);
+    case INITIALIZE_ASSIGNED:
+      const assigned = {
+        details: {},
+        summaries: {}
+      };
       action.jobs.forEach((job) => {
         const {job_skill_lines, weapon_skill_lines} = job;
         assigned.details[job.id] = {};
         job_skill_lines.concat(weapon_skill_lines).forEach((skillLine) => {
-          assigned.details[job.id][skillLine] = 0;
-          assigned.summaries[skillLine] = 0;
+          assigned.details[job.id][skillLine] = Object.assign({}, defShape);
+          assigned.summaries[skillLine] = Object.assign({}, defShape);
         });
-        assigned.summaries[job.id] = 0;
+        assigned.summaries[job.id] = Object.assign({}, defShape);
       });
       return assigned;
 
-    case UPDATE_ASSIGNEDPOINTS:
+    case UPDATE_ASSIGNED:
+      const a = mergeDetails(state, action);
       return {
-        details: mergeDetails(state, action),
-        summaries: mergeSummaries(state, action)
+//        details: mergeDetails(state, action),
+//        summaries: mergeSummaries(state, action)
+        details: a,
+        summaries: buildSummaries(a)
       };
+
+    case RESET_ASSIGNED:
+      return resetSkillLines(state, action.skillLineIds);
 
     case FULLFILL_FOR_PASSIVES:
       return fullfillForPassives(state, action.fillings);
-
-    case RESET_SKILLS:
-      return resetSkillLines(state, action.skillLineIds);
 
     default:
       return state;
