@@ -37,6 +37,8 @@ const ModalAbout= (props) => {
           <dd>ベータ版公開</dd>
           <dt>2018-03-18 (v0.10.0)</dt>
           <dd>マスタースキルの考え方がバグっていたので大幅に修正。</dd>
+          <dt>2018-03-19 (v0.10.1)</dt>
+          <dd>Internet Explorer 11 でも動くように改修。</dd>
         </dl>
       </section>
     </div>
