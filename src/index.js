@@ -6,9 +6,12 @@ import thunk from 'redux-thunk';
 
 import './index.css';
 import rootReducer from './reducers';
+import loadPolyfills from './load_polyfills';
 import SkillSimulatorContainer from './containers/skill_simulator';
 
 //import registerServiceWorker from './registerServiceWorker';
+
+loadPolyfills();
 
 const store = createStore(
   rootReducer,
