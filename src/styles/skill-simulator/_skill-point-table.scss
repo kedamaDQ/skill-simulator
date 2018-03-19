@@ -26,29 +26,54 @@ $sptable-row-header-width: 30px;
   }
 
   &__owned-data{
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="0" y="12" width="30" height="6" fill="#{replace-hash($ui-base-color-border)}"/></svg>');
+// original
+//    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="0" y="12" width="30" height="6" fill="#{replace-hash($ui-base-color-border)}"/></svg>');
+// fixed color code
+//    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="0" y="12" width="30" height="6" fill="#C4C4C4"/></svg>');
+// base64 encoded (for IE11)
+    background-image: url('data:image/svg+xml;charset=utf8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjMwIj48cmVjdCB4PSIwIiB5PSIxMiIgd2lkdGg9IjMwIiBoZWlnaHQ9IjYiIGZpbGw9IiNDNEM0QzQiLz48L3N2Zz4=');
     background-size: auto 100%;
   }
 
   &__assigned-data {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="0" y="12" width="30" height="6" fill="#{replace-hash($ui-base-color-border)}"/><rect x="14" y="0" width="2" height="30" fill="#{replace-hash($ui-base-color-primary)}"/></svg>');
+// original
+//    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="0" y="12" width="30" height="6" fill="#{replace-hash($ui-base-color-border)}"/><rect x="14" y="0" width="2" height="30" fill="#{replace-hash($ui-base-color-primary)}"/></svg>');
+// fixed color code
+//    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="0" y="12" width="30" height="6" fill="#C4C4C4"/><rect x="14" y="0" width="2" height="30" fill="#B2D146"/></svg>');
+// base64 encoded (for IE11)
+    background-image: url('data:image/svg+xml;charset=utf8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjMwIj48cmVjdCB4PSIwIiB5PSIxMiIgd2lkdGg9IjMwIiBoZWlnaHQ9IjYiIGZpbGw9IiNDNEM0QzQiLz48cmVjdCB4PSIxNCIgeT0iMCIgd2lkdGg9IjIiIGhlaWdodD0iMzAiIGZpbGw9IiNCMkQxNDYiLz48L3N2Zz4=');
     background-size: auto 100%;
 
     &--job-skill {
       min-width: calc((#{$ui-panel-size} + #{$ui-panel-border-width} * 2 + #{$ui-panel-margin-horizontal}) * 2 + 2px);
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="0" y="12" width="30" height="6" fill="#{replace-hash($ui-base-color-border)}"/></svg>');
+// original
+//      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="0" y="12" width="30" height="6" fill="#{replace-hash($ui-base-color-border)}"/></svg>');
+// fixed color code
+//      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="0" y="12" width="30" height="6" fill="#C4C4C4"/></svg>');
+// base64 encoded (for IE11)
+      background-image: url('data:image/svg+xml;charset=utf8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjMwIj48cmVjdCB4PSIwIiB5PSIxMiIgd2lkdGg9IjMwIiBoZWlnaHQ9IjYiIGZpbGw9IiNDNEM0QzQiLz48L3N2Zz4=');
       background-size: auto 100%;
     }
   }
 
   &__job-total-data {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="0" y="12" width="15" height="6" fill="#{replace-hash($ui-base-color-border)}"/></svg>');
+// original
+//    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="0" y="12" width="15" height="6" fill="#{replace-hash($ui-base-color-border)}"/></svg>');
+// fixed color code
+//    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="0" y="12" width="15" height="6" fill="#C4C4C4"/></svg>');
+// base64 encoded (for IE11)
+    background-image: url('data:image/svg+xml;charset=utf8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjMwIj48cmVjdCB4PSIwIiB5PSIxMiIgd2lkdGg9IjE1IiBoZWlnaHQ9IjYiIGZpbGw9IiNDNEM0QzQiLz48L3N2Zz4=');
     background-size: auto 100%;
     background-repeat: no-repeat;
   }
 
   &__skill-total-data {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="14" y="0" width="2" height="15" fill="#{replace-hash($ui-base-color-primary)}"/></svg>');
+// original
+//    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="14" y="0" width="2" height="15" fill="#{replace-hash($ui-base-color-primary)}"/></svg>');
+// fixed color code
+//    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30"><rect x="14" y="0" width="2" height="15" fill="#B2D146"/></svg>');
+// base64 encoded (for IE11)
+    background-image: url('data:image/svg+xml;charset=utf8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjMwIj48cmVjdCB4PSIxNCIgeT0iMCIgd2lkdGg9IjIiIGhlaWdodD0iMTUiIGZpbGw9IiNCMkQxNDYiLz48L3N2Zz4=');
     background-size: auto 100%;
   }
 
