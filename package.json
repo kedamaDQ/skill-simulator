@@ -7,7 +7,6 @@
     "type": "git",
     "url": "https://github.com/kedamaDQ/skill-simulator.git"
   },
-  "homepage": "https://st.foresdon.jp/skill-simulator/",
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
     "node-sass-chokidar": "0.0.3",
