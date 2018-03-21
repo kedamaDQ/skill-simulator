@@ -1,10 +1,11 @@
-export const JOB_HEADER_MASK = 0b10000000;
-export const SKILLLINE_HEADER_MASK = 0b01000000;
+export const JOB_MASK = 1 << 7;
+export const SKILLLINE_MASK = 1 << 6;
+export const MSP_MASK = 1 << 1
+export const NSP_MASK = 1;
 
 export const encodeBase64url = (uint8array) => {
-  console.log(uint8array);
   if (!(uint8array && uint8array.length)) {
-    return null;
+    return '';
   }
 
   return btoa(

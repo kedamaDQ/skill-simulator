@@ -1,5 +1,15 @@
 [
     {
+      "id": "grappling",
+      "display": "格闘",
+      "skill_lines": ["grappling"]
+    },
+    {
+      "id": "shield",
+      "display": "盾",
+      "skill_lines": ["shield"]
+    },
+    {
       "id": "sword",
       "display": "片手剣",
       "skill_lines": ["sword"]
@@ -10,14 +20,9 @@
       "skill_lines": ["blade"]
     },
     {
-      "id": "ax",
-      "display": "オノ",
-      "skill_lines": ["ax"]
-    },
-    {
-      "id": "lance",
-      "display": "ヤリ",
-      "skill_lines": ["lance"]
+      "id": "knife",
+      "display": "短剣",
+      "skill_lines": ["knife"]
     },
     {
       "id": "stick",
@@ -25,24 +30,29 @@
       "skill_lines": ["stick"]
     },
     {
-      "id": "rod",
-      "display": "棍",
-      "skill_lines": ["rod"]
-    },
-    {
       "id": "wand",
       "display": "両手杖",
       "skill_lines": ["wand"]
     },
     {
-      "id": "knife",
-      "display": "短剣",
-      "skill_lines": ["knife"]
+      "id": "lance",
+      "display": "ヤリ",
+      "skill_lines": ["lance"]
     },
     {
-      "id": "whip",
-      "display": "ムチ",
-      "skill_lines": ["whip"]
+      "id": "ax",
+      "display": "オノ",
+      "skill_lines": ["ax"]
+    },
+    {
+      "id": "hammer",
+      "display": "ハンマー",
+      "skill_lines": ["hammer"]
+    },
+    {
+      "id": "rod",
+      "display": "棍",
+      "skill_lines": ["rod"]
     },
     {
       "id": "nail",
@@ -55,14 +65,9 @@
       "skill_lines": ["fan"]
     },
     {
-      "id": "hammer",
-      "display": "ハンマー",
-      "skill_lines": ["hammer"]
-    },
-    {
-      "id": "bow",
-      "display": "弓",
-      "skill_lines": ["bow"]
+      "id": "whip",
+      "display": "ムチ",
+      "skill_lines": ["whip"]
     },
     {
       "id": "boomerang",
@@ -70,13 +75,8 @@
       "skill_lines": ["boomerang"]
     },
     {
-      "id": "shield",
-      "display": "盾",
-      "skill_lines": ["shield"]
-    },
-    {
-      "id": "grappling",
-      "display": "格闘",
-      "skill_lines": ["grappling"]
+      "id": "bow",
+      "display": "弓",
+      "skill_lines": ["bow"]
     }
   ]

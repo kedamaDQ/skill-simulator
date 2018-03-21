@@ -7,8 +7,6 @@ import { initializePresetPoints } from './preset_points';
 import { initializeOwnedPoints } from './owned_points';
 import { initializeAssignedPoints } from './assigned_points';
 
-const BASE_URL=process.env.REACT_APP_BASE_URL.replace(/\/$/, '');
-
 export const INITIALSTATE_FETCH_REQUEST = 'TABLE_FETCH_REQUEST';
 export const INITIALSTATE_FETCH_SUCCESS = 'TABLE_FETCH_SUCCESS';
 export const INITIALSTATE_FETCH_FAIL    = 'TABLE_FETCH_FAIL';
@@ -32,7 +30,7 @@ export const fetchInitialStateFail = (error) => {
   };
 };
 
-export const fetchInitialState = (preOwned, preAssigned) => {
+export const fetchInitialState = (preOwnedDatas, preAssignedHeaders, preAssignedDatas) => {
   return((dispatch) => {
     dispatch(fetchInitialStateRequest());
 
@@ -48,8 +46,8 @@ export const fetchInitialState = (preOwned, preAssigned) => {
       dispatch(initializeWeapons(weapons, skillLines));
       dispatch(initializeSkillLines(skillLines));
       dispatch(initializePresetPoints(presetPoints));
-      dispatch(initializeOwnedPoints(jobs, presetPoints, preOwned));
-      dispatch(initializeAssignedPoints(jobs, skillLines, preAssigned));
+      dispatch(initializeOwnedPoints(jobs, presetPoints, preOwnedDatas));
+      dispatch(initializeAssignedPoints(jobs, skillLines, preAssignedHeaders, preAssignedDatas));
       dispatch(fetchInitialStateSuccess());
     })
     .catch((error) => {

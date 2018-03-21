@@ -30,15 +30,14 @@ const buildOwnedPoints = (before, update) => {
 const owned_points = (state = initialState, action) => {
   switch (action.type) {
     case INITIALIZE_OWNEDPOINTS:
-      console.log(preOwned);
-      const { jobs, presets, preOwned } = action;
+      const { jobs, presets, preOwnedDatas } = action;
       const owned = {};
-      if (preOwned && preOwned.length === jobs.length * 3) {
+      if (preOwnedDatas && preOwnedDatas.length % 3 === 0) {
         jobs.forEach((job, idx) => {
           owned[job.id] = {
-            by_level: presets.by_level[preOwned[idx * 3]],
-            by_training: presets.by_training[preOwned[idx * 3 + 1]],
-            by_skillbooks: presets.by_skillbooks[preOwned[idx * 3 + 2]],
+            by_level: presets.by_level[preOwnedDatas[idx * 3]],
+            by_training: presets.by_training[preOwnedDatas[idx * 3 + 1]],
+            by_skillbooks: presets.by_skillbooks[preOwnedDatas[idx * 3 + 2]],
           }
           owned[job.id].nsp = owned[job.id].by_level.value + owned[job.id].by_training.value;
           owned[job.id].msp = owned[job.id].by_skillbooks.value;

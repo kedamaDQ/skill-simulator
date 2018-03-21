@@ -3,10 +3,13 @@ export const UPDATE_ASSIGNED = 'UPDATE_ASSIGNED';
 export const RESET_ASSIGNED = 'RESET_ASSIGNED';
 export const FULLFILL_FOR_PASSIVES = 'FULLFILL_FOR_PASSIVES';
 
-export const initializeAssignedPoints = (jobs) => {
+export const initializeAssignedPoints = (jobs, skillLines, preAssignedHeaders, preAssignedDatas) => {
   return {
     type: INITIALIZE_ASSIGNED,
-    jobs
+    jobs,
+    skillLines,
+    preAssignedHeaders,
+    preAssignedDatas
   };
 };
 

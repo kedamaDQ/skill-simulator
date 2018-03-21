@@ -2,8 +2,10 @@ import { connect } from 'react-redux';
 import ModalSave from '../components/modal_save';
 import { baseUrl } from '../utils/env';
 import { 
-  JOB_HEADER_MASK,
-  SKILLLINE_HEADER_MASK,
+  JOB_MASK,
+  SKILLLINE_MASK,
+  NSP_MASK,
+  MSP_MASK,
   encodeBase64url
 } from '../utils/base64';
 
@@ -14,38 +16,48 @@ const mapStateToProps = (state, ownProps) => {
   const details = state.assigned_points.details;
   const presets = state.preset_points;
 
-  const o = [];
-  const a = [];
+  const o = [];   // owned
+  const ah = [];  // assigned header
+  const ad = [];  // assigned data
   jobs.forEach((job, jobIdx) => {
-
     o.push(
       presets.by_level.findIndex((v) => v.label === owned[job.id].by_level.label),
       presets.by_training.findIndex((v) => v.label === owned[job.id].by_training.label),
       presets.by_skillbooks.findIndex((v) => v.label === owned[job.id].by_skillbooks.label)
     );
-    const skills = [];
 
+    const headers = [jobIdx | JOB_MASK];
+    const datas = [];
     job.job_skill_lines.concat(job.weapon_skill_lines).forEach((skillLineId) => {
       const skillLineIdx = skillLines.findIndex((sl) => skillLineId === sl.id);
 
       if (details[job.id][skillLineId].nsp || details[job.id][skillLineId].msp) {
-        skills.push(skillLineIdx | SKILLLINE_HEADER_MASK);
+        let type = 0;
+
         if (details[job.id][skillLineId].nsp) {
-          skills.push(details[job.id][skillLineId].nsp);
+          type |= NSP_MASK;
+          datas.push(details[job.id][skillLineId].nsp);
         }
         if (details[job.id][skillLineId].msp) {
-          skills.push(details[job.id][skillLineId].msp);
+          type |= MSP_MASK;
+          datas.push(details[job.id][skillLineId].msp);
         }
+        headers.push(skillLineIdx | SKILLLINE_MASK, type);
       }
     });
 
-    if (skills.length) {
-      a.push(JOB_HEADER_MASK | jobIdx);
-      Array.prototype.push.apply(a, skills);
+    if (datas.length) {
+      Array.prototype.push.apply(ah, headers);
+      Array.prototype.push.apply(ad, datas);
     }
   });
 
-  const query = `?o=${encodeBase64url(new Uint8Array(o))}&a=${encodeBase64url(new Uint8Array(a))}`;
+  console.log(ah);
+  console.log(ad);
+  const query =
+    `?o=${encodeBase64url(new Uint8Array(o))}` +
+    `&ah=${encodeBase64url(new Uint8Array(ah))}` +
+    `&ad=${encodeBase64url(new Uint8Array(ad))}`
   return {
     url: baseUrl() + query
   };

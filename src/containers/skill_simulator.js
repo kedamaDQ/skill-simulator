@@ -3,12 +3,7 @@ import SkillSimulator from '../components/skill_simulator';
 import {
   fetchInitialState
 } from '../actions/skill_simulator';
-import {
-  JOB_HEADER_MASK,
-  SKILLLINE_HEADER_MASK,
-  decodeBase64url
-} from '../utils/base64';
-import { updateOwnedPointsByLevel } from '../actions/owned_points';
+import { decodeBase64url } from '../utils/base64';
 
 const mapStateToProps = (state, ownProps) => {
   const props = {
@@ -19,11 +14,15 @@ const mapStateToProps = (state, ownProps) => {
   if (query.length > 0) {
     const params = new URLSearchParams(query.substring(1));
     if (params.has('o')) {
-      props.preOwned = decodeBase64url(params.get('o'));
-      props.preAssigned =
-        (params.has('a')) ?
-        decodeBase64url(params.get('a')) :
-        null;
+      props.preOwnedDatas = decodeBase64url(params.get('o'));
+
+      if (params.has('ah') && params.has('ad')) {
+        props.preAssignedHeaders = decodeBase64url(params.get('ah'));
+        props.preAssignedDatas = decodeBase64url(params.get('ad'));
+      } else {
+        props.preAssignedHeaders = null;
+        props.preAssignedDatas = null;
+      }
     } else {
       props.preOwned = null;
     }
@@ -34,8 +33,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    fetchInitialState: (preOwned, preAssigned) => {
-      dispatch(fetchInitialState(preOwned, preAssigned))
+    fetchInitialState: (preOwnedDatas, preAssignedHeaders, preAssignedDatas) => {
+      dispatch(fetchInitialState(preOwnedDatas, preAssignedHeaders, preAssignedDatas))
     },
     loadStateFromQueryString: (state) => {
     }
