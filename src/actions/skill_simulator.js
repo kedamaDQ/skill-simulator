@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch';
+import { baseUrl } from '../utils/env';
 import { initializeJobs } from './jobs';
 import { initializeWeapons } from './weapons';
 import { initializeSkillLines } from './skill_lines';
@@ -31,7 +32,7 @@ export const fetchInitialStateFail = (error) => {
   };
 };
 
-export const fetchInitialState = () => {
+export const fetchInitialState = (preOwned, preAssigned) => {
   return((dispatch) => {
     dispatch(fetchInitialStateRequest());
 
@@ -47,8 +48,8 @@ export const fetchInitialState = () => {
       dispatch(initializeWeapons(weapons, skillLines));
       dispatch(initializeSkillLines(skillLines));
       dispatch(initializePresetPoints(presetPoints));
-      dispatch(initializeAssignedPoints(jobs));
-      dispatch(initializeOwnedPoints(jobs));
+      dispatch(initializeOwnedPoints(jobs, presetPoints, preOwned));
+      dispatch(initializeAssignedPoints(jobs, skillLines, preAssigned));
       dispatch(fetchInitialStateSuccess());
     })
     .catch((error) => {
@@ -59,7 +60,7 @@ export const fetchInitialState = () => {
 };
 
 const fetchData = async (resource) => {
-  return fetch(`${BASE_URL}/${resource}`)
+  return fetch(`${baseUrl()}/${resource}`)
   .then((resp) => {
     return resp.json();
   });
