@@ -4,6 +4,12 @@ import {
   RESET_ASSIGNED,
   FULLFILL_FOR_PASSIVES
 } from '../actions/assigned_points';
+import {
+  JOB_MASK,
+  SKILLLINE_MASK,
+  NSP_MASK,
+  MSP_MASK
+} from '../utils/base64';
 
 const initialState = {
   details: {
@@ -141,6 +147,7 @@ const resetSkillLines = (state, targetSkillLineIds) => {
 const assigned_points = (state = initialState, action) => {
   switch (action.type) {
     case INITIALIZE_ASSIGNED:
+      const { jobs, skillLines, preAssignedHeaders, preAssignedDatas } = action;
       const assigned = {
         details: {},
         summaries: {}
@@ -154,15 +161,54 @@ const assigned_points = (state = initialState, action) => {
         });
         assigned.summaries[job.id] = Object.assign({}, defShape);
       });
+
+      if (preAssignedHeaders.length && preAssignedDatas.length) {
+        const APPLY_TRIGGER_MASK = JOB_MASK | SKILLLINE_MASK;
+        const apply = {};
+        let currentDataIdx = 0;
+        preAssignedHeaders.forEach((header) => {
+          if (header & APPLY_TRIGGER_MASK) {
+            if (apply.jobId && apply.skillLineId) {
+              assigned.details[apply.jobId][apply.skillLineId] = apply.assigned;
+            }
+
+            if (header & JOB_MASK) {
+              apply.jobId = jobs[header & ~APPLY_TRIGGER_MASK].id;
+              apply.skillLineId = null;
+            } else if (header & SKILLLINE_MASK) {
+              apply.skillLineId = skillLines[header & ~APPLY_TRIGGER_MASK].id;
+            }
+
+            apply['assigned'] = {
+              nsp: 0,
+              msp: 0 
+            }
+          } else {
+            if (apply.jobId && apply.skillLineId) {
+              if (header & NSP_MASK) {
+                apply.assigned.nsp = preAssignedDatas[currentDataIdx++];
+              }
+              if (header & MSP_MASK) {
+                apply.assigned.msp = preAssignedDatas[currentDataIdx++];
+              }
+              apply.assigned.total = apply.assigned.nsp + apply.assigned.msp;
+            }
+          }
+        });
+        if (apply.jobId && apply.skillLineId) {
+          assigned.details[apply.jobId][apply.skillLineId] = apply.assigned;
+        }
+        assigned.summaries = buildSummaries(assigned.details);
+      }
       return assigned;
 
     case UPDATE_ASSIGNED:
-      const a = mergeDetails(state, action);
+      const details = mergeDetails(state, action);
       return {
 //        details: mergeDetails(state, action),
 //        summaries: mergeSummaries(state, action)
-        details: a,
-        summaries: buildSummaries(a)
+        details,
+        summaries: buildSummaries(details)
       };
 
     case RESET_ASSIGNED:

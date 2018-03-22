@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 import ModalAssignContainer from '../containers/modal_assign';
+import ModalSaveContainer from '../containers/modal_save';
 import ModalBulkContainer from '../containers/modal_bulk';
 import ModalUsage from './modal_usage';
 import ModalAbout from './modal_about';
@@ -59,6 +60,13 @@ export default class Modal extends React.PureComponent {
             />
             { textAboutClose }
           </div>
+        );
+
+      case 'save':
+        return(
+          <ModalSaveContainer
+            contentParams={this.props.contentParams}
+          />
         );
 
       case 'usage':

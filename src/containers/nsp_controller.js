@@ -39,8 +39,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       if (addend === ASSIGN_MIN) {
         assigned.nsp = 0;
       } else if (addend === ASSIGN_MAX) {
+        const totalAssigned = skillTotalAssigned.nsp + selfAssigned.msp;
         if (jobRemained.nsp > 0) {
-          const totalAssigned = skillTotalAssigned.nsp + selfAssigned.msp;
           const preTotalAssigned = totalAssigned + jobRemained.nsp;
           if (preTotalAssigned > skillLine.max_points) {
             assigned.nsp = selfAssigned.nsp + (skillLine.max_points - totalAssigned);
@@ -48,7 +48,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             assigned.nsp = selfAssigned.nsp + jobRemained.nsp;
           }
         } else {
-          assigned.nsp = selfAssigned.nsp + jobRemained.nsp;
+          if (totalAssigned > skillLine.max_points) {
+            assigned.nsp = skillLine.max_points - (totalAssigned - selfAssigned.nsp);
+          } else {
+            assigned.nsp = selfAssigned.nsp + jobRemained.nsp;
+          }
           if (assigned.nsp < 0) {
             assigned.nsp = 0;
           }

@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
 import HeaderNavigation, {
   OPEN_BULK,
+  OPEN_SAVE_DIALOG,
   OPEN_USAGE,
   OPEN_ABOUT
 } from '../components/header_navigation';
 import {
   openModalBulk,
+  openModalSave,
   openModalUsage,
   openModalAbout
 } from '../actions/modal';
@@ -29,7 +31,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         case OPEN_ABOUT:
           dispatch(openModalAbout(position));
           break;
-        
+
+        case OPEN_SAVE_DIALOG:
+          dispatch(openModalSave(position));
+          break;
+
         default:
           break;
       }

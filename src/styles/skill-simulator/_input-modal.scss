@@ -125,7 +125,6 @@ $bulk-panel-padding: 5px;
   }
 }
 
-
 .assign-controller {
   margin: 35px auto 0 auto;
   padding: 0;
@@ -355,6 +354,47 @@ ul.selector {
         &:hover {
           background-color: $ui-base-color-primary-hover;
         }
+      }
+    }
+  }
+}
+
+.modal-save {
+  padding: 10px;
+
+  &__url-input {
+    width: calc(100% - 10px);
+    height: $ui-panel-size;
+    padding: 0 5px;
+    font-size: $ui-panel-font-size;
+    color: $ui-base-color-text-inactive;
+    border: solid $ui-panel-border-width $ui-base-color-border;
+    border-radius: $ui-panel-border-radius;
+    background-color: $ui-base-color-background;
+  }
+
+  &__operation-panel {
+    display: flex;
+    width: 100%;
+    margin: 10px 0;
+    padding: 0;
+    justify-content: flex-start;
+
+    &__button {
+      display: block;
+      width: 100px;
+      height: $ui-panel-size;
+      margin: 0 10px 0 0;
+      padding: 0;
+      color: $ui-base-color-text;
+      border: solid $ui-panel-border-width $ui-base-color-border;
+      border-radius: $ui-panel-border-radius;
+      background-color: $ui-base-color-background;
+      cursor: pointer;
+
+      &:hover {
+        border-color: $ui-base-color-primary;
+        background-color: $ui-base-color-primary-hover;
       }
     }
   }

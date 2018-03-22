@@ -23,6 +23,17 @@ export const openModalBulk = (position) => {
   };
 };
 
+export const openModalSave = (position) => {
+  return {
+    type: MODAL_OPEN,
+    position,
+    width: 410,
+    height: 225,
+    content: 'save',
+    content_params: {}
+  }
+};
+
 export const openModalUsage = (position) => {
   return {
     type: MODAL_OPEN,

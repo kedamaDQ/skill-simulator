@@ -30,18 +30,31 @@ const buildOwnedPoints = (before, update) => {
 const owned_points = (state = initialState, action) => {
   switch (action.type) {
     case INITIALIZE_OWNEDPOINTS:
-      const { jobs } = action;
+      const { jobs, presets, preOwnedDatas } = action;
       const owned = {};
-      jobs.forEach((job) => {
-        owned[job.id] = {
-          by_level: {label: 'Lv.1', value: 0},
-          by_training: {label: '0個', value: 0},
-          by_skillbooks: {label: '0個', value: 0},
-          nsp: 0,
-          msp: 0,
-          total: 0
-        }
-      });
+      if (preOwnedDatas.length && preOwnedDatas.length % 3 === 0) {
+        jobs.forEach((job, idx) => {
+          owned[job.id] = {
+            by_level: presets.by_level[preOwnedDatas[idx * 3]],
+            by_training: presets.by_training[preOwnedDatas[idx * 3 + 1]],
+            by_skillbooks: presets.by_skillbooks[preOwnedDatas[idx * 3 + 2]],
+          }
+          owned[job.id].nsp = owned[job.id].by_level.value + owned[job.id].by_training.value;
+          owned[job.id].msp = owned[job.id].by_skillbooks.value;
+          owned[job.id].total = owned[job.id].nsp + owned[job.id].msp;
+        });
+      } else {
+        jobs.forEach((job) => {
+          owned[job.id] = {
+            by_level: {label: 'Lv.1', value: 0},
+            by_training: {label: '0個', value: 0},
+            by_skillbooks: {label: '0個', value: 0},
+            nsp: 0,
+            msp: 0,
+            total: 0
+          }
+        });
+      }
       return {
         ...owned,
         bulk_setup: {

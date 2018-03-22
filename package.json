@@ -18,7 +18,8 @@
     "react-scripts": "1.1.1",
     "react-select": "^1.2.1",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "url-search-params": "^0.10.0"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
