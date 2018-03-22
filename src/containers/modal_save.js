@@ -53,11 +53,11 @@ const mapStateToProps = (state, ownProps) => {
   });
 
   const query =
-    `?o=${encodeBase64url(o)}` +
+    `o=${encodeBase64url(o)}` +
     `&ah=${encodeBase64url(ah)}` +
     `&ad=${encodeBase64url(ad)}`;
   return {
-    url: baseUrl() + query
+    url: `${baseUrl()}/?${query}`
   };
 };
 
