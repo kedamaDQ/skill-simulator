@@ -162,7 +162,7 @@ const assigned_points = (state = initialState, action) => {
         assigned.summaries[job.id] = Object.assign({}, defShape);
       });
 
-      if (preAssignedHeaders && preAssignedDatas) {
+      if (preAssignedHeaders.length && preAssignedDatas.length) {
         const APPLY_TRIGGER_MASK = JOB_MASK | SKILLLINE_MASK;
         const apply = {};
         let currentDataIdx = 0;

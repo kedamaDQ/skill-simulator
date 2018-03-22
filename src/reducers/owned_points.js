@@ -32,7 +32,7 @@ const owned_points = (state = initialState, action) => {
     case INITIALIZE_OWNEDPOINTS:
       const { jobs, presets, preOwnedDatas } = action;
       const owned = {};
-      if (preOwnedDatas && preOwnedDatas.length % 3 === 0) {
+      if (preOwnedDatas.length && preOwnedDatas.length % 3 === 0) {
         jobs.forEach((job, idx) => {
           owned[job.id] = {
             by_level: presets.by_level[preOwnedDatas[idx * 3]],

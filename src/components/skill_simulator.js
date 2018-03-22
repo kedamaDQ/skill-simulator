@@ -11,9 +11,15 @@ export default class SkillSimulator extends React.Component {
   static propTypes = {
     isFetching: PropTypes.bool.isRequired,
     fetchInitialState: PropTypes.func.isRequired,
-    preOwnedDatas: PropTypes.object.isRequired,
-    preAssignedHeaders: PropTypes.object.isRequired,
-    preAssignedDatas: PropTypes.object.isRequired
+    preOwnedDatas: PropTypes.arrayOf(
+      PropTypes.number.isRequired
+    ).isRequired,
+    preAssignedHeaders: PropTypes.arrayOf(
+      PropTypes.number.isRequired
+    ).isRequired,
+    preAssignedDatas: PropTypes.arrayOf(
+      PropTypes.number.isRequired
+    ).isRequired
   };
 
   componentWillMount() {

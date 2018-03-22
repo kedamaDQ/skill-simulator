@@ -52,12 +52,10 @@ const mapStateToProps = (state, ownProps) => {
     }
   });
 
-  console.log(ah);
-  console.log(ad);
   const query =
-    `?o=${encodeBase64url(new Uint8Array(o))}` +
-    `&ah=${encodeBase64url(new Uint8Array(ah))}` +
-    `&ad=${encodeBase64url(new Uint8Array(ad))}`
+    `?o=${encodeBase64url(o)}` +
+    `&ah=${encodeBase64url(ah)}` +
+    `&ad=${encodeBase64url(ad)}`;
   return {
     url: baseUrl() + query
   };
