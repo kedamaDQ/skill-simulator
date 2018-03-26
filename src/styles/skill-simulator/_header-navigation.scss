@@ -1,12 +1,29 @@
 $nav-button-width: 120px;
 $nav-button-height: $ui-panel-size;
 
+.header-navigation-outer {
+  width: 100%;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  & h1 {
+    margin-bottom: 10px;
+  }
+}
+
 .header-navigation {
-  float: right;
-  text-align: right;
+  display: flex;
+  flex-wrap: wrap;
 
   & button {
-    margin: 0 10px;
+    display: block;
+    margin: 0 10px 2px 0;
     min-width: $nav-button-width;
     height: $nav-button-height;
     color: $ui-base-color-text;
