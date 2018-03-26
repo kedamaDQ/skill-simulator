@@ -30,7 +30,7 @@ export default class HeaderNavigation extends React.PureComponent {
 
   render() {
     return(
-      <div>
+      <div className='header-navigation-outer'>
         <h1>DQ10 スキルシミュレーター by foresdon.jp (v{ versionString() })</h1>
         <div className='header-navigation'>
           <button

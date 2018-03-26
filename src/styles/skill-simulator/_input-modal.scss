@@ -7,6 +7,12 @@ $bulk-panel-width: 150px;
 $bulk-panel-margin: 5px;
 $bulk-panel-padding: 5px;
 
+/*
+.ReactModal__Body--open {
+  position: fixed;
+}
+*/
+
 .modal_content {
   // top, left, width and height will be defined by components/modal.js automatically.
   position: absolute;
