@@ -98,12 +98,16 @@ export default class Modal extends React.PureComponent {
     const { width, height, position: { x, y } } = this.props;
 
     const top =
-      (y + height / 2 > window.innerHeight - edgeMargin) ? window.innerHeight - (height + edgeMargin):
-      (y - height / 2 < 0 + edgeMargin) ? 0 + edgeMargin : y - height / 2;
+      (height + edgeMargin * 2 > window.innerHeight) ? 0 + edgeMargin :
+      (y - height / 2 < 0 + edgeMargin) ? 0 + edgeMargin :
+      (y + height / 2 > window.innerHeight - edgeMargin) ? window.innerHeight - (height + edgeMargin) :
+      y - height / 2;
 
-    const left = 
-      (x + width / 2 > window.innerWidth - edgeMargin) ? window.innerWidth - (width + edgeMargin):
-      (x - width / 2 < 0 + edgeMargin) ? 0 + edgeMargin : x - width / 2;
+    const left =
+      (width + edgeMargin * 2 > window.innerWidth) ? 0 + edgeMargin :
+      (x - width / 2 < 0 + edgeMargin) ? 0 + edgeMargin :
+      (x + width / 2 > window.innerWidth - edgeMargin) ? window.innerWidth - (width + edgeMargin) :
+      x - width / 2;
 
     const customStyle = {
       content: {
