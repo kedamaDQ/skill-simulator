@@ -4,22 +4,10 @@ import SpTableHeaderPanelContainer from '../containers/sp_table_header_panel';
 import SpTableDataRowContainer from '../containers/sp_table_data_row';
 import SkillSummarySpPanelContainer from '../containers/sp_panel_skill_summary';
 
-export default class SpTable extends React.PureComponent {
+const SpTable = (props) => {
 
-  static propTypes = {
-    isFetching: PropTypes.bool.isRequired,
-    jobs: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      display: PropTypes.string.isRequired,
-      display_short: PropTypes.string.isRequired
-    }).isRequired).isRequired,
-    weapons: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      display: PropTypes.string.isRequired
-    }).isRequired).isRequired,
-  };
 
-  renderHeaderRow() {
+  const renderHeaderRow = () => {
     const headerDatas = [
       {
         id: 'owned-by-level-header',
@@ -100,7 +88,7 @@ export default class SpTable extends React.PureComponent {
       </th>
     );
 
-    this.props.weapons.forEach((weapon) => {
+    props.weapons.forEach((weapon) => {
       headers.push(
         <th
           key={`header-${weapon.id}`}
@@ -127,13 +115,13 @@ export default class SpTable extends React.PureComponent {
       />
       </th>
     );
-
     return <tr>{headers}</tr>;
-  }
+  };
 
-  renderDataRows() {
+  const renderDataRows = () => {
     const rows = [];
-    this.props.jobs.forEach((job) => {
+
+    props.jobs.forEach((job) => {
       rows.push(
         <SpTableDataRowContainer
           key={job.id}
@@ -141,12 +129,13 @@ export default class SpTable extends React.PureComponent {
         />);
     });
     return rows;
-  }
+  };
 
-  renderTotalRow() {
+  const renderTotalRow = () => {
     const cells = [];
+
     cells.push(<th key={`summary-header`} colSpan='7'></th>);
-    this.props.weapons.forEach((weapon) => {
+    props.weapons.forEach((weapon) => {
       cells.push(
         <td
           key={`summary-${weapon.id}`}
@@ -156,27 +145,40 @@ export default class SpTable extends React.PureComponent {
         </td>);
     });
     return <tr>{cells}</tr>;
-  }
+  };
 
-  render() {
-    if (this.props.isFetching) {
-      return (<div>loading...</div>);
-    } else {
-      return(
-        <div className='skill-point-table-outer'>
-          <table className='skill-point-table'>
-            <thead>
-              { this.renderHeaderRow() }
-            </thead>
-            <tbody>
-              { this.renderDataRows() }
-            </tbody>
-            <tfoot>
-              { this.renderTotalRow() }
-            </tfoot>
-          </table>
-        </div>
-      );
-    }
+  if (props.isFetching) {
+    return (<div>loading...</div>);
+  } else {
+    return(
+      <div className='skill-point-table-outer'>
+        <table className='skill-point-table'>
+          <thead>
+            { renderHeaderRow() }
+          </thead>
+          <tbody>
+            { renderDataRows() }
+          </tbody>
+          <tfoot>
+            { renderTotalRow() }
+          </tfoot>
+        </table>
+      </div>
+    );
   }
 }
+
+SpTable.propTypes = {
+  isFetching: PropTypes.bool.isRequired,
+  jobs: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    display: PropTypes.string.isRequired,
+    display_short: PropTypes.string.isRequired
+  }).isRequired).isRequired,
+  weapons: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    display: PropTypes.string.isRequired
+  }).isRequired).isRequired,
+};
+
+export default SpTable;
