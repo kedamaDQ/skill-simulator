@@ -43,7 +43,7 @@ export const fetchInitialState = (preOwnedDatas, preAssignedHeaders, preAssigned
     .then((values) => {
       const [jobs, weapons, skillLines, presetPoints] = values;
       dispatch(initializeJobs(jobs));
-      dispatch(initializeWeapons(weapons, skillLines));
+      dispatch(initializeWeapons(weapons, jobs));
       dispatch(initializeSkillLines(skillLines));
       dispatch(initializePresetPoints(presetPoints));
       dispatch(initializeOwnedPoints(jobs, presetPoints, preOwnedDatas));

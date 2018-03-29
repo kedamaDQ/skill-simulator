@@ -150,6 +150,7 @@ const SpTable = (props) => {
   if (props.isFetching) {
     return (<div>loading...</div>);
   } else {
+    console.log(props.weapons);
     return(
       <div className='skill-point-table-outer'>
         <table className='skill-point-table'>
