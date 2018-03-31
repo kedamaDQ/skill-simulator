@@ -51,7 +51,7 @@ const mergeDetails = ({ details }, { jobId, skillLineId, assigned }) => {
 
 const mergeSummaries = ({details, summaries}, {jobId, skillLineId, ownerJobs, assigned}) => {
   const jobSummary = Object.assign({}, defShape);
-  Object.keys(details[jobId]).forEach((slId) => {
+  for (const slId in details[jobId]) {
     const existing = details[jobId][slId];
     if (slId === skillLineId) {
       jobSummary.nsp += (typeof assigned.nsp === 'number') ? assigned.nsp : existing.nsp;
@@ -60,7 +60,7 @@ const mergeSummaries = ({details, summaries}, {jobId, skillLineId, ownerJobs, as
       jobSummary.nsp += existing.nsp;
       jobSummary.msp += existing.msp;
     }
-  });
+  }
   jobSummary.total = jobSummary.nsp + jobSummary.msp;
 
   const skillSummary = Object.assign({}, defShape);
