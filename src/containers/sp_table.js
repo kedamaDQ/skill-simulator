@@ -3,7 +3,7 @@ import SkillTable from '../components/sp_table';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    isFetching: state.skill_simulator.isFetching,
+    isFetching: state.skill_simulator.is_fetching,
     jobs: state.skill_simulator.jobs,
     weapons: state.skill_simulator.weapons,
     indices: state.skill_simulator.indices

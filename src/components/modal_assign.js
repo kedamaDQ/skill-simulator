@@ -124,11 +124,8 @@ const ModalAssign = (props) => {
 }
 
 ModalAssign.propTypes = {
-  job: PropTypes.shape({
-    id: PropTypes.string.isRequired
-  }).isRequired,
+  job: PropTypes.object.isRequired,
   skillLine: PropTypes.shape({
-    id: PropTypes.string.isRequired,
     max_points: PropTypes.number.isRequired,
     skills: PropTypes.arrayOf(PropTypes.shape({
       display: PropTypes.string.isRequired,

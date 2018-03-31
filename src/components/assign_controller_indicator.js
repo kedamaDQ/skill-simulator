@@ -12,7 +12,7 @@ const AssignControllerIndicator = (props) => {
 
 AssignControllerIndicator.propTypes = {
   label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired
+  value: PropTypes.number.isRequired
 };
 
 export default AssignControllerIndicator;

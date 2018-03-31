@@ -68,13 +68,8 @@ const AssignController = (props) => {
 };
 
 AssignController.propTypes = {
-  job: PropTypes.shape({
-    id: PropTypes.string.isRequired
-  }).isRequired,
-  skillLine: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    max_points: PropTypes.number.isRequired
-  }).isRequired,
+  jobId: PropTypes.string.isRequired,
+  skillLineId: PropTypes.string.isRequired,
   selfAssigned: PropTypes.shape({
     nsp: PropTypes.number.isRequired,
     msp: PropTypes.number.isRequired
