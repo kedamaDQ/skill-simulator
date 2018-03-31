@@ -7,12 +7,8 @@ import Selector from './selector';
 
 const ModalAssign = (props) => {
 
-  const handleClickSelector = (points) => {
-    props.onChange(props.job.id, props.skillLine.id, { nsp: points });
-  };
-
   const formatItems = () => {
-    const {selfAssigned, skillTotalAssigned, skillLine: {skills}} = props;
+    const { selfAssigned, skillTotalAssigned, skillLine: {skills} } = props;
     const otherAssigned = skillTotalAssigned.nsp - selfAssigned.nsp;
 
     return skills.map((skill) => {
@@ -54,7 +50,7 @@ const ModalAssign = (props) => {
   }
 
   const renderSkillAssignedIndicator = () => {
-    if (props.job.job_skill_lines.includes(props.skillLine.id)) {
+    if (props.job.job_skill_lines.includes(props.skillLineId)) {
       return null;
     } else {
       return (
@@ -69,6 +65,8 @@ const ModalAssign = (props) => {
   };
 
   const {
+    jobId,
+    skillLineId,
     job,
     skillLine,
     selfAssigned,
@@ -83,15 +81,16 @@ const ModalAssign = (props) => {
         <div>
           <AssignedIndicatorContainer
             size='large'
-            display={`${props.job.display_short} - ${props.skillLine.display}`}
-            numerator={props.skillTotalAssigned.nsp + props.selfAssigned.msp}
-            denominator={props.skillLine.max_points}
+            display={`${job.display_short} - ${skillLine.display}`}
+            numerator={skillTotalAssigned.nsp + selfAssigned.msp}
+            denominator={skillLine.max_points}
           />
           { renderSkillAssignedIndicator() }
         </div>
         <NspControllerContainer
-          job={job}
-          skillLine={skillLine}
+          jobId={jobId}
+          skillLineId={skillLineId}
+          skillLineMax={skillLine.max_points}
           selfAssigned={selfAssigned}
           skillTotalAssigned={skillTotalAssigned}
           jobOwned={jobOwned}
@@ -100,8 +99,9 @@ const ModalAssign = (props) => {
           display='スキルポイント'
         />
         <MspControllerContainer
-          job={job}
-          skillLine={skillLine}
+          jobId={jobId}
+          skillLineId={skillLineId}
+          skillLineMax={skillLine.max_points}
           selfAssigned={selfAssigned}
           skillTotalAssigned={skillTotalAssigned}
           jobOwned={jobOwned}
@@ -113,7 +113,7 @@ const ModalAssign = (props) => {
       <div className='modal-assigned__selector'>
         <Selector
           items={formatItems()}
-          onClick={handleClickSelector}
+          onClick={props.onSelectorClick}
         />
       </div>
     </div>

@@ -18,8 +18,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: (addend) => {
       const {
-        job,
-        skillLine,
+        jobId,
+        skillLineId,
+        skillLineMax,
         selfAssigned,
         skillTotalAssigned,
         jobOwned,
@@ -35,15 +36,15 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       } else if (addend === ASSIGN_MAX) {
         if (jobRemained.msp > 0) {
           const preTotalAssigned = skillTotalAssigned.nsp + selfAssigned.msp + jobRemained.msp;
-          if (preTotalAssigned <= skillLine.max_points) {
+          if (preTotalAssigned <= skillLineMax) {
             assigned.msp = selfAssigned.msp + jobRemained.msp;
           } else {
-            if (selfAssigned.nsp >= preTotalAssigned - skillLine.max_points) {
-              assigned.nsp = selfAssigned.nsp - (preTotalAssigned - skillLine.max_points);
+            if (selfAssigned.nsp >= preTotalAssigned - skillLineMax) {
+              assigned.nsp = selfAssigned.nsp - (preTotalAssigned - skillLineMax);
               assigned.msp = selfAssigned.msp + jobRemained.msp;
             } else {
               assigned.nsp = 0;
-              assigned.msp = selfAssigned.msp + (skillLine.max_points - skillTotalAssigned.nsp);
+              assigned.msp = selfAssigned.msp + (skillLineMax- skillTotalAssigned.nsp);
             }
           }
         } else {
@@ -57,19 +58,19 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         }
 
         const preTotalAssigned = skillTotalAssigned.nsp + assigned.msp;
-        if (preTotalAssigned > skillLine.max_points) {
-          if (selfAssigned.nsp >= preTotalAssigned - skillLine.max_points) {
-            assigned.nsp = selfAssigned.nsp - (preTotalAssigned - skillLine.max_points);
+        if (preTotalAssigned > skillLineMax) {
+          if (selfAssigned.nsp >= preTotalAssigned - skillLineMax) {
+            assigned.nsp = selfAssigned.nsp - (preTotalAssigned - skillLineMax);
           } else {
             assigned.nsp = 0;
-            assigned.msp = skillLine.max_points - skillTotalAssigned;
+            assigned.msp = skillLineMax- skillTotalAssigned;
           }
         }
         if (assigned.msp < 0) {
           assigned.msp = 0;
         }
       }
-      dispatch(updateAssigned(job.id, skillLine.id, assigned));
+      dispatch(updateAssigned(jobId, skillLineId, assigned));
     }
   };
 };

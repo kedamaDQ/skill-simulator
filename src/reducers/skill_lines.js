@@ -21,15 +21,22 @@ const initialState = [
   }
 ];
 
+const buildSkillLines = ({ skillLines }) => {
+  const sl = {};
+  for (const skillLineId in skillLines) {
+    const skillLine = skillLines[skillLineId];
+    sl[skillLineId] = {
+      ...skillLine,
+      max_points: skillLine.skills[skillLine.skills.length -1].points
+    };
+  }
+  return sl;
+};
+
 const skill_lines = (state = initialState, action) => {
   switch (action.type) {
     case INITIALIZE_SKILLLINES:
-      return action.skillLines.map((skillLine) => {
-        return {
-          ...skillLine,
-          max_points: skillLine.skills[skillLine.skills.length -1].points
-        };
-      });
+     return buildSkillLines(action);
 
     default:
       return state;

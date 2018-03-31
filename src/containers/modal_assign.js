@@ -4,21 +4,21 @@ import { updateAssigned } from '../actions/assigned_points';
 //import { closeModal } from '../actions/modal';
 
 const mapStateToProps = (state, ownProps) => {
-  const { job, skillLine } = ownProps;
+  const { jobId, skillLineId } = ownProps;
   return {
-    job,
-    skillLine,
-    selfAssigned: state.assigned_points.details[job.id][skillLine.id],
-    skillTotalAssigned: state.assigned_points.summaries[skillLine.id],
-    jobOwned: state.owned_points[job.id],
-    jobAssigned: state.assigned_points.summaries[job.id],
+    job: state.jobs[jobId],
+    skillLine: state.skill_lines[skillLineId],
+    selfAssigned: state.assigned_points.details[jobId][skillLineId],
+    skillTotalAssigned: state.assigned_points.summaries[skillLineId],
+    jobOwned: state.owned_points[jobId],
+    jobAssigned: state.assigned_points.summaries[jobId],
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onChange: (jobId, skillLineId, assigned) => {
-      dispatch(updateAssigned(jobId, skillLineId, assigned));
+    onSelectorClick: (assigned) => {
+      dispatch(updateAssigned(ownProps.jobId, ownProps.skillLineId, assigned));
 //      dispatch(closeModal());
     }
   };

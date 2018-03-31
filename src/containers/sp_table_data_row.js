@@ -7,23 +7,25 @@ import {
 } from '../actions/owned_points';
 
 const mapStateToProps = (state, ownProps) => {
-  const { job } = ownProps;
+  const { jobId } = ownProps;
   return {
-    presets: state.preset_points,
+    indices: state.indices,
+    job: state.jobs[jobId],
     weapons: state.weapons,
+    presets: state.preset_points,
     skillLines: state.skill_lines,
-    owned: state.owned_points[job.id],
-    assigned: state.assigned_points.summaries[job.id]
+    owned: state.owned_points[jobId],
+    assigned: state.assigned_points.summaries[jobId]
   };
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onLevelChange: (selected) => {
-      dispatch(updateOwnedPointsByLevel(ownProps.job.id, selected));
+      dispatch(updateOwnedPointsByLevel(ownProps.jobId, selected));
     },
     onTrainingChange: (selected) => {
-      dispatch(updateOwnedPointsByTraining(ownProps.job.id, selected));
+      dispatch(updateOwnedPointsByTraining(ownProps.jobId, selected));
     },
     onSkillbooksChange: (selected) => {
       dispatch(updateBulkSetupForSkillbooks(selected));

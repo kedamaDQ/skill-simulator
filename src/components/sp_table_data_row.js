@@ -10,17 +10,12 @@ const SpTableDataRow = (props) => {
 
   const renderJobSkillPanels = () => {
     const skillPanels = [];
-
     props.job.job_skill_lines.forEach((skillLineId) => {
-      const skillLine = props.skillLines.find((skillLine) => {
-        return (skillLine.id === skillLineId);
-      });
-
       skillPanels.push(
         <AssignedSpPanelContainer
-          key={`${props.job.id}-${skillLine.id}`}
-          job={props.job}
-          skillLine={skillLine}
+          key={`${props.jobId}-${skillLineId}`}
+          jobId={props.jobId}
+          skillLineId={skillLineId}
         />
       );
     })
@@ -31,37 +26,33 @@ const SpTableDataRow = (props) => {
   const renderWeaponSkillPanels = () => {
     const cells = [];
 
-    props.weapons.forEach((weapon) => {
-      const skillLineId = props.job.weapon_skill_lines.find((id) => {
-        return (id === weapon.id);
-      });
-
-      if (skillLineId) {
-        const skillLine = props.skillLines.find((skillLine) => {
-          return (skillLineId === skillLine.id);
+    props.indices.weapons.forEach((weaponId) => {
+      const weapon = props.weapons[weaponId];
+      if (weapon.owner_jobs.includes(props.jobId)) {
+        weapon.skill_lines.forEach((skillLineId) => {
+          cells.push(
+            <td
+              key={`${props.job.id}-${skillLineId}`}
+              className='skill-point-table__assigned-data'
+            >
+              <AssignedSpPanelContainer
+                jobId={props.jobId}
+                skillLineId={skillLineId}
+              />
+            </td>);
         });
-
-        cells.push(
-          <td
-            key={`${props.job.id}-${weapon.id}`}
-            className='skill-point-table__assigned-data'
-          >
-            <AssignedSpPanelContainer
-              job={props.job}
-              skillLine={skillLine}
-            />
-          </td>);
       } else {
-        cells.push(
-          <td
-            key={`${props.job.id}-${weapon.id}`}
-            className='skill-point-table__assigned-data'
-          >
-          </td>
-        );
+        weapon.skill_lines.forEach((skillLineId) => {
+          cells.push(
+            <td
+              key={`${props.jobId}-${skillLineId}`}
+              className='skill-point-table__assigned-data'
+            >
+            </td>
+          );
+        });
       }
     });
-
     return cells;
   };
 
@@ -69,7 +60,7 @@ const SpTableDataRow = (props) => {
     <tr>
       <th className='skill-point-table__row-header'>
         <SpTableHeaderPanelContainer
-          id={props.job.id}
+          id={props.jobId}
           display={props.job.display_short}
           styleClasses='job-header'
         />
@@ -97,14 +88,12 @@ const SpTableDataRow = (props) => {
       </td>
       <td className='skill-point-table__owned-data'>
         <RemainedSpPanelContainer
-          job={props.job}
           owned={ props.owned.nsp }
           assigned={ props.assigned.nsp }
         />
       </td>
       <td className='skill-point-table__owned-data'>
         <RemainedSpPanelContainer
-          job={props.job}
           owned={ props.owned.msp }
           assigned={ props.assigned.msp }
         />
@@ -117,7 +106,7 @@ const SpTableDataRow = (props) => {
       }
       <td className='skill-point-table__job-total-data'>
         <JobSummarySpPanelContainer
-          job={props.job}
+          jobId={props.jobId}
         />
       </td>
     </tr>
@@ -126,31 +115,16 @@ const SpTableDataRow = (props) => {
 
 SpTableDataRow.propTypes = {
   job: PropTypes.shape({
-    id: PropTypes.string.isRequired,
     display: PropTypes.string.isRequired,
     display_short: PropTypes.string.isRequired,
     job_skill_lines: PropTypes.arrayOf(PropTypes.string).isRequired,
     weapon_skill_lines: PropTypes.arrayOf(PropTypes.string).isRequired
   }).isRequired,
-  weapons: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
+  weapons: PropTypes.shape(PropTypes.shape({
     display: PropTypes.string.isRequired,
     skill_lines: PropTypes.arrayOf(PropTypes.string).isRequired
   }).isRequired).isRequired,
-  skillLines: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    display: PropTypes.string.isRequired,
-    skills: PropTypes.arrayOf(PropTypes.shape({
-      display: PropTypes.string.isRequired,
-      points: PropTypes.number.isRequired,
-      additional: PropTypes.bool.isRequired
-    }).isRequired).isRequired,
-//    additional_skills: PropTypes.arrayOf(PropTypes.shape({
-//      display: PropTypes.string.isRequired,
-//      values: PropTypes.arrayOf(PropTypes.string)
-//    }).isRequired).isRequired,
-    passives_filling: PropTypes.number.isRequired
-  }).isRequired).isRequired,
+  skillLines: PropTypes.object.isRequired,
   presets: PropTypes.shape({
     by_level: PropTypes.arrayOf(PropTypes.shape({
       label: PropTypes.string.isRequired,

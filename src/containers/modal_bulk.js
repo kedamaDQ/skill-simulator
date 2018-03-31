@@ -11,27 +11,26 @@ import {
 } from '../actions/assigned_points';
 
 const mapStateToProps = (state, ownProps) => {
-  const skillLines = state.skill_lines;
+  const { jobs, weapons, skill_lines } = state;
 
   const passiveFillings = {};
-  state.jobs.forEach((job) => {
-    passiveFillings[job.id] = {};
-    job.job_skill_lines.forEach((skillLineId) => {
-      passiveFillings[job.id][skillLineId] = {
-        nsp: skillLines.find((skillLine) => {
-          return skillLine.id === skillLineId;
-        }).passives_filling
+  state.indices.jobs.forEach((jobId) => {
+    passiveFillings[jobId] = {};
+    jobs[jobId].job_skill_lines.forEach((skillLineId) => {
+      passiveFillings[jobId][skillLineId] = {
+        nsp: skill_lines[skillLineId].passives_filling
       };
     });
   });
 
   let jobSkillLineIds = [];
-  state.jobs.forEach((job) => {
-    jobSkillLineIds = jobSkillLineIds.concat(job.job_skill_lines);
+  state.indices.jobs.forEach((jobId) => {
+    jobSkillLineIds = jobSkillLineIds.concat(jobs[jobId].job_skill_lines);
   });
 
-  const weaponSkillLineIds = state.weapons.map((weapon) => {
-    return weapon.id;
+  let weaponSkillLineIds = [];
+  state.indices.weapons.forEach((weaponId) => {
+    weaponSkillLineIds = weaponSkillLineIds.concat(weapons[weaponId].skill_lines);
   })
 
   return {

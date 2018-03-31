@@ -5,13 +5,13 @@ const mapStateToProps = (state, ownProps) => {
   return {
     isFetching: state.skill_simulator.isFetching,
     jobs: state.jobs,
-    weapons: state.weapons
+    weapons: state.weapons,
+    indices: state.indices
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-  };
+  return {};
 };
 
 const SpTableContainer = connect(

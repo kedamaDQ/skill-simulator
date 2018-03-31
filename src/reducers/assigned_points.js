@@ -147,19 +147,19 @@ const resetSkillLines = (state, targetSkillLineIds) => {
 const assigned_points = (state = initialState, action) => {
   switch (action.type) {
     case INITIALIZE_ASSIGNED:
-      const { jobs, skillLines, preAssignedHeaders, preAssignedDatas } = action;
+      const { indices, jobs, preAssignedHeaders, preAssignedDatas } = action;
       const assigned = {
         details: {},
         summaries: {}
       };
-      action.jobs.forEach((job) => {
-        const {job_skill_lines, weapon_skill_lines} = job;
-        assigned.details[job.id] = {};
-        job_skill_lines.concat(weapon_skill_lines).forEach((skillLine) => {
-          assigned.details[job.id][skillLine] = Object.assign({}, defShape);
-          assigned.summaries[skillLine] = Object.assign({}, defShape);
+      action.indices.jobs.forEach((jobId) => {
+        const {job_skill_lines, weapon_skill_lines} = jobs[jobId];
+        assigned.details[jobId] = {};
+        job_skill_lines.concat(weapon_skill_lines).forEach((skillLineId) => {
+          assigned.details[jobId][skillLineId] = Object.assign({}, defShape);
+          assigned.summaries[skillLineId] = Object.assign({}, defShape);
         });
-        assigned.summaries[job.id] = Object.assign({}, defShape);
+        assigned.summaries[jobId] = Object.assign({}, defShape);
       });
 
       if (preAssignedHeaders.length && preAssignedDatas.length) {
@@ -171,14 +171,12 @@ const assigned_points = (state = initialState, action) => {
             if (apply.jobId && apply.skillLineId) {
               assigned.details[apply.jobId][apply.skillLineId] = apply.assigned;
             }
-
             if (header & JOB_MASK) {
-              apply.jobId = jobs[header & ~APPLY_TRIGGER_MASK].id;
+              apply.jobId = indices.jobs[header & ~APPLY_TRIGGER_MASK];
               apply.skillLineId = null;
             } else if (header & SKILLLINE_MASK) {
-              apply.skillLineId = skillLines[header & ~APPLY_TRIGGER_MASK].id;
+              apply.skillLineId = indices.skill_lines[header & ~APPLY_TRIGGER_MASK];
             }
-
             apply['assigned'] = {
               nsp: 0,
               msp: 0 

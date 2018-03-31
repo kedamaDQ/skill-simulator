@@ -19,6 +19,7 @@ const skill_simulator = (state = {isFetching: true}, action) => {
       };
 
     case INITIALSTATE_FETCH_FAIL:
+      console.log(action.error);
       return {
         ...state,
         isFetching: false

@@ -5,15 +5,15 @@ import OwnedSelector from './owned_selector';
 const ModalBulk = (props) => {
 
   const handleFullfillPassivesClick = () => {
-    props.onFullfillPassivesClick && props.onFullfillPassivesClick(props.passiveFillings);
+    props.onFullfillPassivesClick(props.passiveFillings);
   }
 
   const handleResetJobSkillsClick = () => {
-    props.onResetSkillsClick && props.onResetSkillsClick(props.jobSkillLineIds);
+    props.onResetSkillsClick(props.jobSkillLineIds);
   }
 
   const handleResetWeaponSkillsClick = () => {
-    props.onResetSkillsClick && props.onResetSkillsClick(props.weaponSkillLineIds);
+    props.onResetSkillsClick(props.weaponSkillLineIds);
   }
 
   return (

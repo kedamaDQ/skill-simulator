@@ -45,8 +45,8 @@ export default class Modal extends React.PureComponent {
         return(
           <div>
             <ModalAssignContainer
-              job={this.props.contentParams.job}
-              skillLine={this.props.contentParams.skillLine}
+              jobId={this.props.contentParams.jobId}
+              skillLineId={this.props.contentParams.skillLineId}
             />
             { textAboutClose }
           </div>

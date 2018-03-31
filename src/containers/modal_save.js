@@ -10,37 +10,43 @@ import {
 } from '../utils/base64';
 
 const mapStateToProps = (state, ownProps) => {
-  const jobs = state.jobs;
-  const skillLines = state.skill_lines;
-  const owned = state.owned_points;
-  const details = state.assigned_points.details;
-  const presets = state.preset_points;
+  const {
+    indices,
+    jobs,
+    owned_points: owned,
+    assigned_points: { details },
+    preset_points: presets
+  } = state;
 
   const o = [];   // owned
   const ah = [];  // assigned header
   const ad = [];  // assigned data
-  jobs.forEach((job, jobIdx) => {
+  indices.jobs.forEach((jobId, jobIdx) => {
     o.push(
-      presets.by_level.findIndex((v) => v.label === owned[job.id].by_level.label),
-      presets.by_training.findIndex((v) => v.label === owned[job.id].by_training.label),
-      presets.by_skillbooks.findIndex((v) => v.label === owned[job.id].by_skillbooks.label)
+      presets.by_level.findIndex((v) => v.label === owned[jobId].by_level.label),
+      presets.by_training.findIndex((v) => v.label === owned[jobId].by_training.label),
+      presets.by_skillbooks.findIndex((v) => v.label === owned[jobId].by_skillbooks.label)
     );
 
     const headers = [jobIdx | JOB_MASK];
     const datas = [];
-    job.job_skill_lines.concat(job.weapon_skill_lines).forEach((skillLineId) => {
-      const skillLineIdx = skillLines.findIndex((sl) => skillLineId === sl.id);
+    jobs[jobId].job_skill_lines.concat(
+      jobs[jobId].weapon_skill_lines
+    ).forEach((skillLineId) => {
+      const skillLineIdx = indices.skill_lines.findIndex((sId) => {
+        return sId === skillLineId;
+      });
 
-      if (details[job.id][skillLineId].nsp || details[job.id][skillLineId].msp) {
+      if (details[jobId][skillLineId].nsp || details[jobId][skillLineId].msp) {
         let type = 0;
 
-        if (details[job.id][skillLineId].nsp) {
+        if (details[jobId][skillLineId].nsp) {
           type |= NSP_MASK;
-          datas.push(details[job.id][skillLineId].nsp);
+          datas.push(details[jobId][skillLineId].nsp);
         }
-        if (details[job.id][skillLineId].msp) {
+        if (details[jobId][skillLineId].msp) {
           type |= MSP_MASK;
-          datas.push(details[job.id][skillLineId].msp);
+          datas.push(details[jobId][skillLineId].msp);
         }
         headers.push(skillLineIdx | SKILLLINE_MASK, type);
       }

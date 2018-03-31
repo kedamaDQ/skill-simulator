@@ -4,6 +4,7 @@ import { initializeJobs } from './jobs';
 import { initializeWeapons } from './weapons';
 import { initializeSkillLines } from './skill_lines';
 import { initializePresetPoints } from './preset_points';
+import { initializeIndices } from './indices';
 import { initializeOwnedPoints } from './owned_points';
 import { initializeAssignedPoints } from './assigned_points';
 
@@ -35,19 +36,27 @@ export const fetchInitialState = (preOwnedDatas, preAssignedHeaders, preAssigned
     dispatch(fetchInitialStateRequest());
 
     Promise.all([
+      fetchData('indices.json'),
       fetchData('jobs.json'),
       fetchData('weapons.json'),
       fetchData('skill_lines.json'),
       fetchData('preset_points.json')
     ])
     .then((values) => {
-      const [jobs, weapons, skillLines, presetPoints] = values;
+      const [
+        indices,
+        jobs,
+        weapons,
+        skillLines,
+        presetPoints,
+      ] = values;
+      dispatch(initializeIndices(indices));
       dispatch(initializeJobs(jobs));
-      dispatch(initializeWeapons(weapons, jobs));
+      dispatch(initializeWeapons(indices, jobs, weapons));
       dispatch(initializeSkillLines(skillLines));
       dispatch(initializePresetPoints(presetPoints));
-      dispatch(initializeOwnedPoints(jobs, presetPoints, preOwnedDatas));
-      dispatch(initializeAssignedPoints(jobs, skillLines, preAssignedHeaders, preAssignedDatas));
+      dispatch(initializeOwnedPoints(indices, presetPoints, preOwnedDatas));
+      dispatch(initializeAssignedPoints(indices, jobs, skillLines, preAssignedHeaders, preAssignedDatas));
       dispatch(fetchInitialStateSuccess());
     })
     .catch((error) => {

@@ -6,8 +6,15 @@ import SkillSummarySpPanelContainer from '../containers/sp_panel_skill_summary';
 
 const SpTable = (props) => {
 
-
   const renderHeaderRow = () => {
+    const headers = [];
+    headers.push(
+      <th
+        key='header-top-right'
+        className='skill-point-table__col-header'>
+      </th>
+    );
+
     const headerDatas = [
       {
         id: 'owned-by-level-header',
@@ -23,16 +30,23 @@ const SpTable = (props) => {
         id: 'owned-by-skillbooks-header',
         display: 'スキルブック',
         styleClasses: 'owned-header'
+      },
+      {
+        id: 'remained-nsp-header',
+        display: <span>残り<br />SP</span>,
+        styleClasses: 'remained-header'
+      },
+      {
+        id: 'remained-msp-header',
+        display: <span>残り<br />MSP</span>,
+        styleClasses: 'remained-header'
+      },
+      {
+        id: 'job-skill-header',
+        display: <span>職スキル</span>,
+        styleClasses: 'assigned-header'
       }
     ];
-
-    const headers = [];
-    headers.push(
-      <th
-        key='header-top-right'
-        className='skill-point-table__col-header'>
-      </th>
-    );
 
     headerDatas.forEach((headerData => {
       headers.push(
@@ -49,6 +63,7 @@ const SpTable = (props) => {
       );
     }));
 
+    /*
     headers.push(
       <th
         key='remained-nsp-header'
@@ -87,16 +102,16 @@ const SpTable = (props) => {
         />
       </th>
     );
-
-    props.weapons.forEach((weapon) => {
+    */
+    props.indices.weapons.forEach((weaponId) => {
       headers.push(
         <th
-          key={`header-${weapon.id}`}
+          key={`header-${weaponId}`}
           className='skill-point-table__col-header'
         >
           <SpTableHeaderPanelContainer
-            id={weapon.id}
-            display={weapon.display}
+            id={weaponId}
+            display={props.weapons[weaponId].display}
             styleClasses='assigned-header'
           />
         </th>
@@ -121,11 +136,11 @@ const SpTable = (props) => {
   const renderDataRows = () => {
     const rows = [];
 
-    props.jobs.forEach((job) => {
+    props.indices.jobs.forEach((jobId) => {
       rows.push(
         <SpTableDataRowContainer
-          key={job.id}
-          job={job}
+          key={jobId}
+          jobId={jobId}
         />);
     });
     return rows;
@@ -135,13 +150,13 @@ const SpTable = (props) => {
     const cells = [];
 
     cells.push(<th key={`summary-header`} colSpan='7'></th>);
-    props.weapons.forEach((weapon) => {
+    props.indices.weapons.forEach((weaponId) => {
       cells.push(
         <td
-          key={`summary-${weapon.id}`}
+          key={`summary-${weaponId}`}
           className='skill-point-table__skill-total-data'
         >
-          <SkillSummarySpPanelContainer weapon={weapon} />
+          <SkillSummarySpPanelContainer skillLineId={weaponId} />
         </td>);
     });
     return <tr>{cells}</tr>;
@@ -150,7 +165,6 @@ const SpTable = (props) => {
   if (props.isFetching) {
     return (<div>loading...</div>);
   } else {
-    console.log(props.weapons);
     return(
       <div className='skill-point-table-outer'>
         <table className='skill-point-table'>
@@ -171,12 +185,12 @@ const SpTable = (props) => {
 
 SpTable.propTypes = {
   isFetching: PropTypes.bool.isRequired,
-  jobs: PropTypes.arrayOf(PropTypes.shape({
+  jobs: PropTypes.shape(PropTypes.shape({
     id: PropTypes.string.isRequired,
     display: PropTypes.string.isRequired,
     display_short: PropTypes.string.isRequired
   }).isRequired).isRequired,
-  weapons: PropTypes.arrayOf(PropTypes.shape({
+  weapons: PropTypes.shape(PropTypes.shape({
     id: PropTypes.string.isRequired,
     display: PropTypes.string.isRequired
   }).isRequired).isRequired,

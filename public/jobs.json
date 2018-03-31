@@ -1,121 +1,104 @@
-[
-    {
-      "id": "warryor",
-      "display": "戦士",
-      "display_short": "戦士",
-      "job_skill_lines": ["bravery"],
-      "weapon_skill_lines": ["sword", "blade", "ax", "shield"]
-    },
-    {
-      "id": "pliest",
-      "display": "僧侶",
-      "display_short": "僧侶",
-      "job_skill_lines": ["faith"],
-      "weapon_skill_lines": ["stick", "lance", "rod", "shield"]
-    },
-    {
-      "id": "wizard",
-      "display": "魔法使い",
-      "display_short": "魔使",
-      "job_skill_lines": ["magic"],
-      "weapon_skill_lines": ["wand", "knife", "bow", "shield"]
-    },
-    {
-      "id": "fighter",
-      "display": "武闘家",
-      "display_short": "武闘",
-      "job_skill_lines": ["roar"],
-      "weapon_skill_lines": ["nail", "rod", "fan", "grappling"]
-    },
-    {
-      "id": "thief",
-      "display": "盗賊",
-      "display_short": "盗賊",
-      "job_skill_lines": ["tresure"],
-      "weapon_skill_lines": ["nail", "knife", "whip", "grappling"]
-    },
-    {
-      "id": "performer",
-      "display": "旅芸人",
-      "display_short": "旅芸",
-      "job_skill_lines": ["acrobatics"],
-      "weapon_skill_lines": ["knife", "rod", "fan", "shield"]
-    },
-    {
-      "id": "battlemaster",
-      "display": "バトルマスター",
-      "display_short": "バト",
-      "job_skill_lines": ["spirit"],
-      "weapon_skill_lines": ["sword", "blade", "hammer", "grappling"]
-    },
-    {
-      "id": "paladin",
-      "display": "パラディン",
-      "display_short": "パラ",
-      "job_skill_lines": ["humanity"],
-      "weapon_skill_lines": ["hammer", "lance", "stick", "shield"]
-    },
-    {
-      "id": "magicwarryor",
-      "display": "魔法戦士",
-      "display_short": "魔戦",
-      "job_skill_lines": ["force"],
-      "weapon_skill_lines": ["sword", "bow", "wand", "shield"]
-    },
-    {
-      "id": "ranger",
-      "display": "レンジャー",
-      "display_short": "レン",
-      "job_skill_lines": ["survival"],
-      "weapon_skill_lines": ["ax", "bow", "boomerang", "grappling"]
-    },
-    {
-      "id": "sage",
-      "display": "賢者",
-      "display_short": "賢者",
-      "job_skill_lines": ["enlightenment"],
-      "weapon_skill_lines": ["wand", "bow", "boomerang", "shield"]
-    },
-    {
-      "id": "superstar",
-      "display": "スーパースター",
-      "display_short": "スパ",
-      "job_skill_lines": ["aura"],
-      "weapon_skill_lines": ["stick", "whip", "fan", "grappling"]
-    },
-    {
-      "id": "job_monstermaster",
-      "display": "まもの使い",
-      "display_short": "まも",
-      "job_skill_lines": ["monstermaster"],
-      "weapon_skill_lines": ["ax", "nail", "blade", "whip"]
-    },
-    {
-      "id": "job_itemmaster",
-      "display": "どうぐ使い",
-      "display_short": "どう",
-      "job_skill_lines": ["itemmaster"],
-      "weapon_skill_lines": ["lance", "bow", "boomerang", "hammer"]
-    },
-    {
-      "id": "dancer",
-      "display": "踊り子",
-      "display_short": "踊り",
-      "job_skill_lines": ["song", "dance"],
-      "weapon_skill_lines": ["knife", "fan", "stick"]
-    },
-    {
-      "id": "foreteller",
-      "display": "占い師",
-      "display_short": "占い",
-      "job_skill_lines": ["foretelling"],
-      "weapon_skill_lines": ["sword", "rod", "bow", "whip"]
-    },
-    {
-      "id": "summoner",
-      "display": "天地雷鳴師",
-      "display_short": "天地",
-      "job_skill_lines": ["summoning"],
-      "weapon_skill_lines": ["fan", "stick", "wand", "shield"]
-    }
-]
+{
+  "warryor": {
+    "display": "戦士",
+    "display_short": "戦士",
+    "job_skill_lines": ["bravery"],
+    "weapon_skill_lines": ["sword", "blade", "ax", "shield"]
+  },
+  "pliest": {
+    "display": "僧侶",
+    "display_short": "僧侶",
+    "job_skill_lines": ["faith"],
+    "weapon_skill_lines": ["stick", "lance", "rod", "shield"]
+  },
+  "wizard": {
+    "display": "魔法使い",
+    "display_short": "魔使",
+    "job_skill_lines": ["magic"],
+    "weapon_skill_lines": ["wand", "knife", "bow", "shield"]
+  },
+  "fighter": {
+    "display": "武闘家",
+    "display_short": "武闘",
+    "job_skill_lines": ["roar"],
+    "weapon_skill_lines": ["nail", "rod", "fan", "grappling"]
+  },
+  "thief": {
+    "display": "盗賊",
+    "display_short": "盗賊",
+    "job_skill_lines": ["tresure"],
+    "weapon_skill_lines": ["nail", "knife", "whip", "grappling"]
+  },
+  "performer": {
+    "display": "旅芸人",
+    "display_short": "旅芸",
+    "job_skill_lines": ["acrobatics"],
+    "weapon_skill_lines": ["knife", "rod", "fan", "shield"]
+  },
+  "battlemaster": {
+    "display": "バトルマスター",
+    "display_short": "バト",
+    "job_skill_lines": ["spirit"],
+    "weapon_skill_lines": ["sword", "blade", "hammer", "grappling"]
+  },
+  "paladin": {
+    "display": "パラディン",
+    "display_short": "パラ",
+    "job_skill_lines": ["humanity"],
+    "weapon_skill_lines": ["hammer", "lance", "stick", "shield"]
+  },
+  "magicwarryor": {
+    "display": "魔法戦士",
+    "display_short": "魔戦",
+    "job_skill_lines": ["force"],
+    "weapon_skill_lines": ["sword", "bow", "wand", "shield"]
+  },
+  "ranger": {
+    "display": "レンジャー",
+    "display_short": "レン",
+    "job_skill_lines": ["survival"],
+    "weapon_skill_lines": ["ax", "bow", "boomerang", "grappling"]
+  },
+  "sage": {
+    "display": "賢者",
+    "display_short": "賢者",
+    "job_skill_lines": ["enlightenment"],
+    "weapon_skill_lines": ["wand", "bow", "boomerang", "shield"]
+  },
+  "superstar": {
+    "display": "スーパースター",
+    "display_short": "スパ",
+    "job_skill_lines": ["aura"],
+    "weapon_skill_lines": ["stick", "whip", "fan", "grappling"]
+  },
+  "job_monstermaster": {
+    "display": "まもの使い",
+    "display_short": "まも",
+    "job_skill_lines": ["monstermaster"],
+    "weapon_skill_lines": ["ax", "nail", "blade", "whip"]
+  },
+  "job_itemmaster": {
+    "display": "どうぐ使い",
+    "display_short": "どう",
+    "job_skill_lines": ["itemmaster"],
+    "weapon_skill_lines": ["lance", "bow", "boomerang", "hammer"]
+  },
+  "dancer": {
+    "display": "踊り子",
+    "display_short": "踊り",
+    "job_skill_lines": ["song", "dance"],
+    "weapon_skill_lines": ["knife", "fan", "stick"]
+  },
+  "foreteller": {
+    "display": "占い師",
+    "display_short": "占い",
+    "job_skill_lines": ["foretelling"],
+    "weapon_skill_lines": ["sword", "rod", "bow", "whip"]
+  },
+  "summoner": {
+    "display": "天地雷鳴師",
+    "display_short": "天地",
+    "job_skill_lines": ["summoning"],
+    "weapon_skill_lines": ["fan", "stick", "wand", "shield"]
+  }
+}
