@@ -53,7 +53,7 @@ export const fetchInitialState = (preOwnedDatas, preAssignedHeaders, preAssigned
       dispatch(initializeIndices(indices));
       dispatch(initializeJobs(jobs));
       dispatch(initializeWeapons(indices, jobs, weapons));
-      dispatch(initializeSkillLines(skillLines));
+      dispatch(initializeSkillLines(indices, jobs, skillLines));
       dispatch(initializePresetPoints(presetPoints));
       dispatch(initializeOwnedPoints(indices, presetPoints, preOwnedDatas));
       dispatch(initializeAssignedPoints(indices, jobs, skillLines, preAssignedHeaders, preAssignedDatas));

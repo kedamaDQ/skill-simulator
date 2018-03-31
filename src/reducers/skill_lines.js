@@ -21,13 +21,18 @@ const initialState = [
   }
 ];
 
-const buildSkillLines = ({ skillLines }) => {
+const buildSkillLines = ({ indices, jobs, skillLines }) => {
   const sl = {};
   for (const skillLineId in skillLines) {
     const skillLine = skillLines[skillLineId];
     sl[skillLineId] = {
       ...skillLine,
-      max_points: skillLine.skills[skillLine.skills.length -1].points
+      max_points: skillLine.skills[skillLine.skills.length -1].points,
+      owner_jobs: indices.jobs.filter((jobId) => {
+        return jobs[jobId].job_skill_lines.concat(
+          jobs[jobId].weapon_skill_lines
+        ).includes(skillLineId);
+      })
     };
   }
   return sl;

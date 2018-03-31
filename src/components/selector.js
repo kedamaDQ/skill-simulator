@@ -5,7 +5,7 @@ const Selector = (props) => {
 
   const handleClick = (item) => {
     if (item.isClickable) {
-      props.onClick(item.value);
+      props.onClick(props.ownerJobs, item.value);
     }
   };
 

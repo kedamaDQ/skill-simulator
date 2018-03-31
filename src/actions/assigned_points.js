@@ -14,11 +14,12 @@ export const initializeAssignedPoints = (indices, jobs, skillLines, preAssignedH
   };
 };
 
-export const updateAssigned = (jobId, skillLineId, assigned) => {
+export const updateAssigned = (jobId, skillLineId, ownerJobs, assigned) => {
   return {
     type: UPDATE_ASSIGNED,
     jobId,
     skillLineId,
+    ownerJobs,
     assigned
   };
 }

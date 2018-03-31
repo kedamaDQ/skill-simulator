@@ -91,6 +91,7 @@ const ModalAssign = (props) => {
           jobId={jobId}
           skillLineId={skillLineId}
           skillLineMax={skillLine.max_points}
+          ownerJobs={skillLine.owner_jobs}
           selfAssigned={selfAssigned}
           skillTotalAssigned={skillTotalAssigned}
           jobOwned={jobOwned}
@@ -102,6 +103,7 @@ const ModalAssign = (props) => {
           jobId={jobId}
           skillLineId={skillLineId}
           skillLineMax={skillLine.max_points}
+          ownerJobs={skillLine.owner_jobs}
           selfAssigned={selfAssigned}
           skillTotalAssigned={skillTotalAssigned}
           jobOwned={jobOwned}
@@ -113,6 +115,7 @@ const ModalAssign = (props) => {
       <div className='modal-assigned__selector'>
         <Selector
           items={formatItems()}
+          ownerJobs={skillLine.owner_jobs}
           onClick={props.onSelectorClick}
         />
       </div>

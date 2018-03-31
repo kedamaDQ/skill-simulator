@@ -21,6 +21,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         jobId,
         skillLineId,
         skillLineMax,
+        ownerJobs,
         selfAssigned,
         skillTotalAssigned,
         jobOwned,
@@ -70,7 +71,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           assigned.msp = 0;
         }
       }
-      dispatch(updateAssigned(jobId, skillLineId, assigned));
+      dispatch(updateAssigned(jobId, skillLineId, ownerJobs, assigned));
     }
   };
 };

@@ -17,7 +17,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onSelectorClick: (assigned) => {
+    onSelectorClick: (ownerJobs, assigned) => {
       dispatch(updateAssigned(ownProps.jobId, ownProps.skillLineId, assigned));
 //      dispatch(closeModal());
     }
