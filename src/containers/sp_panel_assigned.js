@@ -3,11 +3,13 @@ import SpPanel from '../components/sp_panel';
 import { openModalAssign } from '../actions/modal';
 
 const mapStateToProps = (state, ownProps) => {
-  const { job, skillLine } = ownProps;
+  const { jobId, skillLineId } = ownProps;
+  const { skill_lines } = state.skill_simulator;
   const styleClasses = ['assigned'];
-  const assigned = state.assigned_points.details[job.id][skillLine.id];
+  const skillLine = skill_lines[skillLineId];
+  const assigned = state.assigned_points.details[jobId][skillLineId];
 
-  if (assigned.msp + state.assigned_points.summaries[skillLine.id].nsp > skillLine.max_points) {
+  if (assigned.msp + state.assigned_points.summaries[skillLineId].nsp > skillLine.max_points) {
     styleClasses.push('out-of-range');
   }
 
@@ -19,10 +21,10 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const { job, skillLine } = ownProps;
+  const { jobId, skillLineId } = ownProps;
   return {
     onClick: (position) => {
-      dispatch(openModalAssign(position, job, skillLine));
+      dispatch(openModalAssign(position, jobId, skillLineId));
     }
   };
 }

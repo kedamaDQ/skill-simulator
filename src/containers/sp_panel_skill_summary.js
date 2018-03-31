@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import SpPanel from '../components/sp_panel';
 
 const mapStateToProps = (state, ownProps) => {
-  const { weapon } = ownProps;
-  const skillLineMax = state.skill_lines.find((sl) => sl.id === weapon.id).max_points;
-  const assigned = state.assigned_points.summaries[weapon.id].nsp;
+  const { skillLineId } = ownProps;
+  const { skill_lines } = state.skill_simulator;
+  const skillLineMax = skill_lines[skillLineId].max_points;
+  const assigned = state.assigned_points.summaries[skillLineId].nsp;
   const styleClasses = ['summary'];
 
   if (assigned > skillLineMax) {

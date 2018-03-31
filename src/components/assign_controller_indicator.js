@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const AssignControllerIndicator = (props) => {
   return(
@@ -7,6 +8,11 @@ const AssignControllerIndicator = (props) => {
       <dd>{props.value}</dd>
     </dl>
   );
+};
+
+AssignControllerIndicator.propTypes = {
+  label: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired
 };
 
 export default AssignControllerIndicator;

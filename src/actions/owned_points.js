@@ -2,10 +2,10 @@ export const INITIALIZE_OWNEDPOINTS = 'INITIALIZE_OWNEDPOINTS';
 export const UPDATE_OWNEDPOINTS = 'UPDATE_OWNEDPOINTS';
 export const UPDATE_OWNEDPOINTS_BULKED = 'UPDATE_OWNEDPOINTS_BULKED';
 
-export const initializeOwnedPoints = (jobs, presets, preOwnedDatas) => {
+export const initializeOwnedPoints = (indices, presets, preOwnedDatas) => {
   return {
     type: INITIALIZE_OWNEDPOINTS,
-    jobs,
+    indices,
     presets,
     preOwnedDatas
   };

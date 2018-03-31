@@ -1,62 +1,54 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class SpPanel extends React.PureComponent {
+const SpPanel = (props) => {
 
-  static propTypes = {
-    mainDisplay: PropTypes.number.isRequired,
-    subDisplay: PropTypes.number,
-    styleClasses: PropTypes.string.isRequired,
-    onClick: PropTypes.func
-  };
-
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(e) {
-    this.props.onClick && this.props.onClick({
+  const handleClick = (e) => {
+    props.onClick && props.onClick({
       x: e.clientX,
       y: e.clientY
     });
-  }
+  };
 
-  renderDisplays() {
-    if (this.props.subDisplay && this.props.subDisplay !== 0) {
-      return(
+  if (props.subDisplay && props.subDisplay !== 0) {
+    return(
+      <div
+        className={ `skill-point-panel ${props.styleClasses}` }
+        onClick={ (e) => handleClick(e) }
+      >
         <div
-          className={ `skill-point-panel ${this.props.styleClasses}` }
-          onClick={ (e) => this.handleClick(e) }
+          className='skill-point-panel__normal-skill--double'
         >
-          <div
-            className='skill-point-panel__normal-skill--double'
-          >
-            { this.props.mainDisplay }
-          </div>
-          <div
-            className='skill-point-panel__master-skill'
-          >
-            +{ this.props.subDisplay }
-          </div>
+          { props.mainDisplay }
         </div>
-      );
-    } else {
-      return(
         <div
-          className={ `skill-point-panel ${this.props.styleClasses}` }
-          onClick={ (e) => this.handleClick(e) }
+          className='skill-point-panel__master-skill'
         >
-          <div
-            className='skill-point-panel__normal-skill--single'
-          >
-            { this.props.mainDisplay }
-          </div>
+          +{ props.subDisplay }
         </div>
-      );
-    }
+      </div>
+    );
+  } else {
+    return(
+      <div
+        className={ `skill-point-panel ${props.styleClasses}` }
+        onClick={ (e) => handleClick(e) }
+      >
+        <div
+          className='skill-point-panel__normal-skill--single'
+        >
+          { props.mainDisplay }
+        </div>
+      </div>
+    );
   }
-  render() {
-    return this.renderDisplays();
-  }
-}
+};
+
+SpPanel.propTypes = {
+  mainDisplay: PropTypes.number.isRequired,
+  subDisplay: PropTypes.number,
+  styleClasses: PropTypes.string.isRequired,
+  onClick: PropTypes.func
+};
+
+export default SpPanel;

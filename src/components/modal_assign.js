@@ -5,42 +5,10 @@ import NspControllerContainer from '../containers/nsp_controller';
 import MspControllerContainer from '../containers/msp_controller';
 import Selector from './selector';
 
-export default class ModalAssign extends React.PureComponent {
+const ModalAssign = (props) => {
 
-  static propTypes = {
-    job: PropTypes.shape({
-      id: PropTypes.string.isRequired
-    }).isRequired,
-    skillLine: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      max_points: PropTypes.number.isRequired,
-      skills: PropTypes.arrayOf(PropTypes.shape({
-        display: PropTypes.string.isRequired,
-        points: PropTypes.number.isRequired
-      }).isRequired).isRequired
-    }).isRequired,
-    selfAssigned: PropTypes.shape({
-      nsp: PropTypes.number.isRequired,
-      msp: PropTypes.number.isRequired,
-      total: PropTypes.number.isRequired
-    }).isRequired,
-    skillTotalAssigned: PropTypes.shape({
-      nsp: PropTypes.number.isRequired,
-      msp: PropTypes.number.isRequired
-    }).isRequired
-  };
-
-  constructor(props) {
-    super(props);
-    this.handleClickSelector = this.handleClickSelector.bind(this);
-  }
-
-  handleClickSelector(points) {
-    this.props.onChange(this.props.job.id, this.props.skillLine.id, { nsp: points });
-  }
-
-  formatItems() {
-    const {selfAssigned, skillTotalAssigned, skillLine: {skills}} = this.props;
+  const formatItems = () => {
+    const { selfAssigned, skillTotalAssigned, skillLine: {skills} } = props;
     const otherAssigned = skillTotalAssigned.nsp - selfAssigned.nsp;
 
     return skills.map((skill) => {
@@ -81,72 +49,98 @@ export default class ModalAssign extends React.PureComponent {
     });
   }
 
-  renderSkillAssignedIndicator() {
-    if (this.props.job.job_skill_lines.includes(this.props.skillLine.id)) {
+  const renderSkillAssignedIndicator = () => {
+    if (props.job.job_skill_lines.includes(props.skillLineId)) {
       return null;
     } else {
       return (
         <AssignedIndicatorContainer
           size='small'
-          display={this.props.skillLine.display}
-          numerator={this.props.skillTotalAssigned.nsp}
-          denominator={this.props.skillLine.max_points}
+          display={props.skillLine.display}
+          numerator={props.skillTotalAssigned.nsp}
+          denominator={props.skillLine.max_points}
         />
       );
     }
-  }
+  };
 
+  const {
+    jobId,
+    skillLineId,
+    job,
+    skillLine,
+    selfAssigned,
+    skillTotalAssigned,
+    jobOwned,
+    jobAssigned
+  } = props;
 
-  render() {
-    const {
-      job,
-      skillLine,
-      selfAssigned,
-      skillTotalAssigned,
-      jobOwned,
-      jobAssigned
-    } = this.props;
-
-    return(
-      <div className='modal-assigned'>
-        <div className='modal-assigned__controller'>
-          <div>
-            <AssignedIndicatorContainer
-              size='large'
-              display={`${this.props.job.display_short} - ${this.props.skillLine.display}`}
-              numerator={this.props.skillTotalAssigned.nsp + this.props.selfAssigned.msp}
-              denominator={this.props.skillLine.max_points}
-            />
-            { this.renderSkillAssignedIndicator() }
-          </div>
-          <NspControllerContainer
-            job={job}
-            skillLine={skillLine}
-            selfAssigned={selfAssigned}
-            skillTotalAssigned={skillTotalAssigned}
-            jobOwned={jobOwned}
-            jobAssigned={jobAssigned}
-            buttonStyleClasses='nsp'
-            display='スキルポイント'
+  return(
+    <div className='modal-assigned'>
+      <div className='modal-assigned__controller'>
+        <div>
+          <AssignedIndicatorContainer
+            size='large'
+            display={`${job.display_short} - ${skillLine.display}`}
+            numerator={skillTotalAssigned.nsp + selfAssigned.msp}
+            denominator={skillLine.max_points}
           />
-          <MspControllerContainer
-            job={job}
-            skillLine={skillLine}
-            selfAssigned={selfAssigned}
-            skillTotalAssigned={skillTotalAssigned}
-            jobOwned={jobOwned}
-            jobAssigned={jobAssigned}
-            buttonStyleClasses='msp'
-            display='マスタースキルポイント'
-          />
+          { renderSkillAssignedIndicator() }
         </div>
-        <div className='modal-assigned__selector'>
-          <Selector
-            items={this.formatItems()}
-            onClick={this.handleClickSelector}
-          />
-        </div>
+        <NspControllerContainer
+          jobId={jobId}
+          skillLineId={skillLineId}
+          skillLineMax={skillLine.max_points}
+          ownerJobs={skillLine.owner_jobs}
+          selfAssigned={selfAssigned}
+          skillTotalAssigned={skillTotalAssigned}
+          jobOwned={jobOwned}
+          jobAssigned={jobAssigned}
+          buttonStyleClasses='nsp'
+          display='スキルポイント'
+        />
+        <MspControllerContainer
+          jobId={jobId}
+          skillLineId={skillLineId}
+          skillLineMax={skillLine.max_points}
+          ownerJobs={skillLine.owner_jobs}
+          selfAssigned={selfAssigned}
+          skillTotalAssigned={skillTotalAssigned}
+          jobOwned={jobOwned}
+          jobAssigned={jobAssigned}
+          buttonStyleClasses='msp'
+          display='マスタースキルポイント'
+        />
       </div>
-    );
-  }
+      <div className='modal-assigned__selector'>
+        <Selector
+          items={formatItems()}
+          ownerJobs={skillLine.owner_jobs}
+          onClick={props.onSelectorClick}
+        />
+      </div>
+    </div>
+  );
 }
+
+ModalAssign.propTypes = {
+  job: PropTypes.object.isRequired,
+  skillLine: PropTypes.shape({
+    max_points: PropTypes.number.isRequired,
+    skills: PropTypes.arrayOf(PropTypes.shape({
+      display: PropTypes.string.isRequired,
+      points: PropTypes.number.isRequired
+    }).isRequired).isRequired
+  }).isRequired,
+  selfAssigned: PropTypes.shape({
+    nsp: PropTypes.number.isRequired,
+    msp: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired
+  }).isRequired,
+  skillTotalAssigned: PropTypes.shape({
+    nsp: PropTypes.number.isRequired,
+    msp: PropTypes.number.isRequired
+  }).isRequired
+};
+
+export default ModalAssign;

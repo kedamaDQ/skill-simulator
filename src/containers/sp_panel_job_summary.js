@@ -2,10 +2,10 @@ import { connect } from 'react-redux';
 import SpPanel from '../components/sp_panel';
 
 const mapStateToProps = (state, ownProps) => {
-  const { job } = ownProps;
+  const { jobId } = ownProps;
   const styleClasses = ['summary'];
-  const max = state.owned_points[job.id].total;
-  const assigned = state.assigned_points.summaries[job.id].total;
+  const max = state.owned_points[jobId].total;
+  const assigned = state.assigned_points.summaries[jobId].total;
 
   if (assigned > max) {
     styleClasses.push('out-of-range');

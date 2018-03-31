@@ -37,7 +37,7 @@ const initialState = {
 
 const defShape = { nsp: 0, msp: 0, total: 0 };
 
-const mergeDetails = ({details}, {jobId, skillLineId, assigned}) => {
+const mergeDetails = ({ details }, { jobId, skillLineId, assigned }) => {
   const merged = Object.assign({}, details[jobId][skillLineId], assigned);
   merged.total = merged.nsp + merged.msp;
   return {
@@ -49,42 +49,40 @@ const mergeDetails = ({details}, {jobId, skillLineId, assigned}) => {
   };
 };
 
-//ok
-const mergeSummaries = ({details, summaries}, {jobId, skillLineId, assigned}) => {
-  const skillTotal = Object.assign({}, summaries[skillLineId]);
-  for (const job in details) {
-    if (details[job].hasOwnProperty(skillLineId)) {
-      if (job === jobId) {
-        skillTotal.nsp += (assigned.nsp) ? assigned.nsp : 0;
-        skillTotal.msp += (assigned.msp) ? assigned.msp : 0;
-      } else {
-        skillTotal.nsp += (assigned.nsp) ? details[job][skillLineId].nsp : 0;
-        skillTotal.msp += (assigned.msp) ? details[job][skillLineId].msp : 0;
-      }
-    }
-  }
-  skillTotal.total = skillTotal.nsp + skillTotal.msp;
-
-  const jobTotal = Object.assign({}, summaries[jobId]);
-  for (const skillLine in details[jobId]) {
-    if (skillLine === skillLineId) {
-      jobTotal.nsp += (assigned.nsp) ? assigned.nsp : 0;
-      jobTotal.msp += (assigned.msp) ? assigned.msp : 0;
+const mergeSummaries = ({details, summaries}, {jobId, skillLineId, ownerJobs, assigned}) => {
+  const jobSummary = Object.assign({}, defShape);
+  for (const slId in details[jobId]) {
+    const existing = details[jobId][slId];
+    if (slId === skillLineId) {
+      jobSummary.nsp += (typeof assigned.nsp === 'number') ? assigned.nsp : existing.nsp;
+      jobSummary.msp += (typeof assigned.msp === 'number') ? assigned.msp : existing.msp;
     } else {
-      jobTotal.nsp += (assigned.nsp) ? details[jobId][skillLine].nsp : 0;
-      jobTotal.msp += (assigned.msp) ? details[jobId][skillLine].msp : 0;
+      jobSummary.nsp += existing.nsp;
+      jobSummary.msp += existing.msp;
     }
   }
-  jobTotal.total = jobTotal.nsp + jobTotal.msp;
+  jobSummary.total = jobSummary.nsp + jobSummary.msp;
+
+  const skillSummary = Object.assign({}, defShape);
+  ownerJobs.forEach((ownerJobId) => {
+    const existing = details[ownerJobId][skillLineId];
+    if (ownerJobId === jobId) {
+      skillSummary.nsp += (typeof assigned.nsp === 'number') ? assigned.nsp : existing.nsp;
+      skillSummary.msp += (typeof assigned.msp === 'number') ? assigned.msp : existing.msp;
+    } else {
+      skillSummary.nsp += existing.nsp;
+      skillSummary.msp += existing.msp;
+    }
+  });
+  skillSummary.total = skillSummary.nsp + skillSummary.msp;
 
   return {
     ...summaries,
-    [skillLineId]: skillTotal,
-    [jobId]: jobTotal
+    [jobId]: jobSummary,
+    [skillLineId]: skillSummary
   }
 };
 
-//ok
 const buildSummaries = (details) => {
   const summaries = {};
   for (const jobId in details) {
@@ -103,7 +101,7 @@ const buildSummaries = (details) => {
         summaries[skillLineId] = Object.assign({}, defShape);
       }
       summaries[skillLineId].nsp += details[jobId][skillLineId].nsp;
-      summaries[skillLineId].msp += details[jobId][skillLineId].nsp;
+      summaries[skillLineId].msp += details[jobId][skillLineId].msp;
       summaries[skillLineId].total += details[jobId][skillLineId].nsp;
     }
   }
@@ -127,7 +125,6 @@ const fullfillForPassives = (state, fillings) => {
   };
 };
 
-//ok
 const resetSkillLines = (state, targetSkillLineIds) => {
   const details = Object.assign({}, state.details);
 
@@ -147,19 +144,19 @@ const resetSkillLines = (state, targetSkillLineIds) => {
 const assigned_points = (state = initialState, action) => {
   switch (action.type) {
     case INITIALIZE_ASSIGNED:
-      const { jobs, skillLines, preAssignedHeaders, preAssignedDatas } = action;
+      const { indices, jobs, preAssignedHeaders, preAssignedDatas } = action;
       const assigned = {
         details: {},
         summaries: {}
       };
-      action.jobs.forEach((job) => {
-        const {job_skill_lines, weapon_skill_lines} = job;
-        assigned.details[job.id] = {};
-        job_skill_lines.concat(weapon_skill_lines).forEach((skillLine) => {
-          assigned.details[job.id][skillLine] = Object.assign({}, defShape);
-          assigned.summaries[skillLine] = Object.assign({}, defShape);
+      action.indices.jobs.forEach((jobId) => {
+        const {job_skill_lines, weapon_skill_lines} = jobs[jobId];
+        assigned.details[jobId] = {};
+        job_skill_lines.concat(weapon_skill_lines).forEach((skillLineId) => {
+          assigned.details[jobId][skillLineId] = Object.assign({}, defShape);
+          assigned.summaries[skillLineId] = Object.assign({}, defShape);
         });
-        assigned.summaries[job.id] = Object.assign({}, defShape);
+        assigned.summaries[jobId] = Object.assign({}, defShape);
       });
 
       if (preAssignedHeaders.length && preAssignedDatas.length) {
@@ -171,14 +168,12 @@ const assigned_points = (state = initialState, action) => {
             if (apply.jobId && apply.skillLineId) {
               assigned.details[apply.jobId][apply.skillLineId] = apply.assigned;
             }
-
             if (header & JOB_MASK) {
-              apply.jobId = jobs[header & ~APPLY_TRIGGER_MASK].id;
+              apply.jobId = indices.jobs[header & ~APPLY_TRIGGER_MASK];
               apply.skillLineId = null;
             } else if (header & SKILLLINE_MASK) {
-              apply.skillLineId = skillLines[header & ~APPLY_TRIGGER_MASK].id;
+              apply.skillLineId = indices.skill_lines[header & ~APPLY_TRIGGER_MASK];
             }
-
             apply['assigned'] = {
               nsp: 0,
               msp: 0 
@@ -203,12 +198,9 @@ const assigned_points = (state = initialState, action) => {
       return assigned;
 
     case UPDATE_ASSIGNED:
-      const details = mergeDetails(state, action);
       return {
-//        details: mergeDetails(state, action),
-//        summaries: mergeSummaries(state, action)
-        details,
-        summaries: buildSummaries(details)
+        details: mergeDetails(state, action),
+        summaries: mergeSummaries(state, action)
       };
 
     case RESET_ASSIGNED:

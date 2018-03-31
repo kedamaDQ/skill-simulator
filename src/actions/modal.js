@@ -1,14 +1,14 @@
 export const MODAL_OPEN = 'MODAL_OPEN';
 export const MODAL_CLOSE = 'MODAL_CLOSE';
 
-export const openModalAssign = (position, job, skillLine) => {
+export const openModalAssign = (position, jobId, skillLineId) => {
   return {
     type: MODAL_OPEN,
     position,
     width: 530,
     height: 380,
     content: 'assign',
-    content_params: { job, skillLine }
+    content_params: { jobId, skillLineId }
   };
 }
 

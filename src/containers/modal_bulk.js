@@ -11,33 +11,38 @@ import {
 } from '../actions/assigned_points';
 
 const mapStateToProps = (state, ownProps) => {
-  const skillLines = state.skill_lines;
+  const {
+    indices,
+    jobs,
+    weapons,
+    skill_lines,
+    preset_points
+  } = state.skill_simulator;
 
   const passiveFillings = {};
-  state.jobs.forEach((job) => {
-    passiveFillings[job.id] = {};
-    job.job_skill_lines.forEach((skillLineId) => {
-      passiveFillings[job.id][skillLineId] = {
-        nsp: skillLines.find((skillLine) => {
-          return skillLine.id === skillLineId;
-        }).passives_filling
+  indices.jobs.forEach((jobId) => {
+    passiveFillings[jobId] = {};
+    jobs[jobId].job_skill_lines.forEach((skillLineId) => {
+      passiveFillings[jobId][skillLineId] = {
+        nsp: skill_lines[skillLineId].passives_filling
       };
     });
   });
 
   let jobSkillLineIds = [];
-  state.jobs.forEach((job) => {
-    jobSkillLineIds = jobSkillLineIds.concat(job.job_skill_lines);
+  indices.jobs.forEach((jobId) => {
+    jobSkillLineIds = jobSkillLineIds.concat(jobs[jobId].job_skill_lines);
   });
 
-  const weaponSkillLineIds = state.weapons.map((weapon) => {
-    return weapon.id;
+  let weaponSkillLineIds = [];
+  indices.weapons.forEach((weaponId) => {
+    weaponSkillLineIds = weaponSkillLineIds.concat(weapons[weaponId].skill_lines);
   })
 
   return {
-    presetsByLevel: state.preset_points.by_level,
-    presetsByTraining: state.preset_points.by_training,
-    presetsBySkillbooks: state.preset_points.by_skillbooks,
+    presetsByLevel: preset_points.by_level,
+    presetsByTraining: preset_points.by_training,
+    presetsBySkillbooks: preset_points.by_skillbooks,
     bulkSetupLevel: state.owned_points.bulk_setup.by_level,
     bulkSetupTraining: state.owned_points.bulk_setup.by_training,
     bulkSetupSkillbooks: state.owned_points.bulk_setup.by_skillbooks,

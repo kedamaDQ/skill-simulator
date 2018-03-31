@@ -2,8 +2,6 @@ import { connect } from 'react-redux';
 import SpPanel from '../components/sp_panel';
 
 const mapStateToProps = (state, ownProps) => {
-//  const owned = state.owned_points[ownProps.job.id].nsp;
-//  const assigned = state.assigned_points.summaries[ownProps.job.id].nsp
   const owned = ownProps.owned;
   const assigned = ownProps.assigned;
   const styleClasses = ['remained'];

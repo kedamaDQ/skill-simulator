@@ -1,31 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class AssignButton extends React.PureComponent {
+const AssignButton = (props) => {
 
-  static propTypes = {
-    value: PropTypes.number.isRequired,
-    display: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired
+  const handleClick = () => {
+    props.onClick && props.onClick(props.value);
   };
 
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
+  return(
+    <button
+      className={`assign-controller__assign-button ${props.styleClasses}`}
+      onClick={handleClick}
+    >
+      {props.display}
+    </button>
+  );
+};
 
-  handleClick() {
-    this.props.onClick && this.props.onClick(this.props.value);
-  }
+AssignButton.propTypes = {
+  value: PropTypes.number.isRequired,
+  display: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
+};
 
-  render() {
-    return(
-      <button
-        className={`assign-controller__assign-button ${this.props.styleClasses}`}
-        onClick={this.handleClick}
-      >
-        {this.props.display}
-      </button>
-    );
-  }
-}
+export default AssignButton;

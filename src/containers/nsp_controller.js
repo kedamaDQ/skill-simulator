@@ -10,7 +10,7 @@ import {
 } from '../actions/assigned_points';
 
 const MIN_ASSIGN = 0;
-const MAX_ASSIGN = 299;
+const MAX_ASSIGN = 255;
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -24,8 +24,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: (addend) => {
       const {
-        job,
-        skillLine,
+        jobId,
+        skillLineId,
+        skillLineMax,
+        ownerJobs,
         selfAssigned,
         skillTotalAssigned,
         jobOwned,
@@ -42,14 +44,14 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         const totalAssigned = skillTotalAssigned.nsp + selfAssigned.msp;
         if (jobRemained.nsp > 0) {
           const preTotalAssigned = totalAssigned + jobRemained.nsp;
-          if (preTotalAssigned > skillLine.max_points) {
-            assigned.nsp = selfAssigned.nsp + (skillLine.max_points - totalAssigned);
+          if (preTotalAssigned > skillLineMax) {
+            assigned.nsp = selfAssigned.nsp + (skillLineMax - totalAssigned);
           } else {
             assigned.nsp = selfAssigned.nsp + jobRemained.nsp;
           }
         } else {
-          if (totalAssigned > skillLine.max_points) {
-            assigned.nsp = skillLine.max_points - (totalAssigned - selfAssigned.nsp);
+          if (totalAssigned > skillLineMax) {
+            assigned.nsp = skillLineMax- (totalAssigned - selfAssigned.nsp);
           } else {
             assigned.nsp = selfAssigned.nsp + jobRemained.nsp;
           }
@@ -65,7 +67,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           assigned.nsp = MAX_ASSIGN;
         }
       }
-      dispatch(updateAssigned(job.id, skillLine.id, assigned));
+      dispatch(updateAssigned(jobId, skillLineId, ownerJobs, assigned));
     }
   };
 };

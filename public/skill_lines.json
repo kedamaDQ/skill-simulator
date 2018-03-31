@@ -1,6 +1,5 @@
-[
-  {
-    "id": "bravery",
+{
+  "bravery": {
     "display": "ゆうかん",
     "skills": [
       {"display": "かばう(専)", "points": 8, "additional": false},
@@ -27,8 +26,7 @@
     ],
     "passives_filling": 90
   },
-  {
-    "id": "faith",
+  "faith": {
     "display": "しんこう心",
     "skills": [
       {"display": "おはらい", "points": 8, "additional": false},
@@ -55,8 +53,7 @@
     ],
     "passives_filling": 90
   },
-  {
-    "id": "magic",
+  "magic": {
     "display": "まほう",
     "skills": [
       {"display": "魔結界", "points": 8, "additional": false},
@@ -83,8 +80,7 @@
     ],
     "passives_filling": 88
   },
-  {
-    "id": "roar",
+  "roar": {
     "display": "きあい",
     "skills": [
       {"display": "ためる(専)", "points": 4, "additional": false},
@@ -111,8 +107,7 @@
     ],
     "passives_filling": 80
   },
-  {
-    "id": "tresure",
+  "tresure": {
     "display": "おたから",
     "skills": [
       {"display": "ぬすむ(専)", "points": 8, "additional": false},
@@ -139,8 +134,7 @@
     ],
     "passives_filling": 82
   },
-  {
-    "id": "acrobatics",
+  "acrobatics": {
     "display": "きょくげい",
     "skills": [
       {"display": "ボケ", "points": 4, "additional": false},
@@ -167,8 +161,7 @@
     ],
     "passives_filling": 82
   },
-  {
-    "id": "spirit",
+  "spirit": {
     "display": "とうこん",
     "skills": [
       {"display": "とうこん討ち(専)", "points": 4, "additional": false},
@@ -195,8 +188,7 @@
     ],
     "passives_filling": 82
   },
-  {
-    "id": "humanity",
+  "humanity": {
     "display": "はくあい",
     "skills": [
       {"display": "やいばのぼうぎょ", "points": 2, "additional": false},
@@ -223,8 +215,7 @@
     ],
     "passives_filling": 82
   },
-  {
-    "id": "force",
+  "force": {
     "display": "フォース",
     "skills": [
       {"display": "ファイアフォース(専)", "points": 4, "additional": false},
@@ -251,8 +242,7 @@
     ],
     "passives_filling": 82
   },
-  {
-    "id": "survival",
+  "survival": {
     "display": "サバイバル",
     "skills": [
       {"display": "みのがす", "points": 2, "additional": false},
@@ -279,8 +269,7 @@
     ],
     "passives_filling": 82
   },
-  {
-    "id": "enlightenment",
+  "enlightenment": {
     "display": "さとり",
     "skills": [
       {"display": "いやしの雨(専)", "points": 4, "additional": false},
@@ -307,8 +296,7 @@
     ],
     "passives_filling": 82
   },
-  {
-    "id": "aura",
+  "aura": {
     "display": "オーラ",
     "skills": [
       {"display": "サインぜめ(専)", "points": 4, "additional": false},
@@ -335,8 +323,7 @@
     ],
     "passives_filling": 68
   },
-  {
-    "id": "monstermaster",
+  "monstermaster": {
     "display": "まものマスター",
     "skills": [
       {"display": "スカウト率アップ(専)", "points": 2, "additional": false},
@@ -363,8 +350,7 @@
     ],
     "passives_filling": 90
   },
-  {
-    "id": "itemmaster",
+  "itemmaster": {
     "display": "アイテムマスター",
     "skills": [
       {"display": "スカウト率アップ(専)", "points": 8, "additional": false},
@@ -391,8 +377,7 @@
     ],
     "passives_filling": 90
   },
-  {
-    "id": "song",
+  "song": {
     "display": "うた",
     "skills": [
       {"display": "全職業できようさ+10", "points": 8, "additional": false},
@@ -419,8 +404,7 @@
     ],
     "passives_filling": 90
   },
-  {
-    "id": "dance",
+  "dance": {
     "display": "おどり",
     "skills": [
       {"display": "全職業でみりょく+10", "points": 8, "additional": false},
@@ -447,8 +431,7 @@
     ],
     "passives_filling": 70
   },
-  {
-    "id": "foretelling",
+  "foretelling": {
     "display": "うらない",
     "skills": [
       {"display": "アルカナ占い(専)", "points": 8, "additional": false},
@@ -475,8 +458,7 @@
     ],
     "passives_filling": 90
   },
-  {
-    "id": "summoning",
+  "summoning": {
     "display": "しょうかん",
     "skills": [
       {"display": "全職業でこうげき魔力+10", "points": 8, "additional": false},
@@ -503,8 +485,7 @@
     ],
     "passives_filling": 90
   },
-  {
-    "id": "shield",
+  "shield": {
     "display": "盾",
     "skills": [
       {"display": "装備時盾ガード率+1%", "points": 6, "additional": false},
@@ -534,8 +515,7 @@
     ],
     "passives_filling": 0
   },
-  {
-    "id": "grappling",
+  "grappling": {
     "display": "格闘",
     "skills": [
       {"display": "素手時こうげき力+10", "points": 3, "additional": false},
@@ -565,8 +545,7 @@
     ],
     "passives_filling": 0
   },
-  {
-    "id": "sword",
+  "sword": {
     "display": "片手剣",
     "skills": [
       {"display": "かえん斬り", "points": 3, "additional": false},
@@ -636,8 +615,7 @@
     ],
     "passives_filling": 0
   },
-  {
-    "id": "blade",
+  "blade": {
     "display": "両手剣",
     "skills": [
       {"display": "ブレードガード", "points": 3, "additional": false},
@@ -667,8 +645,7 @@
     ],
     "passives_filling": 0
   },
-  {
-    "id": "knife",
+  "knife": {
     "display": "短剣",
     "skills": [
       {"display": "キラーブーン", "points": 3, "additional": false},
@@ -698,8 +675,7 @@
     ],
     "passives_filling": 0
   },
-  {
-    "id": "stick",
+  "stick": {
     "display": "スティック",
     "skills": [
       {"display": "装備時MP吸収率+2%", "points": 3, "additional": false},
@@ -729,8 +705,7 @@
     ],
     "passives_filling": 0
   },
-  {
-    "id": "wand",
+  "wand": {
     "display": "両手杖",
     "skills": [
       {"display": "装備時MP吸収率+2%", "points": 3, "additional": false},
@@ -760,8 +735,7 @@
     ],
     "passives_filling": 0
   },
-  {
-    "id": "lance",
+  "lance": {
     "display": "ヤリ",
     "skills": [
       {"display": "装備時こうげき力+10", "points": 3, "additional": false},
@@ -791,8 +765,7 @@
     ],
     "passives_filling": 0
   },
-  {
-    "id": "ax",
+  "ax": {
     "display": "オノ",
     "skills": [
       {"display": "装備時こうげき力+5", "points": 3, "additional": false},
@@ -822,8 +795,7 @@
     ],
     "passives_filling": 0
   },
-  {
-    "id": "hammer",
+  "hammer": {
     "display": "ハンマー",
     "skills": [
       {"display": "ウェイトブレイク", "points": 3, "additional": false},
@@ -853,8 +825,7 @@
     ],
     "passives_filling": 0
   },
-  {
-    "id": "rod",
+  "rod": {
     "display": "棍",
     "skills": [
       {"display": "装備時こうげき力+10", "points": 3, "additional": false},
@@ -884,8 +855,7 @@
     ],
     "passives_filling": 0
   },
-  {
-    "id": "nail",
+  "nail": {
     "display": "ツメ",
     "skills": [
       {"display": "ウィングブロウ", "points": 3, "additional": false},
@@ -915,8 +885,7 @@
     ],
     "passives_filling": 0
   },
-  {
-    "id": "fan",
+  "fan": {
     "display": "扇",
     "skills": [
       {"display": "装備時こうげき力+5", "points": 3, "additional": false},
@@ -946,8 +915,7 @@
     ],
     "passives_filling": 0
   },
-  {
-    "id": "whip",
+  "whip": {
     "display": "ムチ",
     "skills": [
       {"display": "らせん打ち", "points": 3, "additional": false},
@@ -977,8 +945,7 @@
     ],
     "passives_filling": 0
   },
-  {
-    "id": "boomerang",
+  "boomerang": {
     "display": "ブーメラン",
     "skills": [
       {"display": "スライムブロウ", "points": 3, "additional": false},
@@ -1008,8 +975,7 @@
     ],
     "passives_filling": 0
   },
-  {
-    "id": "bow",
+  "bow": {
     "display": "弓",
     "skills": [
       {"display": "装備時こうげき力+5", "points": 3, "additional": false},
@@ -1039,4 +1005,4 @@
     ],
     "passives_filling": 0
   }
-]
+}
