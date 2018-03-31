@@ -1,10 +1,8 @@
 export const INITIALIZE_WEAPONS = 'INITIALIZE_WEAPONS';
 
-export const initializeWeapons = (indices, jobs, weapons) => {
+export const initializeWeapons = (weapons) => {
   return {
     type: INITIALIZE_WEAPONS,
-    weapons,
-    jobs,
-    indices
+    weapons
   };
 }

@@ -63,46 +63,6 @@ const SpTable = (props) => {
       );
     }));
 
-    /*
-    headers.push(
-      <th
-        key='remained-nsp-header'
-        className='skill-point-table__col-header'
-      >
-        <SpTableHeaderPanelContainer
-          id='remained-nsp-header'
-          display={ <span>残り<br />SP</span> }
-          styleClasses='remained-header'
-        />
-      </th>
-    );
-
-    headers.push(
-      <th
-        key='remained-msp-header'
-        className='skill-point-table__col-header'
-      >
-        <SpTableHeaderPanelContainer
-          id='remained-msp-header'
-          display={ <span>残り<br />MSP</span> }
-          styleClasses='remained-header'
-        />
-      </th>
-    );
-
-    headers.push(
-      <th
-        key='jobskill-header'
-        className='skill-point-table__col-header'
-      >
-        <SpTableHeaderPanelContainer
-          id='jobskill-header'
-          display='職スキル'
-          styleClasses='assigned-header'
-        />
-      </th>
-    );
-    */
     props.indices.weapons.forEach((weaponId) => {
       headers.push(
         <th

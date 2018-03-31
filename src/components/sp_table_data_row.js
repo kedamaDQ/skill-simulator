@@ -28,11 +28,11 @@ const SpTableDataRow = (props) => {
 
     props.indices.weapons.forEach((weaponId) => {
       const weapon = props.weapons[weaponId];
-      if (weapon.owner_jobs.includes(props.jobId)) {
-        weapon.skill_lines.forEach((skillLineId) => {
+      weapon.skill_lines.forEach((skillLineId) => {
+        if (props.skillLines[skillLineId].owner_jobs.includes(props.jobId)) {
           cells.push(
             <td
-              key={`${props.job.id}-${skillLineId}`}
+              key={`${props.jobId}-${skillLineId}`}
               className='skill-point-table__assigned-data'
             >
               <AssignedSpPanelContainer
@@ -40,9 +40,7 @@ const SpTableDataRow = (props) => {
                 skillLineId={skillLineId}
               />
             </td>);
-        });
-      } else {
-        weapon.skill_lines.forEach((skillLineId) => {
+        } else {
           cells.push(
             <td
               key={`${props.jobId}-${skillLineId}`}
@@ -50,8 +48,8 @@ const SpTableDataRow = (props) => {
             >
             </td>
           );
-        });
-      }
+        }
+      });
     });
     return cells;
   };
