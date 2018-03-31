@@ -13,9 +13,11 @@ const mapStateToProps = (state, ownProps) => {
   const {
     indices,
     jobs,
+    preset_points: presets
+  } = state.skill_simulator;
+  const {
     owned_points: owned,
     assigned_points: { details },
-    preset_points: presets
   } = state;
 
   const o = [];   // owned

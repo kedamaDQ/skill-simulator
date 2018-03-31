@@ -3,7 +3,7 @@ import SpPanel from '../components/sp_panel';
 
 const mapStateToProps = (state, ownProps) => {
   const { skillLineId} = ownProps;
-  const skillLineMax = state.skill_lines[skillLineId].max_points;
+  const skillLineMax = state.skill_simulator.skill_lines[skillLineId].max_points;
   const assigned = state.assigned_points.summaries[skillLineId].nsp;
   const styleClasses = ['summary'];
 

@@ -11,6 +11,7 @@ import { initializeAssignedPoints } from './assigned_points';
 export const INITIALSTATE_FETCH_REQUEST = 'TABLE_FETCH_REQUEST';
 export const INITIALSTATE_FETCH_SUCCESS = 'TABLE_FETCH_SUCCESS';
 export const INITIALSTATE_FETCH_FAIL    = 'TABLE_FETCH_FAIL';
+export const INITIALIZE_SKILL_SIMULATOR = 'INITIALIZE_SKILL_SIMULATOR';
 
 export const fetchInitialStateRequest = () => {
   return {
@@ -31,6 +32,17 @@ export const fetchInitialStateFail = (error) => {
   };
 };
 
+export const initializeSkillSimulator = (indices, jobs, weapons, skill_lines, preset_points) => {
+  return {
+    type: INITIALIZE_SKILL_SIMULATOR,
+    indices,
+    jobs,
+    weapons,
+    skill_lines,
+    preset_points
+  };
+}
+
 export const fetchInitialState = (preOwnedDatas, preAssignedHeaders, preAssignedDatas) => {
   return((dispatch) => {
     dispatch(fetchInitialStateRequest());
@@ -47,16 +59,17 @@ export const fetchInitialState = (preOwnedDatas, preAssignedHeaders, preAssigned
         indices,
         jobs,
         weapons,
-        skillLines,
-        presetPoints,
+        skill_lines,
+        preset_points,
       ] = values;
       dispatch(initializeIndices(indices));
       dispatch(initializeJobs(jobs));
       dispatch(initializeWeapons(weapons));
-      dispatch(initializeSkillLines(indices, jobs, skillLines));
-      dispatch(initializePresetPoints(presetPoints));
-      dispatch(initializeOwnedPoints(indices, presetPoints, preOwnedDatas));
-      dispatch(initializeAssignedPoints(indices, jobs, skillLines, preAssignedHeaders, preAssignedDatas));
+      dispatch(initializeSkillLines(indices, jobs, skill_lines));
+      dispatch(initializePresetPoints(preset_points));
+      dispatch(initializeSkillSimulator(indices, jobs, weapons, skill_lines, preset_points));
+      dispatch(initializeOwnedPoints(indices, preset_points, preOwnedDatas));
+      dispatch(initializeAssignedPoints(indices, jobs, skill_lines, preAssignedHeaders, preAssignedDatas));
       dispatch(fetchInitialStateSuccess());
     })
     .catch((error) => {

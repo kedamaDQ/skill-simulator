@@ -11,10 +11,16 @@ import {
 } from '../actions/assigned_points';
 
 const mapStateToProps = (state, ownProps) => {
-  const { jobs, weapons, skill_lines } = state;
+  const {
+    indices,
+    jobs,
+    weapons,
+    skill_lines,
+    preset_points
+  } = state.skill_simulator;
 
   const passiveFillings = {};
-  state.indices.jobs.forEach((jobId) => {
+  indices.jobs.forEach((jobId) => {
     passiveFillings[jobId] = {};
     jobs[jobId].job_skill_lines.forEach((skillLineId) => {
       passiveFillings[jobId][skillLineId] = {
@@ -24,19 +30,19 @@ const mapStateToProps = (state, ownProps) => {
   });
 
   let jobSkillLineIds = [];
-  state.indices.jobs.forEach((jobId) => {
+  indices.jobs.forEach((jobId) => {
     jobSkillLineIds = jobSkillLineIds.concat(jobs[jobId].job_skill_lines);
   });
 
   let weaponSkillLineIds = [];
-  state.indices.weapons.forEach((weaponId) => {
+  indices.weapons.forEach((weaponId) => {
     weaponSkillLineIds = weaponSkillLineIds.concat(weapons[weaponId].skill_lines);
   })
 
   return {
-    presetsByLevel: state.preset_points.by_level,
-    presetsByTraining: state.preset_points.by_training,
-    presetsBySkillbooks: state.preset_points.by_skillbooks,
+    presetsByLevel: preset_points.by_level,
+    presetsByTraining: preset_points.by_training,
+    presetsBySkillbooks: preset_points.by_skillbooks,
     bulkSetupLevel: state.owned_points.bulk_setup.by_level,
     bulkSetupTraining: state.owned_points.bulk_setup.by_training,
     bulkSetupSkillbooks: state.owned_points.bulk_setup.by_skillbooks,

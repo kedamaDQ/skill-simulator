@@ -6,8 +6,8 @@ import { updateAssigned } from '../actions/assigned_points';
 const mapStateToProps = (state, ownProps) => {
   const { jobId, skillLineId } = ownProps;
   return {
-    job: state.jobs[jobId],
-    skillLine: state.skill_lines[skillLineId],
+    job: state.skill_simulator.jobs[jobId],
+    skillLine: state.skill_simulator.skill_lines[skillLineId],
     selfAssigned: state.assigned_points.details[jobId][skillLineId],
     skillTotalAssigned: state.assigned_points.summaries[skillLineId],
     jobOwned: state.owned_points[jobId],

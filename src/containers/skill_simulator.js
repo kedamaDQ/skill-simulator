@@ -8,7 +8,7 @@ const URLSearchParams = require('url-search-params');
 
 const mapStateToProps = (state, ownProps) => {
   const props = {
-    isFetching: state.skill_simulator.isFetching,
+    isFetching: state.skill_simulator.is_fetching,
     preOwnedDatas: [],
     preAssignedHeaders: [],
     preAssignedDatas: []
@@ -31,8 +31,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     fetchInitialState: (preOwnedDatas, preAssignedHeaders, preAssignedDatas) => {
       dispatch(fetchInitialState(preOwnedDatas, preAssignedHeaders, preAssignedDatas))
-    },
-    loadStateFromQueryString: (state) => {
     }
   };
 };

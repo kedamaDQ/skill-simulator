@@ -4,9 +4,9 @@ import SkillTable from '../components/sp_table';
 const mapStateToProps = (state, ownProps) => {
   return {
     isFetching: state.skill_simulator.isFetching,
-    jobs: state.jobs,
-    weapons: state.weapons,
-    indices: state.indices
+    jobs: state.skill_simulator.jobs,
+    weapons: state.skill_simulator.weapons,
+    indices: state.skill_simulator.indices
   };
 };
 

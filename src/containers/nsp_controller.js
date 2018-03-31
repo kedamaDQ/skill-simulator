@@ -10,7 +10,7 @@ import {
 } from '../actions/assigned_points';
 
 const MIN_ASSIGN = 0;
-const MAX_ASSIGN = 299;
+const MAX_ASSIGN = 255;
 
 const mapStateToProps = (state, ownProps) => {
   return {
