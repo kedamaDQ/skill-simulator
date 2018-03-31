@@ -4,8 +4,9 @@ import { openModalAssign } from '../actions/modal';
 
 const mapStateToProps = (state, ownProps) => {
   const { jobId, skillLineId } = ownProps;
+  const { skill_lines } = state.skill_simulator;
   const styleClasses = ['assigned'];
-  const skillLine = state.skill_simulator.skill_lines[skillLineId];
+  const skillLine = skill_lines[skillLineId];
   const assigned = state.assigned_points.details[jobId][skillLineId];
 
   if (assigned.msp + state.assigned_points.summaries[skillLineId].nsp > skillLine.max_points) {

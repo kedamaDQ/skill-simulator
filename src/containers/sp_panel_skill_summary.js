@@ -2,8 +2,9 @@ import { connect } from 'react-redux';
 import SpPanel from '../components/sp_panel';
 
 const mapStateToProps = (state, ownProps) => {
-  const { skillLineId} = ownProps;
-  const skillLineMax = state.skill_simulator.skill_lines[skillLineId].max_points;
+  const { skillLineId } = ownProps;
+  const { skill_lines } = state.skill_simulator;
+  const skillLineMax = skill_lines[skillLineId].max_points;
   const assigned = state.assigned_points.summaries[skillLineId].nsp;
   const styleClasses = ['summary'];
 

@@ -8,12 +8,19 @@ import {
 
 const mapStateToProps = (state, ownProps) => {
   const { jobId } = ownProps;
+  const {
+    indices,
+    jobs,
+    weapons,
+    preset_points,
+    skill_lines
+  } = state.skill_simulator;
   return {
-    indices: state.skill_simulator.indices,
-    job: state.skill_simulator.jobs[jobId],
-    weapons: state.skill_simulator.weapons,
-    presets: state.skill_simulator.preset_points,
-    skillLines: state.skill_simulator.skill_lines,
+    indices,
+    job: jobs[jobId],
+    weapons,
+    presets: preset_points,
+    skillLines: skill_lines,
     owned: state.owned_points[jobId],
     assigned: state.assigned_points.summaries[jobId]
   };
