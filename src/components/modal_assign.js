@@ -82,7 +82,7 @@ const ModalAssign = (props) => {
           <AssignedIndicatorContainer
             size='large'
             display={`${job.display_short} - ${skillLine.display}`}
-            numerator={skillTotalAssigned.nsp + selfAssigned.msp}
+            numerator={selfAssigned.nsp + selfAssigned.msp}
             denominator={skillLine.max_points}
           />
           { renderSkillAssignedIndicator() }
