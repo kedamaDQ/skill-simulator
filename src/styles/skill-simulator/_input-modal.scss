@@ -73,6 +73,7 @@ $bulk-panel-padding: 5px;
 
     & .header {
       font-size: 14px;
+      line-height: 20px;
     }
 
     & .numerator {
@@ -221,7 +222,7 @@ ul.selector {
   margin: 2px auto;
   padding: 0;
   width: $modal-assigned-panel-width;
-  max-height: 360px;
+  max-height: 380px;
   overflow: auto;
   color: $ui-base-color-text;
   background-color: $ui-base-color-background;
@@ -233,7 +234,7 @@ ul.selector {
   & li {
     margin: 0;
     height: 18px;
-    padding: 0.5px 2px;
+    padding: 1px 2px;
     list-style-type: none;
     clear: both;
 
