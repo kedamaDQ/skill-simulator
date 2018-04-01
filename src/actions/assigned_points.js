@@ -15,10 +15,6 @@ export const initializeAssignedPoints = (indices, jobs, skillLines, preAssignedH
 };
 
 export const updateAssigned = (jobId, skillLineId, ownerJobs, assigned) => {
-  console.log(jobId);
-  console.log(skillLineId);
-  console.log(ownerJobs);
-  console.log(assigned);
   return {
     type: UPDATE_ASSIGNED,
     jobId,
