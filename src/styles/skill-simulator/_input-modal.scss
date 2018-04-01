@@ -419,9 +419,14 @@ ul.selector {
   & h2 {
     display: block;
     float: none;
-    margin: 0 0 5px 0;
+    margin: 10px 0 5px 0;
     font-size: 12px;
     font-weight: bold;
+  }
+
+  & p {
+    margin: 4px;
+    text-indent: 0.5em;
   }
 }
 
@@ -442,6 +447,11 @@ ul.selector {
   & .purple {
     font-weight: bold;
     color: $ui-base-color-secondary;
+  }
+
+  & .blue {
+    font-weight: bold;
+    color: $ui-base-color-info;
   }
 }
 
