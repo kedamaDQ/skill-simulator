@@ -6,6 +6,10 @@ import SkillSummarySpPanelContainer from '../containers/sp_panel_skill_summary';
 
 const SpTable = (props) => {
 
+  const handleWeaponHeaderClick = (weaponId) => {
+    props.onWeaponHeaderClick(props.weaponFilter, weaponId);
+  };
+
   const renderHeaderRow = () => {
     const headers = [];
     headers.push(
@@ -64,6 +68,10 @@ const SpTable = (props) => {
     }));
 
     props.indices.weapons.forEach((weaponId) => {
+      const styleClasses = ['assigned-header', 'weapons'];
+      if (props.weaponFilter === weaponId) {
+        styleClasses.push('filtered');
+      }
       headers.push(
         <th
           key={`header-${weaponId}`}
@@ -72,7 +80,8 @@ const SpTable = (props) => {
           <SpTableHeaderPanelContainer
             id={weaponId}
             display={props.weapons[weaponId].display}
-            styleClasses='assigned-header'
+            styleClasses={styleClasses.join(' ')}
+            onClick={() => handleWeaponHeaderClick(weaponId)}
           />
         </th>
       );
@@ -97,11 +106,13 @@ const SpTable = (props) => {
     const rows = [];
 
     props.indices.jobs.forEach((jobId) => {
-      rows.push(
-        <SpTableDataRowContainer
-          key={jobId}
-          jobId={jobId}
-        />);
+      if (!props.weaponFilter || props.jobs[jobId].weapon_skill_lines.includes(props.weaponFilter)) {
+        rows.push(
+          <SpTableDataRowContainer
+            key={jobId}
+            jobId={jobId}
+          />);
+      }
     });
     return rows;
   };

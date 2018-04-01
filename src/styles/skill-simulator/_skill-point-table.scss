@@ -79,7 +79,8 @@ $sptable-row-header-width: 30px;
 
   &__header-panel {
     font-size: $ui-panel-font-size;
-  
+    cursor: default;
+
     &.remained-header,
     &.owned-header {
       text-align: center;
@@ -96,6 +97,17 @@ $sptable-row-header-width: 30px;
   
       text-align: right;
       vertical-align: middle;
+
+      &.weapons {
+        &.filtered {
+          color: $ui-base-color-info;
+        }
+
+        &:hover {
+          color: $ui-base-color-info;
+          cursor: pointer;
+        }
+      }
     }
   
     &.job-header {
