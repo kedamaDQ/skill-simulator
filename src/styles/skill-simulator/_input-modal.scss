@@ -73,10 +73,12 @@ $bulk-panel-padding: 5px;
 
     & .header {
       font-size: 14px;
+      line-height: 20px;
     }
 
     & .numerator {
       font-size: 50px;
+      line-height: 60px;
     }
 
     & .denominator {
@@ -93,6 +95,8 @@ $bulk-panel-padding: 5px;
 
     & .numerator {
       font-size: 28px;
+      line-height: 38px;
+
     }
 
     & .denominator {
@@ -216,22 +220,22 @@ $bulk-panel-padding: 5px;
 
 ul.selector {
   margin: 2px auto;
-  width: $modal-assigned-panel-width;
   padding: 0;
+  width: $modal-assigned-panel-width;
+  max-height: 380px;
+  overflow: auto;
   color: $ui-base-color-text;
   background-color: $ui-base-color-background;
   border: solid 2px $ui-base-color-border;
   border-radius: 5px;
-  max-height: 430px;
-  overflow: auto;
   font-size: $ui-panel-font-size;
   clear: both;
 
   & li {
     margin: 0;
-    padding: 0;
+    height: 18px;
+    padding: 1px 2px;
     list-style-type: none;
-    padding: 0.2em;
     clear: both;
 
     &.disabled {
@@ -264,7 +268,6 @@ ul.selector {
     }
 
     & .selector__name {
-      margin-top: -3px;
       display: block;
       float: left;
       text-align: left;
