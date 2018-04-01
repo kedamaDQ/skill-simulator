@@ -22,7 +22,11 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onSelectorClick: (ownerJobs, assigned) => {
-      dispatch(updateAssigned(ownProps.jobId, ownProps.skillLineId, assigned));
+      dispatch(updateAssigned(
+        ownProps.jobId,
+        ownProps.skillLineId,
+        ownerJobs,
+        { nsp: assigned }));
 //      dispatch(closeModal());
     }
   };
