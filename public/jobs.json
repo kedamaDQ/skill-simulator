@@ -15,7 +15,7 @@
     "display": "魔法使い",
     "display_short": "魔使",
     "job_skill_lines": ["magic"],
-    "weapon_skill_lines": ["wand", "knife", "bow", "shield"]
+    "weapon_skill_lines": ["wand", "knife", "whip", "shield"]
   },
   "fighter": {
     "display": "武闘家",
