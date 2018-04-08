@@ -7,7 +7,11 @@ import SkillSummarySpPanelContainer from '../containers/sp_panel_skill_summary';
 const SpTable = (props) => {
 
   const handleWeaponHeaderClick = (weaponId) => {
-    props.onWeaponHeaderClick(props.weaponFilter, weaponId);
+    props.onHeaderClick(props.currentFilterId, weaponId, [ weaponId ]);
+  };
+
+  const handleJobHeaderClick = (jobId) => {
+    props.onHeaderClick(props.currentFilterId, jobId, props.jobs[jobId].weapon_skill_lines);
   };
 
   const renderHeaderRow = () => {
@@ -69,7 +73,7 @@ const SpTable = (props) => {
 
     props.indices.weapons.forEach((weaponId) => {
       const styleClasses = ['assigned-header', 'weapons'];
-      if (props.weaponFilter === weaponId) {
+      if (props.currentFilterId === weaponId) {
         styleClasses.push('filtered');
       }
       headers.push(
@@ -103,18 +107,24 @@ const SpTable = (props) => {
   };
 
   const renderDataRows = () => {
-    const rows = [];
-
-    props.indices.jobs.forEach((jobId) => {
-      if (!props.weaponFilter || props.jobs[jobId].weapon_skill_lines.includes(props.weaponFilter)) {
-        rows.push(
+    return (
+      (
+        (props.weaponFilter.length) ?
+          props.indices.jobs.filter((jobId) => {
+            return props.weaponFilter.some((weaponId) => {
+              return props.jobs[jobId].weapon_skill_lines.includes(weaponId);
+            });
+        }) :
+        props.indices.jobs
+      ).map((jobId) => {
+        return (
           <SpTableDataRowContainer
             key={jobId}
             jobId={jobId}
-          />);
-      }
-    });
-    return rows;
+          />
+        );
+      })
+    );
   };
 
   const renderTotalRow = () => {
