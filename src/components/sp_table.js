@@ -11,7 +11,15 @@ const SpTable = (props) => {
   };
 
   const handleJobHeaderClick = (jobId) => {
-    props.onHeaderClick(props.currentFilterId, jobId, props.jobs[jobId].weapon_skill_lines);
+    // Weapon skills other than grappling and shield.
+    const exclusions = ['grappling', 'shield'];
+    props.onHeaderClick(
+      props.currentFilterId,
+      jobId,
+      props.jobs[jobId].weapon_skill_lines.filter((weaponId) => {
+        return !exclusions.includes(weaponId);
+      })
+    );
   };
 
   const renderHeaderRow = () => {
@@ -72,10 +80,6 @@ const SpTable = (props) => {
     }));
 
     props.indices.weapons.forEach((weaponId) => {
-      const styleClasses = ['assigned-header', 'weapons'];
-      if (props.currentFilterId === weaponId) {
-        styleClasses.push('filtered');
-      }
       headers.push(
         <th
           key={`header-${weaponId}`}
@@ -84,7 +88,7 @@ const SpTable = (props) => {
           <SpTableHeaderPanelContainer
             id={weaponId}
             display={props.weapons[weaponId].display}
-            styleClasses={styleClasses.join(' ')}
+            styleClasses='assigned-header weapons'
             onClick={() => handleWeaponHeaderClick(weaponId)}
           />
         </th>
@@ -121,6 +125,7 @@ const SpTable = (props) => {
           <SpTableDataRowContainer
             key={jobId}
             jobId={jobId}
+            onHeaderClick={handleJobHeaderClick}
           />
         );
       })
