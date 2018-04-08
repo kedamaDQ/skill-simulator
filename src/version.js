@@ -1,8 +1,8 @@
 
 const version = {
   major: 0,
-  minor: 12,
-  patch: 2,
+  minor: 13,
+  patch: 0,
   pre: null,
   flags: ''
 };
