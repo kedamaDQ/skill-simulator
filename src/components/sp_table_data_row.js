@@ -61,6 +61,7 @@ const SpTableDataRow = (props) => {
           id={props.jobId}
           display={props.job.display_short}
           styleClasses='job-header'
+          onClick={props.onHeaderClick}
         />
       </th>
       <td className='skill-point-table__owned-data'>

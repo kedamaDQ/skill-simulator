@@ -99,19 +99,29 @@ $sptable-row-header-width: 30px;
       vertical-align: middle;
 
       &.weapons {
+        cursor: pointer;
+
         &.filtered {
           color: $ui-base-color-info;
         }
 
         &:hover {
           color: $ui-base-color-info;
-          cursor: pointer;
         }
       }
     }
   
     &.job-header {
       padding: 0 2px;
+      cursor: pointer;
+
+      &.filtered {
+        color: $ui-base-color-info;
+      }
+
+      &:hover {
+        color: $ui-base-color-info;
+      }
     }
   }
 }
