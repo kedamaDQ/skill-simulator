@@ -1,6 +1,7 @@
 export const INITIALIZE_OWNEDPOINTS = 'INITIALIZE_OWNEDPOINTS';
 export const UPDATE_OWNEDPOINTS = 'UPDATE_OWNEDPOINTS';
 export const UPDATE_OWNEDPOINTS_BULKED = 'UPDATE_OWNEDPOINTS_BULKED';
+export const LOAD_OWNEDPOINTS = 'LOAD_OWNEDPOINTS';
 
 export const initializeOwnedPoints = (indices, presets, preOwnedDatas) => {
   return {
@@ -65,5 +66,12 @@ export const updateBulkSetupForSkillbooks = (preset) => {
     update: {
       by_skillbooks: preset
     }
+  };
+};
+
+export const loadOwnedPoints = (loaded) => {
+  return {
+    type: LOAD_OWNEDPOINTS,
+    loaded
   };
 };

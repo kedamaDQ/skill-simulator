@@ -25,3 +25,11 @@ export const decodeBase64url = (base64url) => {
   const buf = atob(base64url.replace('-', '+').replace('_', '/'));
   return Array.prototype.map.call(buf, (b) => { return b.charCodeAt(0) });
 };
+
+export const utf8ToBase64 = (str) => {
+  return window.btoa(unescape(encodeURIComponent(str)));
+};
+
+export const base64ToUtf8 = (str) => {
+  return decodeURIComponent(escape(window.atob(str)));
+}

@@ -22,6 +22,27 @@ export default class SkillSimulator extends React.Component {
     ).isRequired
   };
 
+  storageAvailable() {
+    if (window.localStorage) {
+      const storage = window.localStorage;
+      try {
+        const testData = '__test_data__';
+        storage.setItem(testData, testData);
+        storage.removeItem(testData);
+        return true;
+      } catch (e) {
+        return e instanceof DOMException && (
+          e.code === 22 ||
+          e.code === 1014 ||
+          e.name === 'QuotaExceededError' ||
+          e.name === 'NS_ERROR_DOM_QUOTA_REACHED'
+        ) && storage.length !== 0;
+      }
+    } else {
+      return false;
+    }
+  }
+
   componentWillMount() {
     this.props.fetchInitialState(
       this.props.preOwnedDatas,
@@ -41,7 +62,9 @@ export default class SkillSimulator extends React.Component {
     }
     return (
       <div className="skill-simulator">
-        <HeaderNavigationContainer />
+        <HeaderNavigationContainer
+          storageAvailable={this.storageAvailable()}
+        />
         <SpTableContainer />
         <ModalContainer />
       </div>

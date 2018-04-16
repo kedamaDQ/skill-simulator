@@ -1,7 +1,8 @@
 import {
   INITIALIZE_OWNEDPOINTS,
   UPDATE_OWNEDPOINTS,
-  UPDATE_OWNEDPOINTS_BULKED
+  UPDATE_OWNEDPOINTS_BULKED,
+  LOAD_OWNEDPOINTS
 } from '../actions/owned_points';
 
 const initialState = {
@@ -25,6 +26,22 @@ const buildOwnedPoints = (before, update) => {
   updated.total = updated.nsp + updated.msp;
 
   return updated;
+};
+
+const updateOwnedPointsBulked = (state, { update }) => {
+  const newState = {};
+  for (const jobId in state) {
+    newState[jobId] = buildOwnedPoints(state[jobId], update);
+  }
+  return newState;
+};
+
+const loadOwnedPoints = (state, { loaded }) => {
+  const newState = {};
+  for (const jobId in state) {
+    newState[jobId] = (loaded[jobId]) ? loaded[jobId] : state[jobId];
+  }
+  return newState;
 };
 
 const owned_points = (state = initialState, action) => {
@@ -80,11 +97,10 @@ const owned_points = (state = initialState, action) => {
       };
 
     case UPDATE_OWNEDPOINTS_BULKED:
-      const newState = {};
-      for (const jobId in state) {
-        newState[jobId] = buildOwnedPoints(state[jobId], action.update);
-      }
-      return newState;
+      return updateOwnedPointsBulked(state, action);
+
+    case LOAD_OWNEDPOINTS:
+      return loadOwnedPoints(state, action);
 
     default:
       return state;

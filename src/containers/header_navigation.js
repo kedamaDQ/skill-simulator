@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           break;
 
         case OPEN_SAVE_DIALOG:
-          dispatch(openModalSave(position));
+          dispatch(openModalSave(position, ownProps.storageAvailable));
           break;
 
         default:

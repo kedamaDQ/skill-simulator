@@ -23,14 +23,14 @@ export const openModalBulk = (position) => {
   };
 };
 
-export const openModalSave = (position) => {
+export const openModalSave = (position, storageAvailable) => {
   return {
     type: MODAL_OPEN,
     position,
     width: 410,
     height: 225,
     content: 'save',
-    content_params: {}
+    content_params: { storageAvailable }
   }
 };
 
