@@ -371,6 +371,14 @@ ul.selector {
 .modal-save {
   padding: 10px;
 
+  & h2 {
+    display: block;
+    float: none;
+    margin: 10px 0 5px 0;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
   &__url-input {
     width: calc(100% - 10px);
     height: $ui-panel-size;
@@ -407,8 +415,146 @@ ul.selector {
       }
     }
   }
+
+  // Chaos...
+  & .Select {
+    width: 220px;
+
+    &.is-focused:not(.is-open) > .Select-control {
+      border-color: $ui-base-color-border;
+
+      &:hover {
+        border-color: $ui-base-color-primary;
+        background-color: $ui-base-color-primary-hover;
+      }
+    }
+
+    &.is-open > .Select-control {
+      border-color: $ui-base-color-primary;
+      background-color: $ui-base-color-primary-active;
+    }
+
+    &:hover {
+      background-color: $ui-base-color-primary-hover;
+    }
+  }
+
+  & .Select-control {
+    border-color: $ui-base-color-border;
+
+    &:hover {
+      border-color: $ui-base-color-primary;
+      background-color: $ui-base-color-primary-hover;
+    }
+  }
+
+  & .Select-menu-outer {
+    border-color: $ui-base-color-primary;
+  }
+
+  & .Select-option {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  & .Select-option.is-selected {
+    background-color: $ui-base-color-primary-active;
+    &:hover {
+      background-color: $ui-base-color-primary-hover;
+    }
+  }
+
+  & .Select-option.is-focused {
+    &:hover {
+      background-color: $ui-base-color-primary-hover;
+    }
+  }
 }
 
+.storage-controller {
+  $button-width: 130px;
+
+  &__save-as {
+    display: flex;
+    margin: 0 0 5px 0;
+    width: 100%;
+    justify-content: space-between;
+
+    & .data-name-input {
+      padding: 0 3px;
+      width: calc(100% - #{$button-width} - 15px);
+      height: $ui-panel-size;
+      line-height: $ui-panel-size;
+      color: $ui-base-color-text;
+      border: solid $ui-panel-border-width $ui-base-color-border;
+      border-radius: $ui-panel-border-radius;
+      background-color: $ui-base-color-background;
+      font-size: $ui-panel-font-size;
+    }
+
+    & .save-as-button {
+      display: block;
+      width: $button-width;
+      height: calc(#{$ui-panel-size} + #{$ui-panel-border-width} * 2);
+      color: $ui-base-color-text;
+      border: solid $ui-panel-border-width $ui-base-color-border;
+      border-radius: $ui-panel-border-radius;
+      background-color: $ui-base-color-background;
+      font-size: $ui-panel-font-size;
+      cursor: pointer;
+
+      &:hover {
+        border-color: $ui-base-color-primary;
+        background-color: $ui-base-color-primary-hover;
+      }
+
+      &:disabled {
+        color: lighten($ui-base-color-text, 30%);
+
+        &:hover {
+          border-color: $ui-base-color-border;
+          background-color: $ui-base-color-background;
+          cursor: default;
+        }
+      }
+    }
+  }
+
+  &__saved-data {
+    display: flex;
+    margin: 0 0 5px 0;
+    width: 100%;
+    justify-content: space-between;
+
+    & button {
+      margin: 0 2px;
+      padding: 0 5px;
+      height: calc(#{$ui-panel-size} + #{$ui-panel-border-width} * 2);
+      color: $ui-base-color-text;
+      border: solid $ui-panel-border-width $ui-base-color-border;
+      border-radius: $ui-panel-border-radius;
+      background-color: $ui-base-color-background;
+      font-size: $ui-panel-font-size;
+      cursor: pointer;
+
+      &:hover {
+        border-color: $ui-base-color-primary;
+        background-color: $ui-base-color-primary-hover;
+      }
+
+      &:disabled {
+        color: lighten($ui-base-color-text, 30%);
+
+        &:hover {
+          border-color: $ui-base-color-border;
+          background-color: $ui-base-color-background;
+          cursor: default;
+        }
+      }
+
+    }
+  }
+}
 .text-modal {
   padding: 5px;
   & h1 {

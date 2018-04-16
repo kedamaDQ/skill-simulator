@@ -101,6 +101,7 @@ export default class ModalSave extends React.PureComponent {
 
   handleSavedDatasChange(selected) {
     this.setState({
+      saveInputIsBlank: false,
       inputDataName: selected.label,
       selectedSavedData: selected
     })
@@ -147,8 +148,9 @@ export default class ModalSave extends React.PureComponent {
     this.setState((prevState, props) => ({
       inputDataName: '',
       selectedSavedData: null,
+      saveInputIsBlank: true,
       savedDatas: prevState.savedDatas.filter((data) => {
-        data !== prevState.selectedSavedData;
+        return data.value !== prevState.selectedSavedData.value;
       })
     }));
 
@@ -157,54 +159,6 @@ export default class ModalSave extends React.PureComponent {
 
   componentDidMount() {
     this.forceUrlInputSelect();
-  }
-
-  renderStorageController() {
-    return (
-      <div className='storage-controller'>
-        <input
-          type='text'
-          placeholder={(this.storageAvailable) ? '名前を付けて保存' : '使用できません'}
-          disabled={!this.storageAvailable}
-          ref={(input) => { this.dataNameInput = input; }}
-          onChange={(e) => this.handleSaveInputChange(e)}
-        />
-        <button
-          disabled={this.state.saveInputIsBlank}
-          onClick={this.handleSaveDataClick}
-        >
-          保存
-        </button>
-        <ReactSelect
-          disabled={!this.storageAvailable}
-          onChange={this.handleSavedDatasChange}
-          options={this.state.savedDatas}
-          value={this.state.selectedSavedData}
-          multi={false}
-          removeSelected={false}
-          searchable={false}
-          clearable={false}
-        />
-        <button
-          disabled={!(this.storageAvailable && this.state.selectedSavedData)}
-          onClick={this.handleLoadDataClick}
-        >
-          読込
-        </button>
-        <button
-          disabled={!(this.storageAvailable && this.state.selectedSavedData)}
-          onClick={this.handleOverwriteDataClick}
-        >
-          上書き保存
-        </button>
-        <button
-          disabled={!(this.storageAvailable && this.state.selectedSavedData)}
-          onClick={this.handleDeleteDataClick}
-        >
-          削除
-        </button>
-      </div>
-    );
   }
 
   render() {
@@ -238,7 +192,61 @@ export default class ModalSave extends React.PureComponent {
         <p>この状態をブラウザーのブックマーク(お気に入り)に保存する場合は、いちど [リロード] ボタンをクリックしてからブラウザーのブックマーク(お気に入り)に登録してください。</p>
 
         <h2>ローカルストレージ</h2>
-        { this.renderStorageController() }
+        <div className='storage-controller'>
+          <p>今のスキルポイントの状態に名前を付けて、この PC / スマートフォンに新規保存します。</p>
+          <div className='storage-controller__save-as'>
+            <input
+              type='text'
+              placeholder={(this.storageAvailable) ? 'データの名前を入力' : '使用できません'}
+              disabled={!this.storageAvailable}
+              className='data-name-input'
+              ref={(input) => { this.dataNameInput = input; }}
+              onChange={(e) => this.handleSaveInputChange(e)}
+            />
+            <button
+              disabled={this.state.saveInputIsBlank}
+              className='save-as-button'
+              onClick={this.handleSaveDataClick}
+            >
+              名前を付けて保存
+            </button>
+          </div>
+          <p>この PC / スマートフォンに保存されているスキルポイントの状態を操作します。</p>
+          <div className='storage-controller__saved-data'>
+            <ReactSelect
+              disabled={!this.storageAvailable}
+              onChange={this.handleSavedDatasChange}
+              options={this.state.savedDatas}
+              value={this.state.selectedSavedData}
+              multi={false}
+              removeSelected={false}
+              searchable={false}
+              clearable={false}
+              placeholder='セーブデータ...'
+              noResultsText='セーブデータがありません'
+            />
+            <div>
+            <button
+              disabled={!(this.storageAvailable && this.state.selectedSavedData)}
+              onClick={this.handleLoadDataClick}
+            >
+              読込
+            </button>
+            <button
+              disabled={!(this.storageAvailable && this.state.selectedSavedData)}
+              onClick={this.handleOverwriteDataClick}
+            >
+              上書き保存
+            </button>
+            <button
+              disabled={!(this.storageAvailable && this.state.selectedSavedData)}
+              onClick={this.handleDeleteDataClick}
+            >
+              削除
+            </button>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
