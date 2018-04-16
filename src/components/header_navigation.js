@@ -34,7 +34,7 @@ const HeaderNavigation = (props) => {
           onClick={(e) => handleButtonClick(e)}
           value={OPEN_SAVE_DIALOG}
         >
-          セーブ/ロード
+          セーブとロード
         </button>
         <button
           onClick={(e) => handleButtonClick(e)}
