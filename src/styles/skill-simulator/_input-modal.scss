@@ -434,6 +434,19 @@ ul.selector {
       background-color: $ui-base-color-primary-active;
     }
 
+    &.is-disabled > .Select-control {
+      cursor: default;
+
+      & .Select-placeholder {
+        color: $ui-base-color-text-inactive;
+      }
+
+      &:hover {
+        border-color: $ui-base-color-border;
+        background-color: $ui-base-color-background;
+      }
+    }
+
     &:hover {
       background-color: $ui-base-color-primary-hover;
     }
