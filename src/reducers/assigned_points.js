@@ -2,7 +2,8 @@ import {
   INITIALIZE_ASSIGNED,
   UPDATE_ASSIGNED,
   RESET_ASSIGNED,
-  FULLFILL_FOR_PASSIVES
+  FULLFILL_FOR_PASSIVES,
+  LOAD_ASSIGNED
 } from '../actions/assigned_points';
 import {
   JOB_MASK,
@@ -141,6 +142,24 @@ const resetSkillLines = (state, targetSkillLineIds) => {
   };
 };
 
+const loadAssigned = (state, loaded) => {
+  const details = {};
+  for (const jobId in state.details) {
+    details[jobId] = {};
+    for (const skillLineId in state.details[jobId]) {
+      if (loaded[jobId] && loaded[jobId][skillLineId]) {
+        details[jobId][skillLineId] = loaded[jobId][skillLineId];
+      } else {
+        details[jobId][skillLineId] = state.details[jobId][skillLineId];
+      }
+    }
+  }
+  return {
+    details,
+    summaries: buildSummaries(details)
+  }
+};
+
 const assigned_points = (state = initialState, action) => {
   switch (action.type) {
     case INITIALIZE_ASSIGNED:
@@ -208,6 +227,9 @@ const assigned_points = (state = initialState, action) => {
 
     case FULLFILL_FOR_PASSIVES:
       return fullfillForPassives(state, action.fillings);
+
+    case LOAD_ASSIGNED:
+      return loadAssigned(state, action.details);
 
     default:
       return state;

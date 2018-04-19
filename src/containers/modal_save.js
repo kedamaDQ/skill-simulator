@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import ModalSave from '../components/modal_save';
 import { baseUrl } from '../utils/env';
+import { loadOwnedPoints } from '../actions/owned_points';
+import { loadAssigned } from '../actions/assigned_points';
 import { 
   JOB_MASK,
   SKILLLINE_MASK,
@@ -65,12 +67,19 @@ const mapStateToProps = (state, ownProps) => {
     `&ah=${encodeBase64url(ah)}` +
     `&ad=${encodeBase64url(ad)}`;
   return {
-    url: `${baseUrl()}/?${query}`
+    url: `${baseUrl()}/?${query}`,
+    owned,
+    details
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return {};
+  return {
+    loadFromLocalStorage: ({ owned, details }) => {
+      dispatch(loadOwnedPoints(owned));
+      dispatch(loadAssigned(details));
+    }
+  };
 };
 
 const ModalSaveContainer = connect(

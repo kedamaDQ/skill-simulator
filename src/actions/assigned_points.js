@@ -2,6 +2,7 @@ export const INITIALIZE_ASSIGNED = 'INITIALIZE_ASSIGNED';
 export const UPDATE_ASSIGNED = 'UPDATE_ASSIGNED';
 export const RESET_ASSIGNED = 'RESET_ASSIGNED';
 export const FULLFILL_FOR_PASSIVES = 'FULLFILL_FOR_PASSIVES';
+export const LOAD_ASSIGNED = 'LOAD_ASSIGNED';
 
 export const initializeAssignedPoints = (indices, jobs, skillLines, preAssignedHeaders, preAssignedDatas) => {
   return {
@@ -37,3 +38,10 @@ export const fullfillForPassives = (fillings) => {
     fillings
   };
 };
+
+export const loadAssigned = (details) => {
+  return {
+    type: LOAD_ASSIGNED,
+    details
+  };
+}
