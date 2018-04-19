@@ -93,7 +93,9 @@ AssignController.propTypes = {
     msp: PropTypes.number.isRequired,
     total: PropTypes.number.isRequired
   }).isRequired,
-  onClick: PropTypes.func.isRequired
+  onMinAssignButtonClick: PropTypes.func.isRequired,
+  onMaxAssignButtonClick: PropTypes.func.isRequired,
+  onAssignButtonClick: PropTypes.func.isRequired
 };
 
 export default AssignController;

@@ -10,11 +10,21 @@ const SpPanel = (props) => {
     });
   };
 
+  const handleMouseOver = (e) => {
+    props.onMouseOver && props.onMouseOver(e.target.getBoundingClientRect(), props);
+  };
+
+  const handleMouseOut = (e) => {
+//    props.onMouseOut && props.onMouseOut();
+  };
+
   if (props.subDisplay && props.subDisplay !== 0) {
     return(
       <div
         className={ `skill-point-panel ${props.styleClasses}` }
         onClick={ (e) => handleClick(e) }
+        onMouseOver={ (e) => handleMouseOver(e) }
+        onMouseOut={ (e) => handleMouseOut(e) }
       >
         <div
           className='skill-point-panel__normal-skill--double'
@@ -33,6 +43,8 @@ const SpPanel = (props) => {
       <div
         className={ `skill-point-panel ${props.styleClasses}` }
         onClick={ (e) => handleClick(e) }
+        onMouseOver={ (e) => handleMouseOver(e) }
+        onMouseOut={ (e) => handleMouseOut(e) }
       >
         <div
           className='skill-point-panel__normal-skill--single'
@@ -48,7 +60,9 @@ SpPanel.propTypes = {
   mainDisplay: PropTypes.number.isRequired,
   subDisplay: PropTypes.number,
   styleClasses: PropTypes.string.isRequired,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  onMouseOver: PropTypes.func,
+  onMouseOut: PropTypes.func,
 };
 
 export default SpPanel;

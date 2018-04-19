@@ -1,0 +1,24 @@
+.direct-controller {
+  position: absolute;
+  pointer-events: none;
+  text-align: right;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+
+  &__arrow {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    stroke-width: 2px;
+    stroke: $ui-base-color-primary;
+    fill: $ui-base-color-background;
+    cursor: pointer;
+    pointer-events: auto;
+
+    &:hover {
+      stroke: $ui-base-color-primary;
+      fill: $ui-base-color-primary-hover;
+    }
+  }
+}

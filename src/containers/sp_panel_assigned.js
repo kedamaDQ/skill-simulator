@@ -1,6 +1,10 @@
 import { connect } from 'react-redux';
 import SpPanel from '../components/sp_panel';
 import { openModalAssign } from '../actions/modal';
+import {
+  activateController,
+  deactivateController
+} from '../actions/direct_controller';
 
 const mapStateToProps = (state, ownProps) => {
   const { jobId, skillLineId } = ownProps;
@@ -25,6 +29,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: (position) => {
       dispatch(openModalAssign(position, jobId, skillLineId));
+      dispatch(deactivateController());
+    },
+    onMouseOver: (domRect) => {
+      dispatch(activateController(domRect, ownProps));
+    },
+    onMouseOut: () => {
+      dispatch(deactivateController());
     }
   };
 }

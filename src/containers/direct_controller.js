@@ -1,0 +1,46 @@
+import { connect } from 'react-redux';
+import DirectController from '../components/direct_controller';
+import { assignNsp } from '../actions/assigned_points';
+
+const mapStateToProps = (state, ownProps) => {
+  const {
+    top,
+    left,
+    width,
+    height,
+    jobId,
+    skillLineId,
+    is_active
+  } = state.direct_controller;
+  const display = (is_active) ? 'flex' : 'none';
+
+  return {
+    top: window.pageYOffset + top + 2,
+    left: window.pageXOffset + left + width - 10,
+    width: 20,
+    height: height -4,
+    jobId,
+    skillLineId,
+    display,
+    ownerJobs: state.skill_lines[skillLineId].owner_jobs,
+    selfAssigned: state.assigned_points.details[jobId][skillLineId]
+  }
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    onIncraseClick: ({ jobId, skillLineId, ownerJobs, selfAssigned }) => {
+      dispatch(assignNsp({ jobId, skillLineId, ownerJobs, selfAssigned }, 1));
+    },
+    onDecraseClick: ({ jobId, skillLineId, ownerJobs, selfAssigned }) => {
+      dispatch(assignNsp({ jobId, skillLineId, ownerJobs, selfAssigned }, -1));
+    }
+  };
+};
+
+const DirectControllerContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DirectController);
+
+export default DirectControllerContainer;
