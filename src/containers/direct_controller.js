@@ -12,8 +12,8 @@ const mapStateToProps = (state, ownProps) => {
     skillLineId,
     is_active
   } = state.direct_controller;
-  const display = (is_active) ? 'flex' : 'none';
 
+  const display = (is_active) ? 'flex' : 'none';
   return {
     top: window.pageYOffset + top + 2,
     left: window.pageXOffset + left + width - 10,
@@ -21,9 +21,7 @@ const mapStateToProps = (state, ownProps) => {
     height: height -4,
     jobId,
     skillLineId,
-    display,
-    ownerJobs: state.skill_lines[skillLineId].owner_jobs,
-    selfAssigned: state.assigned_points.details[jobId][skillLineId]
+    display
   }
 };
 

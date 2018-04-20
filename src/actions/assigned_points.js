@@ -66,24 +66,23 @@ export const assignMaxNsp = ({
   return updateAssigned(jobId, skillLineId, ownerJobs, assigned);
 };
 
-export const assignNsp = (
-  {
-    jobId,
-    skillLineId,
-    ownerJobs,
-    selfAssigned
-  },
-  addend
-) => {
-  const assigned = {
-    nsp: selfAssigned.nsp + addend
+export const assignNsp = ({ jobId, skillLineId }, addend) => {
+  return (dispatch, getState) => {
+    console.log(getState());
+    const ownerJobs = getState().skill_simulator.skill_lines[skillLineId].owner_jobs;
+    const selfAssigned = getState().assigned_points.details[jobId][skillLineId];
+    const assigned = {
+      nsp: selfAssigned.nsp + addend
+    };
+
+    if (assigned.nsp < ASSIGNABLE_MIN_VALUE) {
+      assigned.nsp = ASSIGNABLE_MIN_VALUE;
+    } else if (assigned.nsp > ASSIGNABLE_MAX_VALUE) {
+      assigned.nsp = ASSIGNABLE_MAX_VALUE;
+    }
+
+    dispatch(updateAssigned(jobId, skillLineId, ownerJobs, assigned));
   };
-  if (assigned.nsp < ASSIGNABLE_MIN_VALUE) {
-    assigned.nsp = ASSIGNABLE_MIN_VALUE;
-  } else if (assigned.nsp > ASSIGNABLE_MAX_VALUE) {
-    assigned.nsp = ASSIGNABLE_MAX_VALUE;
-  }
-  return updateAssigned(jobId, skillLineId, ownerJobs, assigned);
 };
 
 export const assignMinMsp = ({ jobId, skillLineId, ownerJobs }) => {
