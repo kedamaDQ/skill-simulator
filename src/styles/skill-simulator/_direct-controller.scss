@@ -6,24 +6,11 @@
   flex-wrap: wrap;
 
   &__button {
-    pointer-events: auto;
-    border: none;
-    padding: 0;
-    background-color: transparent;
-    cursor: pointer;
-
-    &:hover {
-      stroke: $ui-base-color-primary;
-      fill: $ui-base-color-primary-hover;
-    }
-  }
-
-  &__arrow {
     display: block;
-    width: 16px;
-    height: 16px;
     margin: 0;
-    stroke-width: 2px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
     stroke: $ui-base-color-primary;
     fill: $ui-base-color-background;
     cursor: pointer;
@@ -32,6 +19,17 @@
     &:hover {
       stroke: $ui-base-color-primary;
       fill: $ui-base-color-primary-hover;
+    }
+
+    &::-moz-focus-inner {
+      border: none;
+    }
+
+    &__arrow {
+      width: 16px;
+      height: 16px;
+      margin: 0;
+      stroke-width: 2px;
     }
   }
 }

@@ -15,10 +15,10 @@ const mapStateToProps = (state, ownProps) => {
 
   const display = (is_active) ? 'flex' : 'none';
   return {
-    top: window.pageYOffset + top + 2,
+    top: window.pageYOffset + top - 1,
     left: window.pageXOffset + left + width - 10,
     width: 20,
-    height: height -4,
+    height: height + 2,
     jobId,
     skillLineId,
     display

@@ -7,15 +7,7 @@ const DirectController = (props) => {
 
   const handleDecraseButtonClick = (e) => {
     props.onDecraseClick && props.onDecraseClick(props);
-    e.preventDefault();
-    e.stopPropagation();
-    return false;
   };
-
-  const handleDecraseButtonDblClick = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-  }
 
   return (
     <div
@@ -34,19 +26,22 @@ const DirectController = (props) => {
       >
         <svg
           viewBox='0 0 20 20'
-          className='direct-controller__arrow'
+          className='direct-controller__button__arrow'
         >
           <polygon points='10,0 0,16 20,16 10,0' ry='2' />
         </svg>
       </button>
-      <svg
-        viewBox='0 0 20 20'
-        className='direct-controller__arrow'
+      <button
+        className='direct-controller__button'
         onClick={handleDecraseButtonClick}
-        onDoubleClick={handleDecraseButtonDblClick}
       >
-        <polygon points='10,20 20,4 0,4 10,20' />
-      </svg>
+        <svg
+          viewBox='0 0 20 20'
+          className='direct-controller__button__arrow'
+        >
+          <polygon points='10,20 20,4 0,4 10,20' />
+        </svg>
+      </button>
     </div>
   );
 };
