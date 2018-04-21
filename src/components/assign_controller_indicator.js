@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const AssignControllerIndicator = (props) => {
   return(
-    <dl className='assign-controller__indicator'>
+    <dl className={props.styleClasses}>
       <dt>{props.label}</dt>
       <dd>{props.value}</dd>
     </dl>

@@ -3,14 +3,19 @@ import PropTypes from 'prop-types';
 import AssignControllerButton from './assign_controller_button';
 import AssignControllerIndicator from './assign_controller_indicator';
 
-export const ASSIGN_MAX = 9999;
-export const ASSIGN_MIN = -9999;
-
 const AssignController = (props) => {
 
-  const handleClick = (change) => {
-    props.onClick && props.onClick(change);
-  }
+  const handleMinAssignButtonClick = () => {
+    props.onMinAssignButtonClick && props.onMinAssignButtonClick();
+  };
+
+  const handleMaxAssignButtonClick = () => {
+    props.onMaxAssignButtonClick && props.onMaxAssignButtonClick();
+  };
+
+  const handleAssignButtonClick = (change) => {
+    props.onAssignButtonClick && props.onAssignButtonClick(change);
+  };
 
   return(
     <div className='assign-controller'>
@@ -19,47 +24,49 @@ const AssignController = (props) => {
         <AssignControllerIndicator
           label={'使用'}
           value={props.assigned}
+          styleClasses={props.assignedStyleClasses}
         />
         <AssignControllerIndicator
           label={'残り'}
           value={props.remained}
+          styleClasses={props.remainedStyleClasses}
         />
       </div>
       <div className='assign-controller__buttons-outer'>
         <AssignControllerButton
-          value={ASSIGN_MIN}
+          value={0}
           display='全消'
-          onClick={handleClick}
+          onClick={handleMinAssignButtonClick}
           styleClasses={props.buttonStyleClasses}
         />
         <AssignControllerButton
           value={-10}
           display='-10'
-          onClick={handleClick}
+          onClick={handleAssignButtonClick}
           styleClasses={props.buttonStyleClasses}
         />
         <AssignControllerButton
           value={-1}
           display='-1'
-          onClick={handleClick}
+          onClick={handleAssignButtonClick}
           styleClasses={props.buttonStyleClasses}
         />
         <AssignControllerButton
           value={1}
           display='+1'
-          onClick={handleClick}
+          onClick={handleAssignButtonClick}
           styleClasses={props.buttonStyleClasses}
         />
         <AssignControllerButton
           value={10}
           display='+10'
-          onClick={handleClick}
+          onClick={handleAssignButtonClick}
           styleClasses={props.buttonStyleClasses}
         />
         <AssignControllerButton
-          value={ASSIGN_MAX}
+          value={0}
           display='全振'
-          onClick={handleClick}
+          onClick={handleMaxAssignButtonClick}
           styleClasses={props.buttonStyleClasses}
         />
       </div>
@@ -68,27 +75,13 @@ const AssignController = (props) => {
 };
 
 AssignController.propTypes = {
-  jobId: PropTypes.string.isRequired,
-  skillLineId: PropTypes.string.isRequired,
-  selfAssigned: PropTypes.shape({
-    nsp: PropTypes.number.isRequired,
-    msp: PropTypes.number.isRequired
-  }).isRequired,
-  skillTotalAssigned: PropTypes.shape({
-    nsp: PropTypes.number.isRequired,
-    msp: PropTypes.number.isRequired
-  }).isRequired,
-  jobOwned: PropTypes.shape({
-    nsp: PropTypes.number.isRequired,
-    msp: PropTypes.number.isRequired,
-    total: PropTypes.number.isRequired
-  }).isRequired,
-  jobAssigned: PropTypes.shape({
-    nsp: PropTypes.number.isRequired,
-    msp: PropTypes.number.isRequired,
-    total: PropTypes.number.isRequired
-  }).isRequired,
-  onClick: PropTypes.func.isRequired
+  assigned: PropTypes.number.isRequired,
+  remained: PropTypes.number.isRequired,
+  assignedStyleClasses: PropTypes.string.isRequired,
+  remainedStyleClasses: PropTypes.string.isRequired,
+  onMinAssignButtonClick: PropTypes.func.isRequired,
+  onMaxAssignButtonClick: PropTypes.func.isRequired,
+  onAssignButtonClick: PropTypes.func.isRequired
 };
 
 export default AssignController;

@@ -1,73 +1,42 @@
 import { connect } from 'react-redux';
-import
-  AssignController,
-  {
-    ASSIGN_MAX,
-    ASSIGN_MIN
-  } from '../components/assign_controller';
+import AssignController from '../components/assign_controller';
 import {
-  updateAssigned
+  assignMinNsp,
+  assignMaxNsp,
+  addNsp
 } from '../actions/assigned_points';
 
-const MIN_ASSIGN = 0;
-const MAX_ASSIGN = 255;
-
 const mapStateToProps = (state, ownProps) => {
+  const { jobId, skillLineId } = ownProps;
+  const assigned = state.assigned_points.details[jobId][skillLineId].nsp;
+  const remained = state.owned_points[jobId].nsp - state.assigned_points.summaries[jobId].nsp;
+  const assignedStyleClasses = ['assign-controller__indicator'];
+  const remainedStyleClasses = ['assign-controller__indicator'];
+
+  if (assigned > state.skill_simulator.skill_lines[skillLineId].max_points) {
+    assignedStyleClasses.push('out-of-range');
+  }
+  if (remained < 0) {
+    remainedStyleClasses.push('out-of-range');
+  }
   return {
-    assigned: ownProps.selfAssigned.nsp,
-    remained: ownProps.jobOwned.nsp - ownProps.jobAssigned.nsp
+    assigned,
+    remained,
+    assignedStyleClasses: assignedStyleClasses.join(' '),
+    remainedStyleClasses: remainedStyleClasses.join(' ')
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-
   return {
-    onClick: (addend) => {
-      const {
-        jobId,
-        skillLineId,
-        skillLineMax,
-        ownerJobs,
-        selfAssigned,
-        skillTotalAssigned,
-        jobOwned,
-        jobAssigned
-      } = ownProps;
-      const jobRemained = {
-        nsp: jobOwned.nsp - jobAssigned.nsp
-      };
-
-      const assigned = {};
-      if (addend === ASSIGN_MIN) {
-        assigned.nsp = 0;
-      } else if (addend === ASSIGN_MAX) {
-        const totalAssigned = skillTotalAssigned.nsp + selfAssigned.msp;
-        if (jobRemained.nsp > 0) {
-          const preTotalAssigned = totalAssigned + jobRemained.nsp;
-          if (preTotalAssigned > skillLineMax) {
-            assigned.nsp = selfAssigned.nsp + (skillLineMax - totalAssigned);
-          } else {
-            assigned.nsp = selfAssigned.nsp + jobRemained.nsp;
-          }
-        } else {
-          if (totalAssigned > skillLineMax) {
-            assigned.nsp = skillLineMax- (totalAssigned - selfAssigned.nsp);
-          } else {
-            assigned.nsp = selfAssigned.nsp + jobRemained.nsp;
-          }
-          if (assigned.nsp < 0) {
-            assigned.nsp = 0;
-          }
-        }
-      } else {
-        assigned.nsp = selfAssigned.nsp + addend;
-        if (assigned.nsp < MIN_ASSIGN) {
-          assigned.nsp = MIN_ASSIGN;
-        } else if (assigned.nsp > MAX_ASSIGN) {
-          assigned.nsp = MAX_ASSIGN;
-        }
-      }
-      dispatch(updateAssigned(jobId, skillLineId, ownerJobs, assigned));
+    onMinAssignButtonClick: () => {
+      dispatch(assignMinNsp(ownProps.jobId, ownProps.skillLineId));
+    },
+    onMaxAssignButtonClick: () => {
+      dispatch(assignMaxNsp(ownProps.jobId, ownProps.skillLineId));
+    },
+    onAssignButtonClick: (addend) => {
+      dispatch(addNsp(ownProps.jobId, ownProps.skillLineId, addend));
     }
   };
 };

@@ -64,9 +64,12 @@ export default class Modal extends React.PureComponent {
 
       case 'save':
         return(
-          <ModalSaveContainer
-            storageAvailable={this.props.contentParams.storageAvailable}
-          />
+          <div>
+            <ModalSaveContainer
+              storageAvailable={this.props.contentParams.storageAvailable}
+            />
+            { textAboutClose }
+          </div>
         );
 
       case 'usage':

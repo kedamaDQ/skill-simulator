@@ -4,6 +4,7 @@
 @import 'skill-simulator/skill-point-panel';
 @import 'skill-simulator/input-modal';
 @import 'skill-simulator/react-select';
+@import 'skill-simulator/direct-controller';
 
 body {
   margin: 0;
@@ -20,8 +21,4 @@ h1 {
   padding: 0;
   font-size: 14px;
   font-weight: bold;
-}
-
-.skill-simulator {
-  position: relative;
 }

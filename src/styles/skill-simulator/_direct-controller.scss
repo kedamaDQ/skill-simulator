@@ -1,0 +1,39 @@
+.direct-controller {
+  position: absolute;
+  pointer-events: none;
+  text-align: right;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+
+  &__button {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    stroke: $ui-base-color-primary;
+    fill: $ui-base-color-background;
+    cursor: pointer;
+    pointer-events: auto;
+
+    &:hover {
+      stroke: $ui-base-color-primary;
+      fill: $ui-base-color-primary-hover;
+    }
+
+    &::-moz-focus-inner {
+      border: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &__arrow {
+      width: 16px;
+      height: 16px;
+      margin: 0;
+      stroke-width: 2px;
+    }
+  }
+}

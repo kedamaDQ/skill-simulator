@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import SkillTable from '../components/sp_table';
+import { deactivateController } from '../actions/direct_controller';
 import {
   applyWeaponFilter,
   releaseWeaponFilter
@@ -19,6 +20,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onHeaderClick: (currentFilterId, newFilterId, weaponIds) => {
+      dispatch(deactivateController());
       if (currentFilterId === newFilterId) {
         dispatch(releaseWeaponFilter());
       } else {
@@ -26,6 +28,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       }
     },
     onWeaponHeaderClick: (currentFilter, weaponId) => {
+      dispatch(deactivateController());
       if (currentFilter === weaponId) {
         dispatch(releaseWeaponFilter());
       } else {
