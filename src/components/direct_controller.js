@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const DirectController = (props) => {
   const handleIncraseButtonClick = () => {
-    props.onIncraseClick && props.onIncraseClick(props);
+    props.onIncraseClick && props.onIncraseClick(props.jobId, props.skillLineId);
   };
 
   const handleDecraseButtonClick = (e) => {
-    props.onDecraseClick && props.onDecraseClick(props);
+    props.onDecraseClick && props.onDecraseClick(props.jobId, props.skillLineId);
   };
 
   return (
@@ -44,6 +45,16 @@ const DirectController = (props) => {
       </button>
     </div>
   );
+};
+
+DirectController.propTypes = {
+  display: PropTypes.string.isRequired,
+  top: PropTypes.number.isRequired,
+  left: PropTypes.number.isRequired,
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
+  onIncraseClick: PropTypes.func.isRequired,
+  onDecraseClick: PropTypes.func.isRequired
 };
 
 export default DirectController;

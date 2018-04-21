@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import DirectController from '../components/direct_controller';
-import { assignNsp } from '../actions/assigned_points';
+import { addNsp } from '../actions/assigned_points';
 
 const mapStateToProps = (state, ownProps) => {
   const {
@@ -27,11 +27,11 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onIncraseClick: ({ jobId, skillLineId, ownerJobs, selfAssigned }) => {
-      dispatch(assignNsp({ jobId, skillLineId, ownerJobs, selfAssigned }, 1));
+    onIncraseClick: (jobId, skillLineId) => {
+      dispatch(addNsp(jobId, skillLineId, 1));
     },
-    onDecraseClick: ({ jobId, skillLineId, ownerJobs, selfAssigned }) => {
-      dispatch(assignNsp({ jobId, skillLineId, ownerJobs, selfAssigned }, -1));
+    onDecraseClick: (jobId, skillLineId) => {
+      dispatch(addNsp(jobId, skillLineId, -1));
     }
   };
 };

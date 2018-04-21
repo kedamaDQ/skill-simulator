@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ModalAssign from '../components/modal_assign';
-import { updateAssigned } from '../actions/assigned_points';
+import { assignNsp } from '../actions/assigned_points';
 //import { closeModal } from '../actions/modal';
 
 const mapStateToProps = (state, ownProps) => {
@@ -12,21 +12,15 @@ const mapStateToProps = (state, ownProps) => {
   return {
     job: jobs[jobId],
     skillLine: skill_lines[skillLineId],
-    selfAssigned: state.assigned_points.details[jobId][skillLineId],
-    skillTotalAssigned: state.assigned_points.summaries[skillLineId],
-    jobOwned: state.owned_points[jobId],
-    jobAssigned: state.assigned_points.summaries[jobId],
+    assignedByJob: state.assigned_points.details[jobId][skillLineId],
+    totalAssignedForSkill: state.assigned_points.summaries[skillLineId],
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onSelectorClick: (ownerJobs, assigned) => {
-      dispatch(updateAssigned(
-        ownProps.jobId,
-        ownProps.skillLineId,
-        ownerJobs,
-        { nsp: assigned }));
+    onSelectorClick: (nsp) => {
+      dispatch(assignNsp(ownProps.jobId, ownProps.skillLineId, nsp));
 //      dispatch(closeModal());
     }
   };

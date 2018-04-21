@@ -44,11 +44,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         default:
           break;
       }
-    },
-    onOpenBulkModalClick: (position) => {
-      dispatch(
-        openModalBulk(position)
-      );
     }
   };
 }

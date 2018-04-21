@@ -32,9 +32,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(deactivateController());
     },
     onMouseOver: (domRect) => {
-      dispatch(activateController(domRect, ownProps));
+      dispatch(activateController(domRect, jobId, skillLineId));
     },
     onMouseOut: () => {
+      // Unused
       dispatch(deactivateController());
     }
   };

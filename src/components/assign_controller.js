@@ -24,10 +24,12 @@ const AssignController = (props) => {
         <AssignControllerIndicator
           label={'使用'}
           value={props.assigned}
+          styleClasses={props.assignedStyleClasses}
         />
         <AssignControllerIndicator
           label={'残り'}
           value={props.remained}
+          styleClasses={props.remainedStyleClasses}
         />
       </div>
       <div className='assign-controller__buttons-outer'>
@@ -73,26 +75,10 @@ const AssignController = (props) => {
 };
 
 AssignController.propTypes = {
-  jobId: PropTypes.string.isRequired,
-  skillLineId: PropTypes.string.isRequired,
-  selfAssigned: PropTypes.shape({
-    nsp: PropTypes.number.isRequired,
-    msp: PropTypes.number.isRequired
-  }).isRequired,
-  skillTotalAssigned: PropTypes.shape({
-    nsp: PropTypes.number.isRequired,
-    msp: PropTypes.number.isRequired
-  }).isRequired,
-  jobOwned: PropTypes.shape({
-    nsp: PropTypes.number.isRequired,
-    msp: PropTypes.number.isRequired,
-    total: PropTypes.number.isRequired
-  }).isRequired,
-  jobAssigned: PropTypes.shape({
-    nsp: PropTypes.number.isRequired,
-    msp: PropTypes.number.isRequired,
-    total: PropTypes.number.isRequired
-  }).isRequired,
+  assigned: PropTypes.number.isRequired,
+  remained: PropTypes.number.isRequired,
+  assignedStyleClasses: PropTypes.string.isRequired,
+  remainedStyleClasses: PropTypes.string.isRequired,
   onMinAssignButtonClick: PropTypes.func.isRequired,
   onMaxAssignButtonClick: PropTypes.func.isRequired,
   onAssignButtonClick: PropTypes.func.isRequired

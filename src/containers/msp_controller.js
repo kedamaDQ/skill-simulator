@@ -3,26 +3,29 @@ import AssignController from '../components/assign_controller';
 import { 
   assignMinMsp,
   assignMaxMsp,
-  assignMsp
+  addMsp
 } from '../actions/assigned_points';
 
 const mapStateToProps = (state, ownProps) => {
+  const { jobId, skillLineId } = ownProps;
   return {
-    assigned: ownProps.selfAssigned.msp,
-    remained: ownProps.jobOwned.msp - ownProps.jobAssigned.msp
+    assigned: state.assigned_points.details[jobId][skillLineId].msp,
+    remained: state.owned_points[jobId].msp - state.assigned_points.summaries[jobId].msp,
+    assignedStyleClasses: 'assign-controller__indicator',
+    remainedStyleClasses: 'assign-controller__indicator',
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onMinAssignButtonClick: () => {
-      dispatch(assignMinMsp(ownProps));
+      dispatch(assignMinMsp(ownProps.jobId, ownProps.skillLineId));
     },
     onMaxAssignButtonClick: () => {
-      dispatch(assignMaxMsp(ownProps));
+      dispatch(assignMaxMsp(ownProps.jobId, ownProps.skillLineId));
     },
     onAssignButtonClick: (addend) => {
-      dispatch(assignMsp(ownProps, addend));
+      dispatch(addMsp(ownProps.jobId, ownProps.skillLineId, addend));
     }
   };
 };
