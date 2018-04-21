@@ -25,6 +25,10 @@
       border: none;
     }
 
+    &:focus {
+      outline: none;
+    }
+
     &__arrow {
       width: 16px;
       height: 16px;
