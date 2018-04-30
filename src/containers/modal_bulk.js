@@ -7,6 +7,7 @@ import {
 } from '../actions/owned_points';
 import {
   fullfillForPassives,
+  fullfillMspToJobs,
   resetAssigned
 } from '../actions/assigned_points';
 
@@ -48,7 +49,9 @@ const mapStateToProps = (state, ownProps) => {
     bulkSetupSkillbooks: state.owned_points.bulk_setup.by_skillbooks,
     passiveFillings,
     jobSkillLineIds,
-    weaponSkillLineIds
+    weaponSkillLineIds,
+    skillLines: skill_lines,
+    ownedMsp: state.owned_points[indices.jobs[0]].by_skillbooks.value
   };
 }
 
@@ -65,6 +68,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     onFullfillPassivesClick: (fillings) => {
       dispatch(fullfillForPassives(fillings));
+    },
+    onFullfillMspClick: (skillLines, jobSkillLineIds, ownedMsp) => {
+      dispatch(fullfillMspToJobs(skillLines, jobSkillLineIds, ownedMsp));
     },
     onResetSkillsClick: (skillLineIds) => {
       dispatch(resetAssigned(skillLineIds));
