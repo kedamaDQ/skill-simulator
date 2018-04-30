@@ -3,7 +3,8 @@ import {
   UPDATE_ASSIGNED,
   RESET_ASSIGNED,
   FULLFILL_FOR_PASSIVES,
-  LOAD_ASSIGNED
+  LOAD_ASSIGNED,
+  FULLFILL_MSP_TO_JOBS
 } from '../actions/assigned_points';
 import {
   JOB_MASK,
@@ -126,6 +127,48 @@ const fullfillForPassives = (state, fillings) => {
   };
 };
 
+const fullfillMspToJobs = (
+  {
+    details,
+    summaries
+  },
+  {
+    skillLines,
+    jobSkillLineIds,
+    ownedMsp
+  }
+) => {
+  const newDetails = {};
+  Object.keys(details).forEach((jobId) => {
+    newDetails[jobId] = {}
+    Object.keys(details[jobId]).forEach((skillLineId) => {
+      let nsp = details[jobId][skillLineId].nsp;
+      let msp = details[jobId][skillLineId].msp;
+
+      // Oh...dancer has two job skills.
+      if (jobSkillLineIds.includes(skillLineId) && skillLineId !== 'dance') {
+        msp = ownedMsp;
+        if (nsp + ownedMsp > skillLines[skillLineId].max_points) {
+          nsp = skillLines[skillLineId].max_points - ownedMsp;
+        }
+      } else {
+        msp = 0;
+      }
+
+      newDetails[jobId][skillLineId] = {
+        nsp: nsp,
+        msp: msp,
+        total: nsp + msp
+      };
+    });
+  });
+
+  return {
+    details: newDetails,
+    summaries: buildSummaries(newDetails)
+  };
+};
+
 const resetSkillLines = (state, targetSkillLineIds) => {
   const details = Object.assign({}, state.details);
 
@@ -227,6 +270,9 @@ const assigned_points = (state = initialState, action) => {
 
     case FULLFILL_FOR_PASSIVES:
       return fullfillForPassives(state, action.fillings);
+    
+    case FULLFILL_MSP_TO_JOBS:
+      return fullfillMspToJobs(state, action);
 
     case LOAD_ASSIGNED:
       return loadAssigned(state, action.details);

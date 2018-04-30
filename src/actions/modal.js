@@ -17,7 +17,7 @@ export const openModalBulk = (position) => {
     type: MODAL_OPEN,
     position,
     width: 500,
-    height: 325,
+    height: 375,
     content: 'bulk',
     content_params: {}
   };

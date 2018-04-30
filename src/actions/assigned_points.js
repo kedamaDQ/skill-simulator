@@ -3,6 +3,7 @@ export const RESET_ASSIGNED = 'RESET_ASSIGNED';
 export const FULLFILL_FOR_PASSIVES = 'FULLFILL_FOR_PASSIVES';
 export const LOAD_ASSIGNED = 'LOAD_ASSIGNED';
 export const UPDATE_ASSIGNED = 'UPDATE_ASSIGNED';
+export const FULLFILL_MSP_TO_JOBS = 'FULLFILL_MSP_TO_JOBS';
 
 export const ASSIGNABLE_MIN_NSP = 0;
 export const ASSIGNABLE_MAX_NSP = 255;
@@ -33,6 +34,15 @@ export const fullfillForPassives = (fillings) => {
     fillings
   };
 };
+
+export const fullfillMspToJobs = (skillLines, jobSkillLineIds, ownedMsp) => {
+  return {
+    type: FULLFILL_MSP_TO_JOBS,
+    skillLines,
+    jobSkillLineIds,
+    ownedMsp
+  };
+}
 
 export const loadAssigned = (details) => {
   return {

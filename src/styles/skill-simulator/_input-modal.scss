@@ -333,9 +333,22 @@ ul.selector {
         border-radius: $ui-panel-border-radius;
         cursor: pointer;
     
-        &:hover {
-          background-color: $ui-base-color-primary-hover;
+        &.nsp {
+          border-color: $ui-base-color-primary;
+
+          &:hover {
+            background-color: $ui-base-color-primary-hover;
+          }
         }
+
+        &.msp {
+          border-color: $ui-base-color-tertiary;
+
+          &:hover {
+            background-color: $ui-base-color-tertiary-hover;
+          }
+        }
+
       }
     }
   }

@@ -6,15 +6,19 @@ const ModalBulk = (props) => {
 
   const handleFullfillPassivesClick = () => {
     props.onFullfillPassivesClick(props.passiveFillings);
-  }
+  };
+
+  const handleFullfillMspClick = () => {
+    props.onFullfillMspClick(props.skillLines, props.jobSkillLineIds, props.ownedMsp);
+  };
 
   const handleResetJobSkillsClick = () => {
     props.onResetSkillsClick(props.jobSkillLineIds);
-  }
+  };
 
   const handleResetWeaponSkillsClick = () => {
     props.onResetSkillsClick(props.weaponSkillLineIds);
-  }
+  };
 
   return (
     <div className='input-modal-bulk'>
@@ -53,9 +57,18 @@ const ModalBulk = (props) => {
           <dt>プリセット</dt>
           <dd>
             <button
+              className='nsp'
               onClick={handleFullfillPassivesClick}
             >
               フルパッシブ
+            </button>
+          </dd>
+          <dd>
+            <button
+              className='msp'
+              onClick={handleFullfillMspClick}
+            >
+              マスタースキルポイントを各職スキルに全振り
             </button>
           </dd>
         </dl>
