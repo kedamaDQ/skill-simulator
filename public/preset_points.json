@@ -103,8 +103,8 @@
       {"label": "Lv.101", "value": 204},
       {"label": "Lv.102", "value": 205},
       {"label": "Lv.103", "value": 207},
-      {"label": "Lv.104", "value": 209},
-      {"label": "Lv.105", "value": 211}
+      {"label": "Lv.104", "value": 208},
+      {"label": "Lv.105", "value": 210}
     ],
     "by_training": [
       {"label": "0個", "value": 0},
