@@ -485,6 +485,33 @@
     ],
     "passives_filling": 90
   },
+  "playing": {
+    "display": "あそび",
+    "skills": [
+      {"display": "？？+10", "points": 8, "additional": false},
+      {"display": "あそぶ？(専)", "points": 16, "additional": false},
+      {"display": "？？+10", "points": 28, "additional": false},
+      {"display": "くちぶえ？(専)", "points": 40, "additional": false},
+      {"display": "？？+10", "points": 48, "additional": false},
+      {"display": "なめまわし？(専)", "points": 56, "additional": false},
+      {"display": "？？+10", "points": 70, "additional": false},
+      {"display": "ぱふぱふ？(専)", "points": 80, "additional": false},
+      {"display": "HP？MP？+20", "points": 90, "additional": false},
+      {"display": "ひゃくれつなめ？(専)", "points": 100, "additional": false},
+      {"display": "？？(専)", "points": 110, "additional": false},
+      {"display": "？？(専)", "points": 120, "additional": false},
+      {"display": "？？(専)", "points": 130, "additional": false},
+      {"display": "？？(専)", "points": 140, "additional": false},
+      {"display": "？？(専)", "points": 150, "additional": false},
+      {"display": "選択", "points": 160, "additional": true},
+      {"display": "選択", "points": 170, "additional": true},
+      {"display": "選択", "points": 180, "additional": true}
+    ],
+    "additional_skills": [
+
+    ],
+    "passives_filling": 90
+  },
   "shield": {
     "display": "盾",
     "skills": [
