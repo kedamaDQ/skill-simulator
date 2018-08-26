@@ -100,5 +100,11 @@
     "display_short": "天地",
     "job_skill_lines": ["summoning"],
     "weapon_skill_lines": ["fan", "stick", "wand", "shield"]
+  },
+  "playboy": {
+    "display": "遊び人",
+    "display_short": "遊び",
+    "job_skill_lines": ["playing"],
+    "weapon_skill_lines": ["sword", "knife", "hammer", "boomerang"]
   }
 }

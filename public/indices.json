@@ -16,7 +16,8 @@
     "job_itemmaster",
     "dancer",
     "foreteller",
-    "summoner"
+    "summoner",
+    "playboy"
   ],
   "weapons": [
     "grappling",
@@ -55,6 +56,7 @@
     "dance",
     "foretelling",
     "summoning",
+    "playing",
     "shield",
     "grappling",
     "sword",
