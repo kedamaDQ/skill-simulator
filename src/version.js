@@ -4,7 +4,7 @@ const version = {
   minor: 1,
   patch: 3,
   pre: null,
-  flags: 'rc1'
+  flags: 'rc2'
 };
 
 export const versionArray = () => {
