@@ -18,11 +18,29 @@ const OwnedSelector = (props) => {
     );
   };
 
+  const renderOptionWithoutValue = (option) => {
+    return(
+      <div className='react-select-option--without-value'>
+        <div className='label'>{option.label}</div>
+        <div className='value'></div>
+      </div>
+    );
+  };
+
   const renderValue = (option) => {
     return(
       <div className='react-select-value'>
         <div className='label'>{option.label}</div>
         <div className='value'>({option.value})</div>
+      </div>
+    );
+  };
+
+  const renderValueWithoutValue = (option) => {
+    return(
+      <div className='react-select-value--without-value'>
+        <div className='label'>{option.label}</div>
+        <div className='value'></div>
       </div>
     );
   };
@@ -43,8 +61,8 @@ const OwnedSelector = (props) => {
         removeSelected={false}
         searchable={false}
         clearable={false}
-        optionRenderer={renderOption}
-        valueRenderer={renderValue}
+        optionRenderer={(props.showValue) ? renderOption : renderOptionWithoutValue}
+        valueRenderer={(props.showValue) ? renderValue : renderValueWithoutValue}
       />
     );
   }

@@ -27,9 +27,9 @@ const mapStateToProps = (state, ownProps) => {
   const ad = [];  // assigned data
   indices.jobs.forEach((jobId, jobIdx) => {
     o.push(
-      presets.by_level.findIndex((v) => v.label === owned[jobId].by_level.label),
-      presets.by_training.findIndex((v) => v.label === owned[jobId].by_training.label),
-      presets.by_skillbooks.findIndex((v) => v.label === owned[jobId].by_skillbooks.label)
+      presets.by_level[jobs[jobId].presets_by_level].findIndex((v) => v.label === owned[jobId].by_level.label),
+      presets.by_training[jobs[jobId].presets_by_training].findIndex((v) => v.label === owned[jobId].by_training.label),
+      presets.by_skillbooks[jobs[jobId].presets_by_skillbooks].findIndex((v) => v.label === owned[jobId].by_skillbooks.label)
     );
 
     const headers = [jobIdx | JOB_MASK];

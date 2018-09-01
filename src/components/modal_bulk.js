@@ -30,6 +30,7 @@ const ModalBulk = (props) => {
                 options={props.presetsByLevel}
                 onChange={props.onLevelChange}
                 value={props.bulkSetupLevel}
+                showValue={false}
               />
           </dd>
         </dl>
@@ -40,6 +41,7 @@ const ModalBulk = (props) => {
                 options={props.presetsByTraining}
                 onChange={props.onTrainingChange}
                 value={props.bulkSetupTraining}
+                showValue={true}
               />
           </dd>
         </dl>
@@ -50,6 +52,7 @@ const ModalBulk = (props) => {
                 options={props.presetsBySkillbooks}
                 onChange={props.onSkillbooksChange}
                 value={props.bulkSetupSkillbooks}
+                showValue={true}
               />
           </dd>
         </dl>
