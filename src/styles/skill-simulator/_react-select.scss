@@ -14,6 +14,14 @@
   }
 }
 
+.react-select-option--without-value {
+  font-size: $ui-panel-font-size;
+
+  & .label {
+    text-align: left;
+  }
+}
+
 .react-select-value {
   height: 100%;
   font-size: $ui-panel-font-size;
@@ -26,6 +34,14 @@
   & .value {
     margin-right: 20px;
     text-align: right;
+  }
+}
+
+.react-select-value--without-value {
+  font-size: $ui-panel-font-size;
+
+  & .label {
+    text-align: left;
   }
 }
 

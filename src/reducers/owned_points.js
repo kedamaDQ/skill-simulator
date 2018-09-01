@@ -28,10 +28,27 @@ const buildOwnedPoints = (before, update) => {
   return updated;
 };
 
-const updateOwnedPointsBulked = (state, { update }) => {
+const updateOwnedPointsBulked = (state, { update, jobs, presets }) => {
   const newState = {};
   for (const jobId in state) {
-    newState[jobId] = buildOwnedPoints(state[jobId], update);
+    if (jobId === 'bulk_setup') {
+      newState[jobId] = buildOwnedPoints(state[jobId], update);
+      continue;
+    }
+
+    for (const target in update) {
+      const targetPresets = presets[target][jobs[jobId][`presets_${target}`]]
+      const idx = targetPresets.findIndex((tp) => {
+        return (update[target].label === tp.label);
+      });
+
+      newState[jobId] = buildOwnedPoints(
+        state[jobId],
+        {
+          [target]: (idx < 0) ? targetPresets[targetPresets.length - 1] : targetPresets[idx]
+        }
+      );
+    }
   }
   return newState;
 };
@@ -47,11 +64,12 @@ const loadOwnedPoints = (state, { loaded }) => {
 const owned_points = (state = initialState, action) => {
   switch (action.type) {
     case INITIALIZE_OWNEDPOINTS:
-      const { indices, presets, preOwnedDatas } = action;
+      const { indices, jobs, presets, preOwnedDatas } = action;
       const presetLength = Object.keys(presets).length;
       const owned = {};
       if (preOwnedDatas.length && preOwnedDatas.length % presetLength === 0) {
         indices.jobs.forEach((jobId, idx) => {
+          const job = jobs[jobId];
           const offset = presetLength * idx;
           const [
             byLevel,
@@ -59,10 +77,14 @@ const owned_points = (state = initialState, action) => {
             bySkillbooks
           ] = preOwnedDatas.slice(offset, offset + presetLength);
 
+          const p_by_level = presets.by_level[job.presets_by_level];
+          const p_by_training = presets.by_training[job.presets_by_training];
+          const p_by_skillbooks = presets.by_skillbooks[job.presets_by_skillbooks];
+
           owned[jobId] = {
-            by_level: presets.by_level[byLevel],
-            by_training: presets.by_training[byTraining],
-            by_skillbooks: presets.by_skillbooks[bySkillbooks],
+            by_level: (p_by_level.length > byLevel) ? p_by_level[byLevel] : p_by_level[p_by_level.length - 1],
+            by_training: (p_by_training.length > byTraining) ? p_by_training[byTraining] : p_by_training[p_by_training.length - 1],
+            by_skillbooks: (p_by_skillbooks.length > bySkillbooks) ? p_by_skillbooks[bySkillbooks] : p_by_skillbooks[p_by_skillbooks.length - 1],
           }
           owned[jobId].nsp = owned[jobId].by_level.value + owned[jobId].by_training.value;
           owned[jobId].msp = owned[jobId].by_skillbooks.value;
@@ -70,10 +92,11 @@ const owned_points = (state = initialState, action) => {
         });
       } else {
         indices.jobs.forEach((jobId) => {
+          const job = jobs[jobId];
           owned[jobId] = {
-            by_level: presets.by_level[0],
-            by_training: presets.by_training[0],
-            by_skillbooks: presets.by_skillbooks[0],
+            by_level: presets.by_level[job.presets_by_level][0],
+            by_training: presets.by_training[job.presets_by_training][0],
+            by_skillbooks: presets.by_skillbooks[job.presets_by_skillbooks][0],
             nsp: 0,
             msp: 0,
             total: 0
@@ -83,9 +106,9 @@ const owned_points = (state = initialState, action) => {
       return {
         ...owned,
         bulk_setup: {
-          by_level: presets.by_level[0],
-          by_training: presets.by_training[0],
-          by_skillbooks: presets.by_skillbooks[0]
+          by_level: presets.by_level["standard"][0],
+          by_training: presets.by_training["standard"][0],
+          by_skillbooks: presets.by_skillbooks["standard"][0]
         }
       };
 

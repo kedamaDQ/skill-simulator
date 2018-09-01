@@ -41,9 +41,9 @@ const mapStateToProps = (state, ownProps) => {
   })
 
   return {
-    presetsByLevel: preset_points.by_level,
-    presetsByTraining: preset_points.by_training,
-    presetsBySkillbooks: preset_points.by_skillbooks,
+    presetsByLevel: preset_points.by_level["standard"],
+    presetsByTraining: preset_points.by_training["standard"],
+    presetsBySkillbooks: preset_points.by_skillbooks["standard"],
     bulkSetupLevel: state.owned_points.bulk_setup.by_level,
     bulkSetupTraining: state.owned_points.bulk_setup.by_training,
     bulkSetupSkillbooks: state.owned_points.bulk_setup.by_skillbooks,

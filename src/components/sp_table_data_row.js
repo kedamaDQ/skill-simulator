@@ -66,23 +66,26 @@ const SpTableDataRow = (props) => {
       </th>
       <td className='skill-point-table__owned-data'>
         <OwnedSelector
-          options={props.presets.by_level}
+          options={props.presets.by_level[props.job.presets_by_level]}
           onChange={props.onLevelChange}
           value={props.owned.by_level}
+          showValue={true}
         />
       </td>
       <td className='skill-point-table__owned-data'>
         <OwnedSelector
-          options={props.presets.by_training}
+          options={props.presets.by_training[props.job.presets_by_training]}
           onChange={props.onTrainingChange}
           value={props.owned.by_training}
+          showValue={true}
         />
       </td>
       <td className='skill-point-table__owned-data'>
         <OwnedSelector
-          options={props.presets.by_skillbooks}
+          options={props.presets.by_skillbooks[props.job.presets_by_skillbooks]}
           onChange={props.onSkillbooksChange}
           value={props.owned.by_skillbooks}
+          showValue={true}
         />
       </td>
       <td className='skill-point-table__owned-data'>
@@ -125,18 +128,24 @@ SpTableDataRow.propTypes = {
   }).isRequired).isRequired,
   skillLines: PropTypes.object.isRequired,
   presets: PropTypes.shape({
-    by_level: PropTypes.arrayOf(PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      value: PropTypes.number.isRequired
-    }).isRequired).isRequired,
-    by_training: PropTypes.arrayOf(PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      value: PropTypes.number.isRequired
-    }).isRequired).isRequired,
-    by_skillbooks: PropTypes.arrayOf(PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      value: PropTypes.number.isRequired
-    }).isRequired).isRequired,
+    by_level: PropTypes.shape(
+      PropTypes.arrayOf(PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        value: PropTypes.number.isRequired
+      }).isRequired
+    ).isRequired).isRequired,
+    by_training: PropTypes.shape(
+      PropTypes.arrayOf(PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        value: PropTypes.number.isRequired
+      }).isRequired
+    ).isRequired).isRequired,
+    by_skillbooks: PropTypes.shape(
+      PropTypes.arrayOf(PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        value: PropTypes.number.isRequired
+      }).isRequired
+    ).isRequired).isRequired,
   }).isRequired,
   owned: PropTypes.shape({
     by_level: PropTypes.shape({

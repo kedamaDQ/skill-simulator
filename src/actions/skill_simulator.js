@@ -68,7 +68,7 @@ export const fetchInitialState = (preOwnedDatas, preAssignedHeaders, preAssigned
       dispatch(initializeSkillLines(indices, jobs, skill_lines));
       dispatch(initializePresetPoints(preset_points));
       dispatch(initializeSkillSimulator(indices, jobs, weapons, skill_lines, preset_points));
-      dispatch(initializeOwnedPoints(indices, preset_points, preOwnedDatas));
+      dispatch(initializeOwnedPoints(indices, jobs, preset_points, preOwnedDatas));
       dispatch(initializeAssignedPoints(indices, jobs, skill_lines, preAssignedHeaders, preAssignedDatas));
       dispatch(fetchInitialStateSuccess());
     })
