@@ -207,12 +207,12 @@
       {"label": "Lv.97", "value": 197},
       {"label": "Lv.98", "value": 199},
       {"label": "Lv.99", "value": 200},
-      {"label": "Lv.100", "value": 203},
-      {"label": "Lv.101", "value": 204},
-      {"label": "Lv.102", "value": 205},
-      {"label": "Lv.103", "value": 207},
-      {"label": "Lv.104", "value": 208},
-      {"label": "Lv.105", "value": 229}
+      {"label": "Lv.100", "value": 204},
+      {"label": "Lv.101", "value": 206},
+      {"label": "Lv.102", "value": 209},
+      {"label": "Lv.103", "value": 212},
+      {"label": "Lv.104", "value": 214},
+      {"label": "Lv.105", "value": 218}
     ]
   },
   "by_training": {
