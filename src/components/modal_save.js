@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactSelect from 'react-select';
-import 'react-select/dist/react-select.css';
 import {
   utf8ToBase64,
   base64ToUtf8
