@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactSelect from 'react-select';
+import { components } from 'react-select';
 
 const OwnedSelector = (props) => {
 
@@ -8,63 +9,54 @@ const OwnedSelector = (props) => {
     props.onChange && props.onChange(selected);
   };
 
-  const renderOption = (option) => {
+  const customLabel = (label, value, showValue = true) => {
     return(
-      <div className='react-select-option'>
-        <div className='label'>{option.label}</div>
-        <div className='value'>({option.value})</div>
+      <div className='react-select-owned__custom-label'>
+        <div className='react-select-owned__custom-label__label'>{label}</div>
+        <div className={`react-select-owned__custom-label__value${ (showValue) ? '' : '--hidden' }`}>{value}</div>
       </div>
-    );
-  };
-
-  const renderOptionWithoutValue = (option) => {
-    return(
-      <div className='react-select-option--without-value'>
-        <div className='label'>{option.label}</div>
-        <div className='value'></div>
-      </div>
-    );
-  };
-
-  const renderValue = (option) => {
-    return(
-      <div className='react-select-value'>
-        <div className='label'>{option.label}</div>
-        <div className='value'>({option.value})</div>
-      </div>
-    );
-  };
-
-  const renderValueWithoutValue = (option) => {
-    return(
-      <div className='react-select-value--without-value'>
-        <div className='label'>{option.label}</div>
-        <div className='value'></div>
-      </div>
-    );
-  };
-
-  if (!(props.options && props.onChange)) {
-    return (
-      <div className='react-select-dummy'>
-        { renderValue(this.props.value) }
-      </div>
-    );
-  } else {
-    return (
-      <ReactSelect
-        options={props.options}
-        onChange={handleChange}
-        value={props.value}
-        multi={false}
-        removeSelected={false}
-        searchable={false}
-        clearable={false}
-        optionRenderer={(props.showValue) ? renderOption : renderOptionWithoutValue}
-        valueRenderer={(props.showValue) ? renderValue : renderValueWithoutValue}
-      />
     );
   }
+
+  const SingleValue = (selectProps) => {
+    const { label, value } = selectProps.data;
+    return(
+      <components.SingleValue {...{
+        ...selectProps,
+        children: customLabel(label, value, props.showValue)
+      }} />
+    );
+  };
+
+  const Option = (selectProps) => {
+    const { label, value } = selectProps;
+    return(
+      <components.Option {...{
+        ...selectProps,
+        children: customLabel(label, value, props.showValue)
+      }} />
+    );
+  };
+
+  return (
+    <ReactSelect
+      components={{ SingleValue, Option }}
+      options={props.options}
+      onChange={handleChange}
+      value={props.value}
+      isMulti={false}
+      isSearchable={false}
+      isClearable={false}
+      removeSelected={false}
+      blurInputOnSelect={true}
+// has bug? menu is expanded over the maxMenuHeight and there are not selectable options.
+//    menuShouldBlockScroll={true}
+      minMenuHeight='200'
+      menuPlacement='auto'
+      className='react-select-owned'
+      classNamePrefix='react-select-owned'
+    />
+  );
 }
 
 OwnedSelector.propTypes = {
@@ -76,7 +68,8 @@ OwnedSelector.propTypes = {
     label: PropTypes.string.isRequired,
     value: PropTypes.number.isRequired
   }),
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  showValue: PropTypes.bool.isRequired
 };
 
 export default OwnedSelector;

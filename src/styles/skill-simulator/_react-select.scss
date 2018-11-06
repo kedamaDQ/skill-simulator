@@ -1,50 +1,115 @@
-// This is chaos...
 
-.react-select-option {
-  font-size: $ui-panel-font-size;
+.react-select-owned-container {
+  margin: 0;
+  padding: 0;
+  width: 120px;
+  height: $ui-panel-size;
+  box-sizing: content-box !important;
+}
 
-  clear: both;
-  & .label {
-    text-align: left;
-    float: left;
+.react-select-owned {
+  margin: 0;
+  padding: 0;
+  width: 120px;
+  height: $ui-panel-size;
+  box-sizing: content-box !important;
+
+  &__control {
+    margin: 0;
+    top: -2px;
+    height: $ui-panel-size !important;
+    min-height: $ui-panel-size !important;
+    background-color: $ui-base-color-background !important;
+    border: $ui-panel-border-width solid $ui-base-color-secondary !important;
+    border-radius: $ui-panel-border-radius !important;
+    box-sizing: content-box !important;
+    cursor: pointer !important;
+    box-shadow: none !important;
+    justify-content: center !important;
+  
+    &:hover {
+      background-color: $ui-base-color-secondary-hover !important;
+    }
+  
+    &--is-focused {
+      background-color: $ui-base-color-secondary-hover !important;
+    }
   }
 
-  & .value {
-    text-align: right;
+  &__single-value {
+    width: calc(100% - 8px) !important;
+    max-width: calc(100% - 8px) !important;
+  }
+
+  &__indicator-separator {
+    display: none !important;
+  }
+
+  &__indicator {
+    padding: 0 !important;
+    width: 20px !important;
+  }
+
+  &__menu {
+    padding-right: 5px;
+    background-color: $ui-base-color-background !important;
+    border: $ui-panel-border-width solid $ui-base-color-secondary !important;
+    border-radius: $ui-panel-border-radius !important;
+    box-sizing: content-box !important;
+    cursor: pointer !important;
+  }
+  
+  &__option {
+    margin: 0 !important;
+    padding: 3px 8px !important;
+    height: 25px;
+    cursor: pointer !important;
+  
+    &:hover {
+      background-color: $ui-base-color-secondary-hover !important;
+    }
+  
+    &--is-focused {
+      background-color: $ui-base-color-secondary-hover !important;
+    }
+  
+    &--is-selected {
+      color: inherit !important;
+//    background-color: $ui-base-color-secondary-hover !important;
+      background-color: $ui-base-color-background !important;
+    }
+  }
+
+  &__custom-label {
+    margin: 0;
+    padding: 0;
+    width: 98%;
+  
+    &__label {
+      text-align: left;
+      clear: both;
+      float: left;
+    }
+  
+    &__value {
+      text-align: right;
+  
+      &::before {
+        content: '(';
+      }
+  
+      &::after {
+        content: ')';
+      }
+  
+      &--hidden {
+        visibility: hidden;
+      }
+    }
   }
 }
 
-.react-select-option--without-value {
-  font-size: $ui-panel-font-size;
-
-  & .label {
-    text-align: left;
-  }
-}
-
-.react-select-value {
-  height: 100%;
-  font-size: $ui-panel-font-size;
-
-  clear: both;
-  & .label {
-    float: left;
-  }
-
-  & .value {
-    margin-right: 20px;
-    text-align: right;
-  }
-}
-
-.react-select-value--without-value {
-  font-size: $ui-panel-font-size;
-
-  & .label {
-    text-align: left;
-  }
-}
-
+/*
 .react-select-dummy {
   display: inline-block;
   box-sizing: border-box;
@@ -62,3 +127,4 @@
     margin-right: 2px;
   }
 }
+*/
