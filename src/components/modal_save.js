@@ -168,7 +168,7 @@ export default class ModalSave extends React.PureComponent {
           <input
             type='text'
             value={this.props.url}
-            readOnly='true'
+            readOnly={true}
             className='modal-save__url-input'
             ref={(input) => { this.urlInput = input; }}
             onClick={ this.handleUrlClick }
@@ -213,16 +213,18 @@ export default class ModalSave extends React.PureComponent {
           <p>この PC / スマートフォンに保存されているスキルポイントの状態を操作します。</p>
           <div className='storage-controller__saved-data'>
             <ReactSelect
-              disabled={!this.storageAvailable}
-              onChange={this.handleSavedDatasChange}
               options={this.state.savedDatas}
               value={this.state.selectedSavedData}
-              multi={false}
-              removeSelected={false}
-              searchable={false}
-              clearable={false}
+              onChange={this.handleSavedDatasChange}
+              isDisabled={!this.storageAvailable}
+              isMulti={false}
+              isSearchable={false}
+              isClearable={false}
+              blurInputOnSelect={true}
               placeholder='セーブデータ...'
-              noResultsText='セーブデータがありません'
+              noOptionsMessage='セーブデータがありません'
+              className='react-select-saved-data'
+              classNamePrefix='react-select-saved-data'
             />
             <div>
             <button

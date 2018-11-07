@@ -7,7 +7,6 @@
   box-sizing: content-box !important;
 
   &__control {
-    margin: 0;
     top: -2px;
     height: $ui-panel-size !important;
     min-height: $ui-panel-size !important;
@@ -67,7 +66,6 @@
   
     &--is-selected {
       color: inherit !important;
-//    background-color: $ui-base-color-secondary-hover !important;
       background-color: $ui-base-color-background !important;
     }
   }
@@ -101,22 +99,54 @@
   }
 }
 
-/*
-.react-select-dummy {
-  display: inline-block;
-  box-sizing: border-box;
-  width: 80px;
-  margin: 0 0 0 0;
-  padding-left: 10px;
-  padding-right: 8px;
-  background-color: $ui-base-color-background;
-  border: solid $ui-panel-border-width $ui-base-color-secondary;
-  border-radius: $ui-panel-border-radius;
-  line-height: $ui-panel-size;
-  vertical-align: baseline;
+.react-select-saved-data {
+  margin: 0 !important;
+  width: 220px !important;
+  box-sizing: content-box !important;
 
-  & .value {
-    margin-right: 2px;
+  &__control {
+    min-height: 34px !important;
+    height: 34px !important;
+    background-color: $ui-base-color-background !important;
+    border: $ui-panel-border-width solid $ui-base-color-border !important;
+    border-radius: $ui-panel-border-radius !important;
+    cursor: pointer !important;
+    box-shadow: none !important;
+
+    &:hover,
+    &--is-focused {
+      border-color: $ui-base-color-primary !important;
+      background-color: $ui-base-color-primary-hover !important;
+    }
+  }
+
+  &__value-container {
+    top: -2px;
+  }
+
+  &__indicator-separator {
+    display: none !important;
+  }
+
+  &__menu {
+    border: $ui-panel-border-width solid $ui-base-color-primary !important;
+    border-radius: $ui-panel-border-radius !important;
+  }
+
+  &__option {
+    cursor: pointer !important;
+  
+    &:hover {
+      background-color: $ui-base-color-primary-hover !important;
+    }
+  
+    &--is-focused {
+      background-color: $ui-base-color-primary-hover !important;
+    }
+  
+    &--is-selected {
+      color: inherit !important;
+      background-color: $ui-base-color-background !important;
+    }
   }
 }
-*/
