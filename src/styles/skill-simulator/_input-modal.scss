@@ -38,6 +38,7 @@ $bulk-panel-padding: 5px;
   text-align: right;
   color: lighten($ui-base-color-text, 30%);
 }
+
 .modal-assigned {
   margin: 0;
   padding: 0;
@@ -66,7 +67,6 @@ $bulk-panel-padding: 5px;
   border-width: $ui-panel-border-width;
   border-radius: $ui-panel-border-radius;
   vertical-align: bottom;
-
 
   &.large {
     width: 145px;
@@ -221,7 +221,6 @@ $bulk-panel-padding: 5px;
     }
   }
 }
-
 
 ul.selector {
   margin: 2px auto;
@@ -433,73 +432,6 @@ ul.selector {
       }
     }
   }
-
-  // Chaos...
-  & .Select {
-    width: 220px;
-
-    &.is-focused:not(.is-open) > .Select-control {
-      border-color: $ui-base-color-border;
-
-      &:hover {
-        border-color: $ui-base-color-primary;
-        background-color: $ui-base-color-primary-hover;
-      }
-    }
-
-    &.is-open > .Select-control {
-      border-color: $ui-base-color-primary;
-      background-color: $ui-base-color-primary-active;
-    }
-
-    &.is-disabled > .Select-control {
-      cursor: default;
-
-      & .Select-placeholder {
-        color: $ui-base-color-text-inactive;
-      }
-
-      &:hover {
-        border-color: $ui-base-color-border;
-        background-color: $ui-base-color-background;
-      }
-    }
-
-    &:hover {
-      background-color: $ui-base-color-primary-hover;
-    }
-  }
-
-  & .Select-control {
-    border-color: $ui-base-color-border;
-
-    &:hover {
-      border-color: $ui-base-color-primary;
-      background-color: $ui-base-color-primary-hover;
-    }
-  }
-
-  & .Select-menu-outer {
-    border-color: $ui-base-color-primary;
-  }
-
-  & .Select-option {
-    overflow: hidden;
-    white-space: nowrap;
-  }
-
-  & .Select-option.is-selected {
-    background-color: $ui-base-color-primary-active;
-    &:hover {
-      background-color: $ui-base-color-primary-hover;
-    }
-  }
-
-  & .Select-option.is-focused {
-    &:hover {
-      background-color: $ui-base-color-primary-hover;
-    }
-  }
 }
 
 .storage-controller {
@@ -582,10 +514,10 @@ ul.selector {
           cursor: default;
         }
       }
-
     }
   }
 }
+
 .text-modal {
   padding: 5px;
   & h1 {

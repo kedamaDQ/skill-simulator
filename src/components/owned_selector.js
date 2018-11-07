@@ -42,12 +42,11 @@ const OwnedSelector = (props) => {
     <ReactSelect
       components={{ SingleValue, Option }}
       options={props.options}
-      onChange={handleChange}
       value={props.value}
+      onChange={handleChange}
       isMulti={false}
       isSearchable={false}
       isClearable={false}
-      removeSelected={false}
       blurInputOnSelect={true}
 // has bug? menu is expanded over the maxMenuHeight and there are not selectable options.
 //    menuShouldBlockScroll={true}
