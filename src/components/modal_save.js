@@ -222,7 +222,7 @@ export default class ModalSave extends React.PureComponent {
               isClearable={false}
               blurInputOnSelect={true}
               placeholder='セーブデータ...'
-              noOptionsMessage='セーブデータがありません'
+              noOptionsMessage={() => 'セーブデータがありません'}
               className='react-select-saved-data'
               classNamePrefix='react-select-saved-data'
             />
