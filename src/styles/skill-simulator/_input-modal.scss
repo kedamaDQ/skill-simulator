@@ -21,6 +21,7 @@ $bulk-panel-padding: 5px;
   border-radius: 8px;
   background-color: $ui-base-color-background;
   box-shadow: 3px 3px 2px 2px rgba($ui-base-color-text, 0.6);
+  outline-width: 0;
 }
 
 .modal_overlay {
