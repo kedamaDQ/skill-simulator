@@ -2,7 +2,7 @@
 const version = {
   major: 1,
   minor: 1,
-  patch: 3,
+  patch: 4,
   pre: null,
   flags: ''
 };
