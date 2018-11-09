@@ -31,6 +31,7 @@ $nav-button-height: $ui-panel-size;
     border: solid $ui-panel-border-width $ui-base-color-border;
     border-radius: $ui-panel-border-radius;
     cursor: pointer;
+    outline-width: 0;
 
     &:hover {
       background-color: $ui-base-color-primary-hover;
