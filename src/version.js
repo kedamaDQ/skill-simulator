@@ -2,9 +2,9 @@
 const version = {
   major: 1,
   minor: 1,
-  patch: 5,
+  patch: 6,
   pre: null,
-  flags: ''
+  flags: 'rc1'
 };
 
 export const versionArray = () => {

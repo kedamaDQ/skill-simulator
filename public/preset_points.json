@@ -105,7 +105,10 @@
       {"label": "Lv.102", "value": 205},
       {"label": "Lv.103", "value": 207},
       {"label": "Lv.104", "value": 208},
-      {"label": "Lv.105", "value": 210}
+      {"label": "Lv.105", "value": 210},
+      {"label": "Lv.106", "value": 211},
+      {"label": "Lv.107", "value": 212},
+      {"label": "Lv.108", "value": 214}
     ],
     "no_training": [
       {"label": "Lv.1", "value": 0},
@@ -212,7 +215,10 @@
       {"label": "Lv.102", "value": 209},
       {"label": "Lv.103", "value": 212},
       {"label": "Lv.104", "value": 214},
-      {"label": "Lv.105", "value": 218}
+      {"label": "Lv.105", "value": 218},
+      {"label": "Lv.106", "value": 219},
+      {"label": "Lv.107", "value": 220},
+      {"label": "Lv.108", "value": 222}
     ]
   },
   "by_training": {
