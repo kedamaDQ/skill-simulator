@@ -34,7 +34,7 @@ const ModalAbout= (props) => {
         <h2>更新履歴</h2>
         <dl className='history'>
           <dt>2018-12-05 (v1.1.6)</dt>
-          <dd><p>Lv.108 に正式対応しました。</p></dd>
+          <dd><p>Lv.108 に正式対応しました。(Special thanks to <a href="https://foresdon.jp/@cash_dolce/101187727768209661" target='_blank' rel='noreferrer noopener'>@cash_dolce@foresdon.jp</a> !!)</p></dd>
           <dt>2018-11-28 (v1.1.6rc1)</dt>
           <dd><p>Lv.108 に暫定対応しました。</p></dd>
           <dd><p>現状では Lv.106 〜 Lv.108 で +1, +1, +2 とスキルポイントが増えるようにしています。</p></dd>
