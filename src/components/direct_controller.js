@@ -70,7 +70,7 @@ DirectController.propTypes = {
   height: PropTypes.number.isRequired,
   jobId: PropTypes.string.isRequired,
   skillLineId: PropTypes.string.isRequired,
-  timerId: PropTypes.any.isRequired,
+  timerId: PropTypes.any,
   display: PropTypes.string.isRequired,
   increase: PropTypes.number.isRequired,
   decrease: PropTypes.number.isRequired,
