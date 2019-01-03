@@ -28,7 +28,7 @@ export const openModalSave = (position, storageAvailable) => {
     type: MODAL_OPEN,
     position,
     width: 410,
-    height: 440,
+    height: 490,
     content: 'save',
     content_params: { storageAvailable }
   }

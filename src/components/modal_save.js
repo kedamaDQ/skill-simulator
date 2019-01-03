@@ -28,7 +28,9 @@ export default class ModalSave extends React.PureComponent {
       saveInputIsBlank: true,
       inputDataName: '',
       savedDatas: [],
-      selectedSavedData: null
+      selectedSavedData: null,
+      dataNameInputError: false,
+      errorMessages: []
     };
 
     if (this.storageAvailable) {
@@ -50,6 +52,21 @@ export default class ModalSave extends React.PureComponent {
   forceUrlInputSelect() {
     this.urlInput.focus();
     this.urlInput.select();
+  }
+
+  errorMessage() {
+    if (this.state.errorMessages.length) {
+      const messages = this.state.errorMessages.map((message, index) => {
+        return(
+          <li key={index}>{message}</li>
+        )
+      });
+      return(
+        <ul className='storage-controller__error-message'>
+        {messages}
+        </ul>
+      );
+    }
   }
 
   handleUrlClick() {
@@ -77,6 +94,21 @@ export default class ModalSave extends React.PureComponent {
     const storage = window.localStorage;
     const points = JSON.parse(storage.getItem(DATA_NAME_POINTS)) || {};
     const b64Name = utf8ToBase64(this.state.inputDataName);
+
+    this.setState({
+      errorMessages: [],
+      dataNameInputError: false
+    });
+
+    if (points[b64Name]) {
+      this.setState({
+        errorMessages: [
+          `"${this.state.inputDataName}" は既に存在します。`
+        ],
+        dataNameInputError: true
+      });
+      return;
+    }
 
     storage.setItem(DATA_NAME_POINTS, JSON.stringify(
       Object.assign({}, points, {
@@ -192,13 +224,14 @@ export default class ModalSave extends React.PureComponent {
 
         <h2>ローカルストレージ</h2>
         <div className='storage-controller'>
+          {this.errorMessage()}
           <p>今のスキルポイントの状態に名前を付けて、この PC / スマートフォンに新規保存します。</p>
           <div className='storage-controller__save-as'>
             <input
               type='text'
               placeholder={(this.storageAvailable) ? 'データの名前を入力' : '使用できません'}
               disabled={!this.storageAvailable}
-              className='data-name-input'
+              className={(this.state.dataNameInputError) ? 'data-name-input--error' : 'data-name-input'}
               ref={(input) => { this.dataNameInput = input; }}
               onChange={(e) => this.handleSaveInputChange(e)}
             />
