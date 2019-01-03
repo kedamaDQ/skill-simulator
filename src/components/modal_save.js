@@ -128,6 +128,7 @@ export default class ModalSave extends React.PureComponent {
       selectedSavedData: selected,
       savedDatas: prevState.savedDatas.concat(selected)
     }));
+    this.dataNameInput.value = '';
   }
 
   handleSavedDatasChange(selected) {
