@@ -438,6 +438,18 @@ ul.selector {
 .storage-controller {
   $button-width: 130px;
 
+  &__error-message {
+    padding: 5px 10px;
+    color: $ui-base-color-warning;
+    border: solid $ui-panel-border-width $ui-base-color-warning;
+    border-radius: $ui-panel-border-radius;
+    background-color: $ui-base-color-warning-background;
+
+    & li {
+      list-style-position: inside;
+    }
+  }
+
   &__save-as {
     display: flex;
     margin: 0 0 5px 0;
@@ -454,6 +466,17 @@ ul.selector {
       border-radius: $ui-panel-border-radius;
       background-color: $ui-base-color-background;
       font-size: $ui-panel-font-size;
+
+      &--error {
+        padding: 0 3px;
+        width: calc(100% - #{$button-width} - 15px);
+        line-height: $ui-panel-size;
+        color: $ui-base-color-text;
+        border: solid $ui-panel-border-width $ui-base-color-warning;
+        border-radius: $ui-panel-border-radius;
+        background-color: $ui-base-color-warning-background;
+        font-size: $ui-panel-font-size;
+      }
     }
 
     & .save-as-button {
