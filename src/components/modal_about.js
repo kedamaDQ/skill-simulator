@@ -33,6 +33,9 @@ const ModalAbout= (props) => {
 
         <h2>更新履歴</h2>
         <dl className='history'>
+          <dt>2019-01-03 (v1.1.7)</dt>
+          <dd><p>小窓を開かないで直接スキルポイントを操作するボタン(マスの右側に出る三角形のボタン)を長押しすることで、連続的に加算/減算できるようになりました。(Special thanks to <a href="https://foresdon.jp/@Zyyu/101189126055340118" target='_blank' rel='noreferrer noopener'>@Zyyu@foresdon.jp</a> !!)(※ 恐らくこの機能はスマートフォンやタブレットでは有効になりません)</p></dd>
+          <dd><p>現在のスキルポイントをローカルストレージに名前を付けて保存する際の挙動がバグっていたので修正しました。また「セーブとロード」の小窓について、他にもいくつかの挙動を調整しています。</p></dd>
           <dt>2018-12-05 (v1.1.6)</dt>
           <dd><p>Lv.108 に正式対応しました。(Special thanks to <a href="https://foresdon.jp/@cash_dolce/101187727768209661" target='_blank' rel='noreferrer noopener'>@cash_dolce@foresdon.jp</a> !!)</p></dd>
           <dt>2018-11-28 (v1.1.6rc1)</dt>
