@@ -2,13 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const DirectController = (props) => {
-  const handleIncraseButtonClick = () => {
-    props.onIncraseClick && props.onIncraseClick(props.jobId, props.skillLineId);
+  const handleIncreaseButtonDown = () => {
+    props.onMouseDown && props.onMouseDown(props.jobId, props.skillLineId, props.increase);
   };
 
-  const handleDecraseButtonClick = (e) => {
-    props.onDecraseClick && props.onDecraseClick(props.jobId, props.skillLineId);
+  const handleDecreaseButtonDown = () => {
+    props.onMouseDown && props.onMouseDown(props.jobId, props.skillLineId, props.decrease);
   };
+
+  const handleIncreaseButtonUp = () => {
+    props.onMouseUp && props.onMouseUp(props.jobId, props.skillLineId, props.increase, props.timerId);
+  };
+
+  const handleDecreaseButtonUp = () => {
+    props.onMouseUp && props.onMouseUp(props.jobId, props.skillLineId, props.decrease, props.timerId);
+  };
+
+  const handleButtonOut = () => {
+    props.onMouseOut && props.onMouseOut(props.timerId);
+  }
 
   return (
     <div
@@ -23,7 +35,9 @@ const DirectController = (props) => {
     >
       <button
         className='direct-controller__button'
-        onClick={handleIncraseButtonClick}
+        onMouseDown={handleIncreaseButtonDown}
+        onMouseUp={handleIncreaseButtonUp}
+        onMouseOut={handleButtonOut}
       >
         <svg
           viewBox='0 0 20 20'
@@ -34,7 +48,9 @@ const DirectController = (props) => {
       </button>
       <button
         className='direct-controller__button'
-        onClick={handleDecraseButtonClick}
+        onMouseDown={handleDecreaseButtonDown}
+        onMouseUp={handleDecreaseButtonUp}
+        onMouseOut={handleButtonOut}
       >
         <svg
           viewBox='0 0 20 20'
@@ -48,13 +64,19 @@ const DirectController = (props) => {
 };
 
 DirectController.propTypes = {
-  display: PropTypes.string.isRequired,
   top: PropTypes.number.isRequired,
   left: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
-  onIncraseClick: PropTypes.func.isRequired,
-  onDecraseClick: PropTypes.func.isRequired
+  jobId: PropTypes.string.isRequired,
+  skillLineId: PropTypes.string.isRequired,
+  timerId: PropTypes.any.isRequired,
+  display: PropTypes.string.isRequired,
+  increase: PropTypes.number.isRequired,
+  decrease: PropTypes.number.isRequired,
+  onMouseUp: PropTypes.func.isRequired,
+  onMouseDown: PropTypes.func.isRequired,
+  onMouseOut: PropTypes.func.isRequired
 };
 
 export default DirectController;

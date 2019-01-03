@@ -1,5 +1,10 @@
 import { connect } from 'react-redux';
 import DirectController from '../components/direct_controller';
+import {
+  delayAutoAddition,
+  startAutoAddition,
+  stopAutoAddition
+} from '../actions/direct_controller';
 import { addNsp } from '../actions/assigned_points';
 
 const mapStateToProps = (state, ownProps) => {
@@ -10,7 +15,8 @@ const mapStateToProps = (state, ownProps) => {
     height,
     jobId,
     skillLineId,
-    is_active
+    is_active,
+    auto_addition_timer
   } = state.direct_controller;
 
   const display = (is_active) ? 'flex' : 'none';
@@ -21,17 +27,39 @@ const mapStateToProps = (state, ownProps) => {
     height: height + 2,
     jobId,
     skillLineId,
-    display
+    display,
+    increase: 1,
+    decrease: -1,
+    timerId: auto_addition_timer
   }
+};
+
+const autoAdditionDelay = 500;
+const autoAdditionInterval = 120;
+
+const autoAddition = (dispatch, jobId, skillLineId, addend) => {
+  dispatch(delayAutoAddition(setTimeout(() => {
+    dispatch(startAutoAddition(setInterval(() => {
+      dispatch(addNsp(jobId, skillLineId, addend));
+    }, autoAdditionInterval)))
+  }, autoAdditionDelay)));
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onIncraseClick: (jobId, skillLineId) => {
-      dispatch(addNsp(jobId, skillLineId, 1));
+    onMouseDown: (jobId, skillLineId, addend) => {
+      dispatch(addNsp(jobId, skillLineId, addend));
+      autoAddition(dispatch, jobId, skillLineId, addend);
     },
-    onDecraseClick: (jobId, skillLineId) => {
-      dispatch(addNsp(jobId, skillLineId, -1));
+    onMouseUp: (jobId, skillLineId, addend, timerId) => {
+      if (timerId !== null) {
+        clearTimeout(timerId);
+        dispatch(stopAutoAddition());
+      }
+    },
+    onMouseOut: (timerId) => {
+      clearTimeout(timerId);
+      dispatch(stopAutoAddition());
     }
   };
 };
