@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import ModalSave from '../components/modal_save';
 import { baseUrl } from '../utils/env';
+import { closeModal } from '../actions/modal';
 import { loadOwnedPoints } from '../actions/owned_points';
 import { loadAssigned } from '../actions/assigned_points';
 import { 
@@ -78,6 +79,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     loadFromLocalStorage: ({ owned, details }) => {
       dispatch(loadOwnedPoints(owned));
       dispatch(loadAssigned(details));
+      dispatch(closeModal());
     }
   };
 };
