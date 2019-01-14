@@ -27,11 +27,11 @@ const SpTable = (props) => {
     headers.push(
       <th
         key='header-top-right'
-        className='skill-point-table__col-header'>
+        className='skill-point-table__col-header top-left'>&nbsp;
       </th>
     );
 
-    const headerDatas = [
+    const ownedHeaderDatas = [
       {
         id: 'owned-by-level-header',
         display: 'レベル',
@@ -46,29 +46,14 @@ const SpTable = (props) => {
         id: 'owned-by-skillbooks-header',
         display: 'スキルブック',
         styleClasses: 'owned-header'
-      },
-      {
-        id: 'remained-nsp-header',
-        display: <span>残り<br />SP</span>,
-        styleClasses: 'remained-header'
-      },
-      {
-        id: 'remained-msp-header',
-        display: <span>残り<br />MSP</span>,
-        styleClasses: 'remained-header'
-      },
-      {
-        id: 'job-skill-header',
-        display: <span>職スキル</span>,
-        styleClasses: 'assigned-header'
       }
     ];
 
-    headerDatas.forEach((headerData => {
+    ownedHeaderDatas.forEach((headerData) => {
       headers.push(
         <th
           key={headerData.id}
-          className='skill-point-table__col-header'
+          className='skill-point-table__col-header owned'
         >
           <SpTableHeaderPanelContainer
             id={headerData.id}
@@ -77,7 +62,59 @@ const SpTable = (props) => {
           />
         </th>
       );
-    }));
+    });
+    const assignedHeaderDatas = [
+      {
+        id: 'remained-nsp-header',
+        display: <span>残り<br />SP</span>,
+        styleClasses: 'remained-header',
+        cellStyleClasses: 'nsp'
+      },
+      {
+        id: 'remained-msp-header',
+        display: <span>残り<br />MSP</span>,
+        styleClasses: 'remained-header',
+        cellStyleClasses: 'msp'
+      }
+    ];
+    headers.push(
+      <th
+        key='remained-nsp-header'
+        className='skill-point-table__col-header assigned nsp'
+      >
+        <SpTableHeaderPanelContainer
+          id='remained-nsp-header'
+          display={<span>残り<br />SP</span>}
+          styleClasses='remained-header'
+        />
+      </th>
+    );
+
+    headers.push(
+      <th
+        key='remained-msp-header'
+        className='skill-point-table__col-header assigned msp'
+      >
+        <SpTableHeaderPanelContainer
+          id='remained-msp-header'
+          display={<span>残り<br />MSP</span>}
+          styleClasses='remained-header'
+        />
+      </th>
+    );
+ 
+    headers.push(
+      <th
+        key='job-skill-header'
+        className='skill-point-table__col-header job-skill'
+      >
+        <SpTableHeaderPanelContainer
+          id='job-skill-header'
+          display='職スキル'
+          styleClasses='assigned-header'
+        />
+      </th>
+    );
 
     props.indices.weapons.forEach((weaponId) => {
       headers.push(
@@ -135,7 +172,43 @@ const SpTable = (props) => {
   const renderTotalRow = () => {
     const cells = [];
 
-    cells.push(<th key={`summary-header`} colSpan='7'></th>);
+    cells.push(
+      <th
+        key='summary-header'
+        className='summary header'
+      >
+      </th>
+    );
+    cells.push(
+      <th
+        key='summary-owned'
+        className='summary'
+        colSpan='3'
+      >
+      </th>
+    );
+    cells.push(
+      <th
+        key='summary-assiened-nsp'
+        className='summary nsp'
+      >
+      </th>
+    );
+    cells.push(
+      <th
+        key='summary-assiened-msp'
+        className='summary msp'
+      >
+      </th>
+    );
+    cells.push(
+      <th
+        key='summary-assigned-job'
+        className='summary'
+      >
+      </th>
+    );
+
     props.indices.weapons.forEach((weaponId) => {
       cells.push(
         <td
