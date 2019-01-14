@@ -22,6 +22,7 @@ $bulk-panel-padding: 5px;
   background-color: $ui-base-color-background;
   box-shadow: 3px 3px 2px 2px rgba($ui-base-color-text, 0.6);
   outline-width: 0;
+  z-index: 9999;
 }
 
 .modal_overlay {
@@ -32,6 +33,7 @@ $bulk-panel-padding: 5px;
   left: 0;
   border: none;
   background-color: rgba($ui-base-color-background, 0.50);
+  z-index: 9998;
 }
 
 .text-about-close {

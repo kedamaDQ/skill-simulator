@@ -48,10 +48,10 @@ const OwnedSelector = (props) => {
       isSearchable={false}
       isClearable={false}
       blurInputOnSelect={true}
-// has bug? menu is expanded over the maxMenuHeight and there are not selectable options.
-//    menuShouldBlockScroll={true}
-      minMenuHeight='200'
-      menuPlacement='auto'
+      menuShouldBlockScroll={false}
+      minMenuHeight={100}
+      maxMenuHeight={200}
+      menuPlacement='bottom'
       className='react-select-owned'
       classNamePrefix='react-select-owned'
     />
