@@ -13,6 +13,7 @@ body {
   font-family: sans-serif;
   color: $ui-base-color-text;
   background-color: $ui-base-color-background;
+  scrollbar-color: $ui-base-color-border $ui-base-color-background-inactive;
 }
 
 h1 {
