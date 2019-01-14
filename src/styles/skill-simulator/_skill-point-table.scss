@@ -13,12 +13,12 @@ $ui-panel-cell-width: calc(#{$ui-panel-size} + (#{$ui-panel-border-width} * 2) +
 .skill-point-table {
   display: block;
   position: relative;
-  margin: 0 0 10px 0;
+  margin: 0 0 5px 0;
   font-size: $sptable-font-size;
   border-collapse: collapse;
   overflow: auto;
   max-width: 100%;
-  max-height: 80vh;
+  max-height: 85vh;
   scrollbar-width: thin;
 
   /*
@@ -81,7 +81,7 @@ $ui-panel-cell-width: calc(#{$ui-panel-size} + (#{$ui-panel-border-width} * 2) +
 
   &__row-header {
     position: sticky;
-    left: 0px;
+    left: 0;
     z-index: 500;
     padding: 0;
     box-sizing: border-box;
@@ -213,7 +213,7 @@ $ui-panel-cell-width: calc(#{$ui-panel-size} + (#{$ui-panel-border-width} * 2) +
  
     &.header {
       position: sticky;
-      left: 0px;
+      left: 0;
       z-index: 500;
     }
  
