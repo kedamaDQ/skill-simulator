@@ -4,6 +4,8 @@ $sptable-col-header-height: 70px;
 $sptable-row-header-width: 20px;
 $ui-panel-cell-width: calc(#{$ui-panel-size} + (#{$ui-panel-border-width} * 2) + (#{$ui-panel-margin-horizontal} * 2));
 
+$sticky-table-trigger-width: 600px;
+
 .skill-point-table-outer {
   clear: both;
   position: relative;
@@ -16,10 +18,13 @@ $ui-panel-cell-width: calc(#{$ui-panel-size} + (#{$ui-panel-border-width} * 2) +
   margin: 0 0 5px 0;
   font-size: $sptable-font-size;
   border-collapse: collapse;
-  overflow: auto;
-  max-width: 100%;
-  max-height: 85vh;
   scrollbar-width: thin;
+
+  @media screen and (min-width: $sticky-table-trigger-width) {
+    overflow: auto;
+    max-width: 100%;
+    max-height: 85vh;
+  }
 
   /*
   & th, & td {
@@ -44,32 +49,37 @@ $ui-panel-cell-width: calc(#{$ui-panel-size} + (#{$ui-panel-border-width} * 2) +
   }
 
   &__col-header {
-    position: sticky;
+    @media screen and (min-width: $sticky-table-trigger-width) {
+      position: sticky;
+      top: 0;
+      z-index: 600;
+    }
     background-color: $ui-base-color-background;
-    top: 0;
     padding: 0 0 2px 0;
     vertical-align: bottom;
-    z-index: 600;
 
     &.top-left {
-      position: sticky;
-      left: 0;
-      z-index: 900;
+      @media screen and (min-width: $sticky-table-trigger-width) {
+        position: sticky;
+        left: 0;
+        z-index: 900;
+      }
       min-width: $sptable-row-header-width;
     }
 
-    &.assigned {
-
-      &.nsp {
-        position: sticky;
-        left: $sptable-row-header-width;
-        z-index: 200;
-      }
-
-      &.msp {
-        position: sticky;
-        left: calc(#{$sptable-row-header-width} + #{$ui-panel-cell-width});
-        z-index: 200;
+    @media screen and (min-width: $sticky-table-trigger-width) {
+      &.assigned {
+        &.nsp {
+          position: sticky;
+          left: $sptable-row-header-width;
+          z-index: 200;
+        }
+  
+        &.msp {
+          position: sticky;
+          left: calc(#{$sptable-row-header-width} + #{$ui-panel-cell-width});
+          z-index: 200;
+        }
       }
     }
 
@@ -80,9 +90,11 @@ $ui-panel-cell-width: calc(#{$ui-panel-size} + (#{$ui-panel-border-width} * 2) +
   }
 
   &__row-header {
-    position: sticky;
-    left: 0;
-    z-index: 500;
+    @media screen and (min-width: $sticky-table-trigger-width) {
+      position: sticky;
+      left: 0;
+      z-index: 500;
+    }
     padding: 0;
     box-sizing: border-box;
     border: 0;
@@ -107,14 +119,16 @@ $ui-panel-cell-width: calc(#{$ui-panel-size} + (#{$ui-panel-border-width} * 2) +
     background-image: url('data:image/svg+xml;charset=utf8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjMwIj48cmVjdCB4PSIwIiB5PSIxMiIgd2lkdGg9IjMwIiBoZWlnaHQ9IjYiIGZpbGw9IiNDNEM0QzQiLz48L3N2Zz4=');
     background-size: auto 100%;
 
-    &.nsp {
-      position: sticky;
-      left: $sptable-row-header-width;
-    }
-
-    &.msp {
-      position: sticky;
-      left: calc(#{$sptable-row-header-width} + #{$ui-panel-cell-width});
+    @media screen and (min-width: $sticky-table-trigger-width) {
+      &.nsp {
+        position: sticky;
+        left: $sptable-row-header-width;
+      }
+  
+      &.msp {
+        position: sticky;
+        left: calc(#{$sptable-row-header-width} + #{$ui-panel-cell-width});
+      }
     }
   }
 
@@ -211,22 +225,24 @@ $ui-panel-cell-width: calc(#{$ui-panel-size} + (#{$ui-panel-border-width} * 2) +
   & .summary {
     background-color: $ui-base-color-background;
  
-    &.header {
-      position: sticky;
-      left: 0;
-      z-index: 500;
-    }
- 
-    &.nsp {
-      position: sticky;
-      left: $sptable-row-header-width;
-      z-index: 100;
-    }
- 
-    &.msp {
-      position: sticky;
-      left: calc(#{$sptable-row-header-width} + #{$ui-panel-cell-width});
-      z-index: 100;
+    @media screen and (min-width: $sticky-table-trigger-width) {
+      &.header {
+        position: sticky;
+        left: 0;
+        z-index: 500;
+      }
+   
+      &.nsp {
+        position: sticky;
+        left: $sptable-row-header-width;
+        z-index: 100;
+      }
+   
+      &.msp {
+        position: sticky;
+        left: calc(#{$sptable-row-header-width} + #{$ui-panel-cell-width});
+        z-index: 100;
+      }
     }
   }
 }
