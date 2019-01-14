@@ -28,8 +28,6 @@ $ui-panel-cell-width: calc(#{$ui-panel-size} + (#{$ui-panel-border-width} * 2) +
   */
 
   &>thead {
-    position: sticky;
-    top: 0;
     z-index: 900;
     width: intrinsic;           // Safari/Webkit uses a non-standard name
     width: -webkit-max-content; // Chrome
