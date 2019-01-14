@@ -4,25 +4,54 @@ import SpTableHeaderPanelContainer from '../containers/sp_table_header_panel';
 import SpTableDataRowContainer from '../containers/sp_table_data_row';
 import SkillSummarySpPanelContainer from '../containers/sp_panel_skill_summary';
 
-const SpTable = (props) => {
+export default class SpTable extends React.PureComponent {
 
-  const handleWeaponHeaderClick = (weaponId) => {
-    props.onHeaderClick(props.currentFilterId, weaponId, [ weaponId ]);
+  static propTypes = {
+    isFetching: PropTypes.bool.isRequired,
+    jobs: PropTypes.shape(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      display: PropTypes.string.isRequired,
+      display_short: PropTypes.string.isRequired
+    }).isRequired).isRequired,
+    weapons: PropTypes.shape(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      display: PropTypes.string.isRequired
+    }).isRequired).isRequired,
   };
 
-  const handleJobHeaderClick = (jobId) => {
+  constructor(props) {
+    super();
+    this.table = null;
+
+    this.handleWeaponHeaderClick = this.handleWeaponHeaderClick.bind(this);
+    this.handleJobHeaderClick = this.handleJobHeaderClick.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
+    this.setTableRef = this.setTableRef.bind(this);
+  }
+
+  handleWeaponHeaderClick = (weaponId) => {
+    this.props.onHeaderClick(this.props.currentFilterId, weaponId, [ weaponId ]);
+  }
+
+  handleJobHeaderClick = (jobId) => {
     // Weapon skills other than grappling and shield.
     const exclusions = ['grappling', 'shield'];
-    props.onHeaderClick(
-      props.currentFilterId,
+    this.props.onHeaderClick(
+      this.props.currentFilterId,
       jobId,
-      props.jobs[jobId].weapon_skill_lines.filter((weaponId) => {
+      this.props.jobs[jobId].weapon_skill_lines.filter((weaponId) => {
         return !exclusions.includes(weaponId);
       })
     );
-  };
+  }
 
-  const renderHeaderRow = () => {
+  handleScroll = () => {
+    if (this.props.directControllerIsActive) {
+      this.props.onTableScroll();
+    }
+  }
+
+  renderHeaderRow = () => {
     const headers = [];
     headers.push(
       <th
@@ -63,20 +92,7 @@ const SpTable = (props) => {
         </th>
       );
     });
-    const assignedHeaderDatas = [
-      {
-        id: 'remained-nsp-header',
-        display: <span>残り<br />SP</span>,
-        styleClasses: 'remained-header',
-        cellStyleClasses: 'nsp'
-      },
-      {
-        id: 'remained-msp-header',
-        display: <span>残り<br />MSP</span>,
-        styleClasses: 'remained-header',
-        cellStyleClasses: 'msp'
-      }
-    ];
+
     headers.push(
       <th
         key='remained-nsp-header'
@@ -116,7 +132,7 @@ const SpTable = (props) => {
       </th>
     );
 
-    props.indices.weapons.forEach((weaponId) => {
+    this.props.indices.weapons.forEach((weaponId) => {
       headers.push(
         <th
           key={`header-${weaponId}`}
@@ -124,9 +140,9 @@ const SpTable = (props) => {
         >
           <SpTableHeaderPanelContainer
             id={weaponId}
-            display={props.weapons[weaponId].display}
+            display={this.props.weapons[weaponId].display}
             styleClasses='assigned-header weapons'
-            onClick={() => handleWeaponHeaderClick(weaponId)}
+            onClick={() => this.handleWeaponHeaderClick(weaponId)}
           />
         </th>
       );
@@ -145,31 +161,31 @@ const SpTable = (props) => {
       </th>
     );
     return <tr>{headers}</tr>;
-  };
+  }
 
-  const renderDataRows = () => {
+  renderDataRows = () => {
     return (
       (
-        (props.weaponFilter.length) ?
-          props.indices.jobs.filter((jobId) => {
-            return props.weaponFilter.some((weaponId) => {
-              return props.jobs[jobId].weapon_skill_lines.includes(weaponId);
+        (this.props.weaponFilter.length) ?
+          this.props.indices.jobs.filter((jobId) => {
+            return this.props.weaponFilter.some((weaponId) => {
+              return this.props.jobs[jobId].weapon_skill_lines.includes(weaponId);
             });
         }) :
-        props.indices.jobs
+        this.props.indices.jobs
       ).map((jobId) => {
         return (
           <SpTableDataRowContainer
             key={jobId}
             jobId={jobId}
-            onHeaderClick={handleJobHeaderClick}
+            onHeaderClick={this.handleJobHeaderClick}
           />
         );
       })
     );
-  };
+  }
 
-  const renderTotalRow = () => {
+  renderTotalRow = () => {
     const cells = [];
 
     cells.push(
@@ -209,7 +225,7 @@ const SpTable = (props) => {
       </th>
     );
 
-    props.indices.weapons.forEach((weaponId) => {
+    this.props.indices.weapons.forEach((weaponId) => {
       cells.push(
         <td
           key={`summary-${weaponId}`}
@@ -219,40 +235,39 @@ const SpTable = (props) => {
         </td>);
     });
     return <tr>{cells}</tr>;
-  };
+  }
 
-  if (props.isFetching) {
-    return (<div>loading...</div>);
-  } else {
-    return(
-      <div className='skill-point-table-outer'>
-        <table className='skill-point-table'>
-          <thead>
-            { renderHeaderRow() }
-          </thead>
-          <tbody>
-            { renderDataRows() }
-          </tbody>
-          <tfoot>
-            { renderTotalRow() }
-          </tfoot>
-        </table>
-      </div>
-    );
+  componentDidMount() {
+    this.table.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    this.table.removeEventListener('scroll');
+  }
+
+  setTableRef(elem) {
+    this.table = elem;
+  }
+
+  render() {
+    if (this.props.isFetching) {
+      return (<div>loading...</div>);
+    } else {
+      return(
+        <div className='skill-point-table-outer'>
+          <table className='skill-point-table' ref={this.setTableRef}>
+            <thead>
+              { this.renderHeaderRow() }
+            </thead>
+            <tbody>
+              { this.renderDataRows() }
+            </tbody>
+            <tfoot>
+              { this.renderTotalRow() }
+            </tfoot>
+          </table>
+        </div>
+      );
+    }
   }
 }
-
-SpTable.propTypes = {
-  isFetching: PropTypes.bool.isRequired,
-  jobs: PropTypes.shape(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    display: PropTypes.string.isRequired,
-    display_short: PropTypes.string.isRequired
-  }).isRequired).isRequired,
-  weapons: PropTypes.shape(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    display: PropTypes.string.isRequired
-  }).isRequired).isRequired,
-};
-
-export default SpTable;

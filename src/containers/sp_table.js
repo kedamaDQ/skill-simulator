@@ -13,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
     weapons: state.skill_simulator.weapons,
     indices: state.skill_simulator.indices,
     currentFilterId: state.filter.filter_id,
-    weaponFilter: state.filter.weapon_ids
+    weaponFilter: state.filter.weapon_ids,
+    directControllerIsActive: state.direct_controller.is_active
   };
 };
 
@@ -34,6 +35,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       } else {
         dispatch(applyWeaponFilter(weaponId))
       }
+    },
+    onTableScroll: () => {
+      dispatch(deactivateController());
     }
   };
 };
