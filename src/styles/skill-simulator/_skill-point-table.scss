@@ -20,7 +20,6 @@ $ui-panel-cell-width: calc(#{$ui-panel-size} + (#{$ui-panel-border-width} * 2) +
   max-width: 100%;
   max-height: 80vh;
   scrollbar-width: thin;
-  scrollbar-color: $ui-base-color-border $ui-base-color-background-inactive;
 
   /*
   & th, & td {
@@ -47,6 +46,9 @@ $ui-panel-cell-width: calc(#{$ui-panel-size} + (#{$ui-panel-border-width} * 2) +
   }
 
   &__col-header {
+    position: sticky;
+    background-color: $ui-base-color-background;
+    top: 0;
     padding: 0 0 2px 0;
     vertical-align: bottom;
     z-index: 600;
@@ -56,21 +58,26 @@ $ui-panel-cell-width: calc(#{$ui-panel-size} + (#{$ui-panel-border-width} * 2) +
       left: 0;
       z-index: 900;
       min-width: $sptable-row-header-width;
-      background-color: $ui-base-color-background;
     }
 
     &.assigned {
-      position: sticky;
-      z-index: 100;
-      background-color: $ui-base-color-background;
 
       &.nsp {
+        position: sticky;
         left: $sptable-row-header-width;
+        z-index: 200;
       }
 
       &.msp {
+        position: sticky;
         left: calc(#{$sptable-row-header-width} + #{$ui-panel-cell-width});
+        z-index: 200;
       }
+    }
+
+    &.job-skill,
+    &.weapon-skill {
+      z-index: 100;
     }
   }
 

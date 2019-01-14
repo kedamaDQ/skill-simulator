@@ -136,7 +136,7 @@ export default class SpTable extends React.PureComponent {
       headers.push(
         <th
           key={`header-${weaponId}`}
-          className='skill-point-table__col-header'
+          className='skill-point-table__col-header weapon-skill'
         >
           <SpTableHeaderPanelContainer
             id={weaponId}
