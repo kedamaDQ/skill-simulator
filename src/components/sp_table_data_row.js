@@ -88,13 +88,13 @@ const SpTableDataRow = (props) => {
           showValue={true}
         />
       </td>
-      <td className='skill-point-table__owned-data'>
+      <td className='skill-point-table__remained-data nsp'>
         <RemainedSpPanelContainer
           owned={ props.owned.nsp }
           assigned={ props.assigned.nsp }
         />
       </td>
-      <td className='skill-point-table__owned-data'>
+      <td className='skill-point-table__remained-data msp'>
         <RemainedSpPanelContainer
           owned={ props.owned.msp }
           assigned={ props.assigned.msp }
