@@ -252,7 +252,7 @@ export default class SpTable extends React.PureComponent {
       console.log(`passiveSuppoted: ${passiveSupported}`)
       passiveSupported = false;
     }
-    this.table.addEventListener('scroll', this.handleScroll, (passiveSupported) ? { passive: true} : false);
+    this.table.addEventListener('scroll', this.handleScroll, (passiveSupported) ? { passive: true } : false);
   }
 
   componentWillUnmount() {
