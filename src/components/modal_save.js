@@ -47,17 +47,18 @@ export default class ModalSave extends React.PureComponent {
       const storage = window.localStorage;
       const points = JSON.parse(storage.getItem(DATA_NAME_POINTS));
       if (!!points) {
-        Object.keys(points).forEach((dataName, i, p) => {
+        Object.keys(points).forEach((dataName, i) => {
           this.state.savedDatas.push(
             {
               label: base64ToUtf8(dataName),
               value: dataName,
-              created: p[i].created || i
+              created: points[dataName].created || i
             }
           );
         });
       }
 
+      console.log(this.state.savedDatas);
       const sort = JSON.parse(storage.getItem(DATA_NAME_SORT));
       if (!!sort) {
         this.state.sortMode = sort.mode || 'created';
