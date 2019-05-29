@@ -51,7 +51,7 @@ const OwnedSelector = (props) => {
       menuShouldBlockScroll={false}
       minMenuHeight={100}
       maxMenuHeight={200}
-      menuPlacement='bottom'
+      menuPlacement='auto'
       className='react-select-owned'
       classNamePrefix='react-select-owned'
     />
