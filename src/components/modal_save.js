@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactSelect from 'react-select';
+import classNames from 'classnames';
 import {
   utf8ToBase64,
   base64ToUtf8
 } from '../utils/base64';
 
 const DATA_NAME_POINTS = 'points';
+const DATA_NAME_SORT= 'skill-simulator-sort-settings';
 
 export default class ModalSave extends React.PureComponent {
 
@@ -23,6 +25,11 @@ export default class ModalSave extends React.PureComponent {
     this.handleLoadDataClick = this.handleLoadDataClick.bind(this);
     this.handleOverwriteDataClick = this.handleOverwriteDataClick.bind(this);
     this.handleDeleteDataClick = this.handleDeleteDataClick.bind(this);
+    this.handleSortClick = this.handleSortClick.bind(this);
+    this.handleSortByCreatedClick = this.handleSortByCreatedClick.bind(this);
+    this.handleSortByLabelClick = this.handleSortByLabelClick.bind(this);
+    this.handleSortInAscClick = this.handleSortInAscClick.bind(this);
+    this.handleSortInDescClick = this.handleSortInDescClick.bind(this);
 
     this.state = {
       saveInputIsBlank: true,
@@ -30,22 +37,36 @@ export default class ModalSave extends React.PureComponent {
       savedDatas: [],
       selectedSavedData: null,
       dataNameInputError: false,
-      errorMessages: []
+      errorMessages: [],
+      isSortControllerActive: false,
+      sortOrder: '',
+      sortMode: ''
     };
 
     if (this.storageAvailable) {
       const storage = window.localStorage;
       const points = JSON.parse(storage.getItem(DATA_NAME_POINTS));
-      if (points) {
-        Object.keys(points).forEach((dataName) => {
+      if (!!points) {
+        Object.keys(points).forEach((dataName, i, p) => {
           this.state.savedDatas.push(
             {
               label: base64ToUtf8(dataName),
-              value: dataName
+              value: dataName,
+              created: p[i].created || i
             }
           );
         });
       }
+
+      const sort = JSON.parse(storage.getItem(DATA_NAME_SORT));
+      if (!!sort) {
+        this.state.sortMode = sort.mode || 'created';
+        this.state.sortOrder = sort.order || 'asc';
+      } else {
+        this.state.sortMode = 'created';
+        this.state.sortOrder = 'asc';
+      }
+      this.state.savedDatas = this.sortSavedDatas(this.state.sortMode, this.state.sortOrder);
     }
   }
 
@@ -114,7 +135,8 @@ export default class ModalSave extends React.PureComponent {
       Object.assign({}, points, {
         [b64Name]: {
           owned: this.props.owned,
-          details: this.props.details
+          details: this.props.details,
+          created: new Date().getTime()
         }
       })
     ));
@@ -187,6 +209,67 @@ export default class ModalSave extends React.PureComponent {
     }));
 
     this.dataNameInput.value = '';
+  }
+
+  handleSortClick() {
+    this.setState({
+      isSortControllerActive: !this.state.isSortControllerActive
+    });
+  }
+
+  saveSortSettings(sortMode, sortOrder) {
+    const storage = window.localStorage;
+    storage.setItem(DATA_NAME_SORT, JSON.stringify({
+      mode: sortMode,
+      order: sortOrder
+    }));
+  }
+
+  sortSavedDatas(sortMode, sortOrder) {
+    let sorted = this.state.savedDatas.sort((a, b) => {
+      if (sortMode === 'label') {
+        if (a.label < b.label) {
+          return -1;
+        }
+        if (a.label > b.label) {
+          return 1;
+        }
+        return 0;
+      }
+      // if sortOrder === 'created'
+      return a.created - b.created;
+    });
+
+    if (sortOrder === 'desc') {
+        sorted = sorted.reverse();
+    }
+    return sorted;
+  }
+
+  setSortSettings(sortMode, sortOrder) {
+    this.setState({
+      sortMode,
+      sortOrder,
+      savedDatas: this.sortSavedDatas(sortMode, sortOrder).concat(), // notify updates to react-select by deep-copy which occurs by concat.
+      selectedSavedData: null
+    });
+    this.saveSortSettings(sortMode, sortOrder);
+  }
+
+  handleSortByCreatedClick() {
+    this.setSortSettings('created', this.state.sortOrder);
+  }
+
+  handleSortByLabelClick() {
+    this.setSortSettings('label', this.state.sortOrder);
+  }
+
+  handleSortInAscClick() {
+    this.setSortSettings(this.state.sortMode, 'asc');
+  }
+
+  handleSortInDescClick() {
+    this.setSortSettings(this.state.sortMode, 'desc');
   }
 
   componentDidMount() {
@@ -280,7 +363,54 @@ export default class ModalSave extends React.PureComponent {
             >
               削除
             </button>
+            <button
+              className={classNames('sort', { 'active': this.state.isSortControllerActive })}
+              onClick={this.handleSortClick}
+            >
+              並べ替え
+            </button>
             </div>
+          </div>
+          <div className={classNames(
+            'storage-controller__sort-controller',
+            { 'active': this.state.isSortControllerActive })}
+          >
+            <dl>
+              <dt>モード</dt>
+              <dd>
+                <button
+                  className={classNames({ 'active': (this.state.sortMode === 'created') })}
+                  onClick={this.handleSortByCreatedClick}
+                  value='created'
+                >
+                  作成順
+                </button>
+                <button
+                  className={classNames({ 'active': (this.state.sortMode === 'label') })}
+                  onClick={this.handleSortByLabelClick}
+                  value='label'
+                >
+                  名前順
+                </button>
+              </dd>
+            </dl>
+            <dl>
+              <dt>順番</dt>
+              <dd>
+                <button
+                  className={classNames({ 'active': (this.state.sortOrder === 'asc') })}
+                  onClick={this.handleSortInAscClick}
+                >
+                  昇順
+                </button>
+                <button
+                  className={classNames({ 'active': (this.state.sortOrder === 'desc') })}
+                  onClick={this.handleSortInDescClick}
+                >
+                  降順
+                </button>
+              </dd>
+            </dl>
           </div>
         </div>
       </div>
