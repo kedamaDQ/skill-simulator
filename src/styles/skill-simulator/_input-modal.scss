@@ -527,7 +527,66 @@ ul.selector {
       font-size: $ui-panel-font-size;
       cursor: pointer;
 
-      &:hover {
+      &:hover,
+      &.sort.active {
+        border-color: $ui-base-color-primary;
+        background-color: $ui-base-color-primary-hover;
+      }
+
+      &:disabled {
+        color: lighten($ui-base-color-text, 30%);
+
+        &:hover {
+          border-color: $ui-base-color-border;
+          background-color: $ui-base-color-background;
+          cursor: default;
+        }
+      }
+    }
+  }
+
+  &__sort-controller {
+    margin: 0 0 5px 0;
+    width: 100%;
+    text-align: right;
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+    & dl {
+      margin: 3px 0;
+      padding: 0;
+
+      & dt {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+        width: 50px;
+      }
+    
+      & dd {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+      }
+    }
+
+    & button {
+      margin: 0 1px;
+      padding: 0 5px;
+      width: 90px;
+      height: calc(#{$ui-panel-size} + #{$ui-panel-border-width} * 2);
+      color: $ui-base-color-text;
+      border: solid $ui-panel-border-width $ui-base-color-border;
+      border-radius: $ui-panel-border-radius;
+      background-color: $ui-base-color-background;
+      font-size: $ui-panel-font-size;
+      cursor: pointer;
+
+      &:hover,
+      &.active {
         border-color: $ui-base-color-primary;
         background-color: $ui-base-color-primary-hover;
       }
