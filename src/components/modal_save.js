@@ -58,7 +58,6 @@ export default class ModalSave extends React.PureComponent {
         });
       }
 
-      console.log(this.state.savedDatas);
       const sort = JSON.parse(storage.getItem(DATA_NAME_SORT));
       if (!!sort) {
         this.state.sortMode = sort.mode || 'created';
@@ -252,7 +251,6 @@ export default class ModalSave extends React.PureComponent {
       sortMode,
       sortOrder,
       savedDatas: this.sortSavedDatas(sortMode, sortOrder).concat(), // notify updates to react-select by deep-copy which occurs by concat.
-      selectedSavedData: null
     });
     this.saveSortSettings(sortMode, sortOrder);
   }
