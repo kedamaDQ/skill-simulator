@@ -532,7 +532,9 @@
       {"display": "装備時しゅび力+10", "points": 150, "additional": false},
       {"display": "選択", "points": 160, "additional": true},
       {"display": "選択", "points": 170, "additional": true},
-      {"display": "選択", "points": 180, "additional": true}
+      {"display": "選択", "points": 180, "additional": true},
+      {"display": "選択", "points": 190, "additional": true},
+      {"display": "選択", "points": 200, "additional": true}
     ],
     "additional_skills": [
       {
@@ -562,7 +564,9 @@
       {"display": "素手時こうげき力+50", "points": 150, "additional": false},
       {"display": "選択", "points": 160, "additional": true},
       {"display": "選択", "points": 170, "additional": true},
-      {"display": "選択", "points": 180, "additional": true}
+      {"display": "選択", "points": 180, "additional": true},
+      {"display": "選択", "points": 190, "additional": true},
+      {"display": "選択", "points": 200, "additional": true}
     ],
     "additional_skills": [
       {
@@ -592,7 +596,9 @@
       {"display": "装備時こうげき力+10", "points": 150, "additional": false},
       {"display": "選択", "points": 160, "additional": true},
       {"display": "選択", "points": 170, "additional": true},
-      {"display": "選択", "points": 180, "additional": true}
+      {"display": "選択", "points": 180, "additional": true},
+      {"display": "選択", "points": 190, "additional": true},
+      {"display": "選択", "points": 200, "additional": true}
     ],
     "additional_skills": [
       {
@@ -662,7 +668,9 @@
       {"display": "装備時こうげき力+10", "points": 150, "additional": false},
       {"display": "選択", "points": 160, "additional": true},
       {"display": "選択", "points": 170, "additional": true},
-      {"display": "選択", "points": 180, "additional": true}
+      {"display": "選択", "points": 180, "additional": true},
+      {"display": "選択", "points": 190, "additional": true},
+      {"display": "選択", "points": 200, "additional": true}
     ],
     "additional_skills": [
       {
@@ -692,7 +700,9 @@
       {"display": "状態異常成功率アップ", "points": 150, "additional": false},
       {"display": "選択", "points": 160, "additional": true},
       {"display": "選択", "points": 170, "additional": true},
-      {"display": "選択", "points": 180, "additional": true}
+      {"display": "選択", "points": 180, "additional": true},
+      {"display": "選択", "points": 190, "additional": true},
+      {"display": "選択", "points": 200, "additional": true}
     ],
     "additional_skills": [
       {
@@ -722,7 +732,9 @@
       {"display": "装備時さいだいMP+30", "points": 150, "additional": false},
       {"display": "選択", "points": 160, "additional": true},
       {"display": "選択", "points": 170, "additional": true},
-      {"display": "選択", "points": 180, "additional": true}
+      {"display": "選択", "points": 180, "additional": true},
+      {"display": "選択", "points": 190, "additional": true},
+      {"display": "選択", "points": 200, "additional": true}
     ],
     "additional_skills": [
       {
@@ -752,7 +764,9 @@
       {"display": "装備時さいだいMP+30", "points": 150, "additional": false},
       {"display": "選択", "points": 160, "additional": true},
       {"display": "選択", "points": 170, "additional": true},
-      {"display": "選択", "points": 180, "additional": true}
+      {"display": "選択", "points": 180, "additional": true},
+      {"display": "選択", "points": 190, "additional": true},
+      {"display": "選択", "points": 200, "additional": true}
     ],
     "additional_skills": [
       {
@@ -782,7 +796,9 @@
       {"display": "装備時こうげき力+10", "points": 150, "additional": false},
       {"display": "選択", "points": 160, "additional": true},
       {"display": "選択", "points": 170, "additional": true},
-      {"display": "選択", "points": 180, "additional": true}
+      {"display": "選択", "points": 180, "additional": true},
+      {"display": "選択", "points": 190, "additional": true},
+      {"display": "選択", "points": 200, "additional": true}
     ],
     "additional_skills": [
       {
@@ -812,7 +828,9 @@
       {"display": "装備時こうげき力+10", "points": 150, "additional": false},
       {"display": "選択", "points": 160, "additional": true},
       {"display": "選択", "points": 170, "additional": true},
-      {"display": "選択", "points": 180, "additional": true}
+      {"display": "選択", "points": 180, "additional": true},
+      {"display": "選択", "points": 190, "additional": true},
+      {"display": "選択", "points": 200, "additional": true}
     ],
     "additional_skills": [
       {
@@ -842,7 +860,9 @@
       {"display": "装備時さいだいHP+10", "points": 150, "additional": false},
       {"display": "選択", "points": 160, "additional": true},
       {"display": "選択", "points": 170, "additional": true},
-      {"display": "選択", "points": 180, "additional": true}
+      {"display": "選択", "points": 180, "additional": true},
+      {"display": "選択", "points": 190, "additional": true},
+      {"display": "選択", "points": 200, "additional": true}
     ],
     "additional_skills": [
       {
@@ -872,7 +892,9 @@
       {"display": "装備時こうげき力+10", "points": 150, "additional": false},
       {"display": "選択", "points": 160, "additional": true},
       {"display": "選択", "points": 170, "additional": true},
-      {"display": "選択", "points": 180, "additional": true}
+      {"display": "選択", "points": 180, "additional": true},
+      {"display": "選択", "points": 190, "additional": true},
+      {"display": "選択", "points": 200, "additional": true}
     ],
     "additional_skills": [
       {
@@ -902,7 +924,9 @@
       {"display": "装備時こうげき力+5", "points": 150, "additional": false},
       {"display": "選択", "points": 160, "additional": true},
       {"display": "選択", "points": 170, "additional": true},
-      {"display": "選択", "points": 180, "additional": true}
+      {"display": "選択", "points": 180, "additional": true},
+      {"display": "選択", "points": 190, "additional": true},
+      {"display": "選択", "points": 200, "additional": true}
     ],
     "additional_skills": [
       {
@@ -932,7 +956,9 @@
       {"display": "装備時こうげき力+10", "points": 150, "additional": false},
       {"display": "選択", "points": 160, "additional": true},
       {"display": "選択", "points": 170, "additional": true},
-      {"display": "選択", "points": 180, "additional": true}
+      {"display": "選択", "points": 180, "additional": true},
+      {"display": "選択", "points": 190, "additional": true},
+      {"display": "選択", "points": 200, "additional": true}
     ],
     "additional_skills": [
       {
@@ -962,7 +988,9 @@
       {"display": "装備時こうげき力+10", "points": 150, "additional": false},
       {"display": "選択", "points": 160, "additional": true},
       {"display": "選択", "points": 170, "additional": true},
-      {"display": "選択", "points": 180, "additional": true}
+      {"display": "選択", "points": 180, "additional": true},
+      {"display": "選択", "points": 190, "additional": true},
+      {"display": "選択", "points": 200, "additional": true}
     ],
     "additional_skills": [
       {
@@ -992,7 +1020,9 @@
       {"display": "装備時こうげき力+10", "points": 150, "additional": false},
       {"display": "選択", "points": 160, "additional": true},
       {"display": "選択", "points": 170, "additional": true},
-      {"display": "選択", "points": 180, "additional": true}
+      {"display": "選択", "points": 180, "additional": true},
+      {"display": "選択", "points": 190, "additional": true},
+      {"display": "選択", "points": 200, "additional": true}
     ],
     "additional_skills": [
       {
@@ -1022,7 +1052,9 @@
       {"display": "ダークネスショット", "points": 150, "additional": false},
       {"display": "選択", "points": 160, "additional": true},
       {"display": "選択", "points": 170, "additional": true},
-      {"display": "選択", "points": 180, "additional": true}
+      {"display": "選択", "points": 180, "additional": true},
+      {"display": "選択", "points": 190, "additional": true},
+      {"display": "選択", "points": 200, "additional": true}
     ],
     "additional_skills": [
       {
