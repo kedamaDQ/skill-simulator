@@ -6,7 +6,7 @@ export const openModalAssign = (position, jobId, skillLineId) => {
     type: MODAL_OPEN,
     position,
     width: 550,
-    height: 400,
+    height: 420,
     content: 'assign',
     content_params: { jobId, skillLineId }
   };
