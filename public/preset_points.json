@@ -110,7 +110,7 @@
       {"label": "Lv.107", "value": 214},
       {"label": "Lv.108", "value": 217},
       {"label": "Lv.109", "value": 219},
-      {"label": "Lv.110", "value": 221}
+      {"label": "Lv.110", "value": 222}
     ],
     "no_training": [
       {"label": "Lv.1", "value": 0},
@@ -221,8 +221,8 @@
       {"label": "Lv.106", "value": 221},
       {"label": "Lv.107", "value": 224},
       {"label": "Lv.108", "value": 228},
-      {"label": "Lv.109", "value": 230},
-      {"label": "Lv.110", "value": 232}
+      {"label": "Lv.109", "value": 231},
+      {"label": "Lv.110", "value": 235}
     ]
   },
   "by_training": {
